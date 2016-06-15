@@ -1,0 +1,11 @@
+= Objects v3 vagrant devkit
+
+This repo contains the work in progress vagrant objects devkit edition. At the
+moment this is the playground to integrate the different objects v3 docker
+containers.
+
+== usage
+
+----
+$ vagrant up
+----
