@@ -5,7 +5,7 @@ services:
   config_server:
     build: smartcosmos-config-server
     image: smartcosmos/config-server
-    container_name: config_server
+    container_name: config-server
     network_mode: host
     ports:
       - "8888:8888"
@@ -18,14 +18,14 @@ services:
 
   service_discovery:
     build: smartcosmos-service-discovery
-    image: smartcosmos/service_discovery
-    container_name: service_discovery
+    image: smartcosmos/service-discovery
+    container_name: service-discovery
     network_mode: host
     ports:
       - "8761:8761"
     depends_on:
-      - config_server
-  
+      - config-server
+
   # user_details_service:
   #   build: smartcosmos-user-details-service
   #   image: smartcosmos/user-details-service
