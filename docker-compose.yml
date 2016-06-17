@@ -24,7 +24,7 @@ services:
     ports:
       - "8761:8761"
     depends_on:
-      - config-server
+      - config_server
 
   # user_details_service:
   #   build: smartcosmos-user-details-service
