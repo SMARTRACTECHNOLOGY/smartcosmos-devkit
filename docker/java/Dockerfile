@@ -4,5 +4,3 @@ FROM alpine:3.4
 MAINTAINER SMART COSMOS Platform Core Team
 
 RUN apk --update add openjdk8-jre
-
-CMD ["java", "-version"]
