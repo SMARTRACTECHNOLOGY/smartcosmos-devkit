@@ -15,17 +15,17 @@ services:
       # CONFIG_FILE_URI: 'file:cluster-config'
       CONFIG_FILE_URI: 'https://github.com/SMARTRACTECHNOLOGY/smartcosmos-cluster-config'
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
-  #
-  # service_discovery:
-  #   build: smartcosmos-service-discovery
-  #   image: smartcosmos/service_discovery
-  #   container_name: service_discovery
-  #   network_mode: host
-  #   ports:
-  #     - "8761:8761"
-  #   depends_on:
-  #     - config_server
-  #
+
+  service_discovery:
+    build: smartcosmos-service-discovery
+    image: smartcosmos/service_discovery
+    container_name: service_discovery
+    network_mode: host
+    ports:
+      - "8761:8761"
+    depends_on:
+      - config_server
+  
   # user_details_service:
   #   build: smartcosmos-user-details-service
   #   image: smartcosmos/user-details-service
