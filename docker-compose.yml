@@ -26,15 +26,30 @@ services:
     depends_on:
       - config_server
 
-  # user_details_service:
-  #   build: smartcosmos-user-details-service
-  #   image: smartcosmos/user-details-service
-  #   container_name: user_details_service
-  #   network_mode: host
-  #   ports:
-  #     - "42000:42000"
-  #   depends_on:
-  #     - config_server
+  mysql:
+    image: mariadb
+    container_name: mysql
+    network_mode: host
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: user
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+
+  user_details_service:
+    build: smartcosmos-user-details-service
+    image: smartcosmos/user-details-service
+    container_name: user-details-service
+    network_mode: host
+    ports:
+      - "42000:42000"
+    depends_on:
+      - config_server
+      - mysql
+    # links:
+    #  - mysql:mysql
 
   # auth_server:
   #   build: smartcosmos-auth-server
