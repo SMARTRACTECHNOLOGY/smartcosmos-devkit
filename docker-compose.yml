@@ -64,3 +64,26 @@ services:
       - "8765:8080"
     depends_on:
       - config_server
+
+  mysql_ext_things:
+    image: mariadb
+    container_name: mysql-ext-things
+    # ports:
+    #   - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: devkit
+      MYSQL_USER: cosmos
+      MYSQL_PASSWORD: dev
+
+  ext_things:
+    build: smartcosmos-ext-things
+    image: smartcosmos/ext-things
+    container_name: ext-things
+    ports:
+      - "45336:8080"
+    depends_on:
+      - config_server
+      - mysql_ext_things
+    links:
+      - mysql_ext_things:mysql
