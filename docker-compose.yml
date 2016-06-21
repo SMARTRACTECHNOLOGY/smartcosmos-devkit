@@ -6,30 +6,27 @@ services:
     build: smartcosmos-config-server
     image: smartcosmos/config-server
     container_name: config-server
-    network_mode: host
     ports:
       - "8888:8888"
-    # volumes:
-    #   - "${HOME}/workspace/smartcosmos-cluster-config:/cluster-config"
+    volumes:
+      - "/opt/cluster-config:/cluster-config"
     environment:
-      # CONFIG_FILE_URI: 'file:cluster-config'
-      CONFIG_FILE_URI: 'https://github.com/SMARTRACTECHNOLOGY/smartcosmos-cluster-config'
+      CONFIG_FILE_URI: 'file:/cluster-config'
+      # CONFIG_FILE_URI: 'https://github.com/SMARTRACTECHNOLOGY/smartcosmos-cluster-config'
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
 
   service_discovery:
     build: smartcosmos-service-discovery
     image: smartcosmos/service-discovery
     container_name: service-discovery
-    network_mode: host
     ports:
-      - "8761:8761"
+      - "8761:8080"
     depends_on:
       - config_server
 
   mysql:
     image: mariadb
     container_name: mysql
-    network_mode: host
     ports:
       - "3306:3306"
     environment:
@@ -42,19 +39,28 @@ services:
     build: smartcosmos-user-details-service
     image: smartcosmos/user-details-service
     container_name: user-details-service
-    network_mode: host
     ports:
-      - "42000:42000"
+      - "42000:8080"
     depends_on:
       - config_server
       - mysql
-    # links:
-    #  - mysql:mysql
+    links:
+     - mysql:mysql
 
-  # auth_server:
-  #   build: smartcosmos-auth-server
-  #   image: smartcosmos/auth-server
-  #   ports:
-  #     - "9999:9999"
-  #   depends_on:
-  #     - config_server
+  auth_server:
+    build: smartcosmos-auth-server
+    image: smartcosmos/auth-server
+    container_name: auth-server
+    ports:
+      - "9999:8080"
+    depends_on:
+      - config_server
+
+  gateway:
+    build: smartcosmos-gateway
+    image: smartcosmos/gateway
+    container_name: gateway
+    ports:
+      - "8765:8080"
+    depends_on:
+      - config_server

@@ -8,6 +8,8 @@ Vagrant.configure("2") do |config|
     v.memory = 8192
   end
 
+  config.vm.synced_folder "../smartcosmos-vagrant-config", "/opt/cluster-config"
+
   config.vm.network(:forwarded_port, guest: 8888, host: 8888)
   config.vm.network(:forwarded_port, guest: 8761, host: 8761)
   # config.vm.network(:forwarded_port, guest: 3333, host: 3333)
