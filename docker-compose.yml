@@ -11,8 +11,9 @@ services:
     volumes:
       - "/opt/cluster-config:/cluster-config"
     environment:
-      CONFIG_FILE_URI: 'file:/cluster-config'
-      # CONFIG_FILE_URI: 'https://github.com/SMARTRACTECHNOLOGY/smartcosmos-cluster-config'
+      # CONFIG_FILE_URI: 'file:/cluster-config'
+      CONFIG_FILE_URI: 'https://github.com/SMARTRACTECHNOLOGY/smartcosmos-cluster-config'
+      CONFIG_SERVER_LABEL: devkit
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
 
   service_discovery:
