@@ -10,9 +10,12 @@ Vagrant.configure("2") do |config|
 
   config.vm.synced_folder "../smartcosmos-cluster-config", "/opt/cluster-config"
 
-  config.vm.network(:forwarded_port, guest: 8888, host: 8888)
-  config.vm.network(:forwarded_port, guest: 8761, host: 8761)
-  # config.vm.network(:forwarded_port, guest: 3333, host: 3333)
+  config.vm.network(:forwarded_port, guest: 8888, host: 8888)   # config-server
+  config.vm.network(:forwarded_port, guest: 8761, host: 8761)   # eureka
+  config.vm.network(:forwarded_port, guest: 9999, host: 9999)   # auth-server
+  config.vm.network(:forwarded_port, guest: 8765, host: 8765)   # gateway
+  config.vm.network(:forwarded_port, guest: 42000, host: 42000) # user-details-service
+  config.vm.network(:forwarded_port, guest: 45336, host: 45336) # ext-things
 
   config.vm.provision :shell, inline: "apt-get update"
 
