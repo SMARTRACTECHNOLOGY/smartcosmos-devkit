@@ -3,4 +3,4 @@ FROM alpine:3.4
 
 MAINTAINER SMART COSMOS Platform Core Team
 
-RUN apk --update add openjdk8-jre
+RUN apk --update --no-cache add openjdk8-jre openssl
