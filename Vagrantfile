@@ -1,14 +1,12 @@
 
 Vagrant.configure("2") do |config|
+
   config.vm.box = "ubuntu/trusty64"
 
   config.vm.provider "virtualbox" do |v|
     v.name = "objects_devkit"
-
     v.memory = 8192
   end
-
-  config.vm.synced_folder "../smartcosmos-cluster-config", "/opt/cluster-config"
 
   config.vm.network(:forwarded_port, guest: 8888, host: 8888)   # config-server
   config.vm.network(:forwarded_port, guest: 8761, host: 8761)   # eureka
