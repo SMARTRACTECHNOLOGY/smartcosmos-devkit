@@ -8,5 +8,9 @@ node {
     def javaImage = docker.build "smartcosmos/java", "java"
     stage 'docker build smartcosmos/service'
     def serviceImage = docker.build "smartcosmos/service", "service"
+
+    stage 'push images'
+    javaImage.push('latest')
+    serviceImage.push('latest')
   }
 }
