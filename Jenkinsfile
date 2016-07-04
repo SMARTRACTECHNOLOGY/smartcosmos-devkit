@@ -5,7 +5,7 @@ node {
 
   stage 'docker build'
   dir('docker') {
-    def image = docker.build "smartcosmos/java", "java"
-    def image = docker.build "smartcosmos/service", "service"
+    def javaImage = docker.build "smartcosmos/java", "java"
+    def serviceImage = docker.build "smartcosmos/service", "service"
   }
 }
