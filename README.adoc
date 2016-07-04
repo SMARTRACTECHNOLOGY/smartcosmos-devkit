@@ -7,5 +7,7 @@ containers.
 == usage
 
 ----
-$ vagrant up
+$ docker-compose up
 ----
+
+or `vagrant up`
