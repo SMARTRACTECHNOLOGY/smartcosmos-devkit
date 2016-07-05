@@ -14,9 +14,10 @@ node {
     if (env.BRANCH_NAME == 'master') {
       stage 'push images'
 
-      withDockerRegistry('https://index.docker.io/v1/', 'dockerhub-credentials')
+      withDockerRegistry('https://index.docker.io/v1/', 'dockerhub-credentials') {
         javaImage.push('latest')
         serviceImage.push('latest')
+      }
     } else {
       sh "docker rmi ${javaImage.id}"
       sh "docker rmi ${serviceImage.id}"
