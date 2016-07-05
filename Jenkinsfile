@@ -18,9 +18,9 @@ node {
         javaImage.push('latest')
         serviceImage.push('latest')
       }
-    } else {
-      sh "docker rmi ${javaImage.id}"
-      sh "docker rmi ${serviceImage.id}"
     }
+
+    sh "docker rmi ${javaImage.id}"
+    sh "docker rmi ${serviceImage.id}"
   }
 }
