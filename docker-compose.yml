@@ -3,7 +3,6 @@ version: '2'
 
 services:
   config_server:
-    build: smartcosmos-config-server
     image: smartcosmos/config-server
     container_name: config-server
     ports:
@@ -17,7 +16,6 @@ services:
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
 
   service_discovery:
-    build: smartcosmos-service-discovery
     image: smartcosmos/service-discovery
     container_name: service-discovery
     ports:
@@ -37,7 +35,6 @@ services:
       MYSQL_PASSWORD: password
 
   user_details_service:
-    build: smartcosmos-user-details-service
     image: smartcosmos/user-details-service
     container_name: user-details-service
     ports:
@@ -49,7 +46,6 @@ services:
      - mysql:mysql
 
   auth_server:
-    build: smartcosmos-auth-server
     image: smartcosmos/auth-server
     container_name: auth-server
     ports:
@@ -58,7 +54,6 @@ services:
       - config_server
 
   gateway:
-    build: smartcosmos-gateway
     image: smartcosmos/gateway
     container_name: gateway
     ports:
@@ -78,7 +73,6 @@ services:
       MYSQL_PASSWORD: dev
 
   ext_things:
-    build: smartcosmos-ext-things
     image: smartcosmos/ext-things
     container_name: ext-things
     ports:
