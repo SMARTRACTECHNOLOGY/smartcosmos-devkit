@@ -5,7 +5,7 @@ node {
 
   dir('docker') {
     stage 'docker build smartcosmos/java'
-    def tag = (env.BRANCH_NAME == 'master') ? env.BUILD_NUMBER : env.BUILD_TAG
+    def tag = (env.BRANCH_NAME == 'master') ? env.BUILD_NUMBER : "snapshot-${env.BUILD_NUMBER}"
 
     def javaImage = docker.build "smartcosmos/java:${tag}", "java"
     stage 'docker build smartcosmos/service'
