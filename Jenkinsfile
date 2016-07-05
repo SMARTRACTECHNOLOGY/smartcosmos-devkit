@@ -7,7 +7,7 @@ node {
     stage 'docker build smartcosmos/java'
     def tag = (env.BRANCH_NAME == 'master') ? env.BUILD_NUMBER : "snapshot-${env.BUILD_NUMBER}"
 
-    docker.withRegistry('https://dockerhub.com/', 'dockerhub-credentials') {
+    docker.withRegistry('https://hub.docker.com/', 'dockerhub-credentials') {
       def javaImage = docker.build "smartcosmos/java:${tag}", "java"
       stage 'docker build smartcosmos/service'
       def serviceImage = docker.build "smartcosmos/service:${tag}", "service"
