@@ -5,12 +5,20 @@ node {
 
   dir('docker') {
     stage 'docker build smartcosmos/java'
-    def javaImage = docker.build "smartcosmos/java", "java"
-    stage 'docker build smartcosmos/service'
-    def serviceImage = docker.build "smartcosmos/service", "service"
+    def tag = (env.BRANCH_NAME == 'master') ? env.BUILD_NUMBER : "snapshot-${env.BUILD_NUMBER}"
 
-    stage 'push images'
-    javaImage.push('latest')
-    serviceImage.push('latest')
+    def javaImage = docker.build "smartcosmos/java:${tag}", "java"
+    stage 'docker build smartcosmos/service'
+    def serviceImage = docker.build "smartcosmos/service:${tag}", "service"
+
+    if (env.BRANCH_NAME == 'master') {
+      stage 'push images'
+      docker.withRegistry('https://docker.io/', 'dockerhub-credentials')
+      javaImage.push('latest')
+      serviceImage.push('latest')
+    } else {
+      sh "docker rmi ${javaImage.id}"
+      sh "docker rmi ${serviceImage.id}"
+    }
   }
 }
