@@ -82,3 +82,14 @@ services:
       - mysql_ext_things
     links:
       - mysql_ext_things:mysql
+
+  ext_metadata:
+    image: smartcosmos/ext-metadata
+    container_name: ext-metadata
+    ports:
+      - "45337:8080"
+    depends_on:
+      - config_server
+      - mysql_ext_things
+    links:
+      - mysql_ext_things:mysql
