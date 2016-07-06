@@ -11,3 +11,9 @@ $ docker-compose up
 ----
 
 or `vagrant up`
+
+
+If you only want to start specific services run e.g.:
+----
+$ docker-compose up config_server service_discovery mysql_auth user_details auth_server
+----
