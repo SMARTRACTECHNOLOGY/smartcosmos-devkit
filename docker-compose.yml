@@ -20,11 +20,11 @@ services:
     depends_on:
       - config_server
 
-  mysql:
+  mysql_auth:
     image: mariadb
-    container_name: mysql
-    ports:
-      - "3306:3306"
+    container_name: mysql-auth
+    # ports:
+    #   - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: user
@@ -58,11 +58,11 @@ services:
     depends_on:
       - config_server
 
-  mysql_ext_things:
+  mysql:
     image: mariadb
-    container_name: mysql-ext-things
-    # ports:
-    #   - "3306:3306"
+    container_name: mysql
+    ports:
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: devkit
@@ -76,6 +76,17 @@ services:
       - "45336:8080"
     depends_on:
       - config_server
-      - mysql_ext_things
+      - mysql
     links:
-      - mysql_ext_things:mysql
+      - mysql:mysql
+
+  ext_metadata:
+    image: smartcosmos/ext-metadata
+    container_name: ext-metadata
+    ports:
+      - "45337:8080"
+    depends_on:
+      - config_server
+      - mysql
+    links:
+      - mysql:mysql
