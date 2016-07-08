@@ -10,10 +10,16 @@ containers.
 $ docker-compose up
 ----
 
-or `vagrant up`
-
-
 If you only want to start specific services run e.g.:
 ----
 $ docker-compose up config_server service_discovery mysql_auth user_details auth_server
+----
+
+
+=== scale up
+
+If you want to scale a the number of a service just run (.e.g. to scale to 5 running `ext-things` services):
+
+----
+$ docker-compose scale ext-things=5
 ----
