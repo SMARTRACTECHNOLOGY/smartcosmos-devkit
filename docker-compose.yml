@@ -2,9 +2,8 @@
 version: '2'
 
 services:
-  config_server:
+  config-server:
     image: smartcosmos/config-server
-    container_name: config-server
     ports:
       - "8888:8888"
     environment:
@@ -12,55 +11,47 @@ services:
       CONFIG_SERVER_LABEL: devkit
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
 
-  service_discovery:
+  service-discovery:
     image: smartcosmos/service-discovery
-    container_name: service-discovery
     ports:
       - "8761:8080"
     depends_on:
-      - config_server
+      - config-server
 
-  mysql_auth:
+  mysql-auth:
     image: mariadb
-    container_name: mysql-auth
-    # ports:
-    #   - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: user
       MYSQL_USER: user
       MYSQL_PASSWORD: password
 
-  user_details_service:
+  user-details-service:
     image: smartcosmos/user-details-service
-    container_name: user-details-service
     ports:
       - "42000:8080"
     depends_on:
-      - config_server
+      - config-server
       - mysql
     links:
      - mysql:mysql
 
-  auth_server:
+  auth-server:
     image: smartcosmos/auth-server
-    container_name: auth-server
     ports:
       - "9999:8080"
     depends_on:
-      - config_server
+      - config-server
 
   gateway:
     image: smartcosmos/gateway
-    container_name: gateway
     ports:
       - "8765:8080"
     depends_on:
-      - config_server
+      - config-server
 
   mysql:
     image: mariadb
-    container_name: mysql
     ports:
       - "3306:3306"
     environment:
@@ -69,24 +60,22 @@ services:
       MYSQL_USER: cosmos
       MYSQL_PASSWORD: dev
 
-  ext_things:
+  ext-things:
     image: smartcosmos/ext-things
-    container_name: ext-things
     ports:
       - "45336:8080"
     depends_on:
-      - config_server
+      - config-server
       - mysql
     links:
       - mysql:mysql
 
-  ext_metadata:
+  ext-metadata:
     image: smartcosmos/ext-metadata
-    container_name: ext-metadata
     ports:
       - "45337:8080"
     depends_on:
-      - config_server
+      - config-server
       - mysql
     links:
       - mysql:mysql
