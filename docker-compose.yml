@@ -62,8 +62,6 @@ services:
 
   ext-things:
     image: smartcosmos/ext-things
-    ports:
-      - "45336:8080"
     depends_on:
       - config-server
       - mysql
@@ -72,8 +70,6 @@ services:
 
   ext-metadata:
     image: smartcosmos/ext-metadata
-    ports:
-      - "45337:8080"
     depends_on:
       - config-server
       - mysql
