@@ -75,3 +75,11 @@ services:
       - mysql
     links:
       - mysql:mysql
+
+  ext-relationships:
+    image: smartcosmos/ext-relationships
+    depends_on:
+      - config-server
+      - mysql
+    links:
+      - mysql:mysql
