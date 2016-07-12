@@ -11,12 +11,16 @@ node {
     stage 'docker build smartcosmos/service'
     def serviceImage = docker.build "smartcosmos/service:${tag}", "service"
 
+    stage 'docker build smartcosmos/node-service'
+    def nodeServiceImage = docker.build "smartcosmos/service:${tag}", "node-service"
+
     if (env.BRANCH_NAME == 'master') {
       stage 'push images'
 
       docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials') {
         javaImage.push('latest')
         serviceImage.push('latest')
+        nodeServiceImage.push('latest')
       }
     }
 
