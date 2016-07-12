@@ -12,7 +12,7 @@ node {
     def serviceImage = docker.build "smartcosmos/service:${tag}", "service"
 
     stage 'docker build smartcosmos/node-service'
-    def nodeServiceImage = docker.build "smartcosmos/service:${tag}", "node-service"
+    def nodeServiceImage = docker.build "smartcosmos/node-service:${tag}", "node-service"
 
     if (env.BRANCH_NAME == 'master') {
       stage 'push images'
