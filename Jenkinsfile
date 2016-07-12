@@ -26,5 +26,6 @@ node {
 
     sh "docker rmi ${javaImage.id}"
     sh "docker rmi ${serviceImage.id}"
+    sh "docker rmi ${nodeServiceImage.id}"
   }
 }
