@@ -1,5 +1,5 @@
 ---
-version: '2'
+version: '3'
 
 services:
   config-server:
@@ -14,24 +14,17 @@ services:
   service-discovery:
     image: smartcosmos/service-discovery
     ports:
-      - "8761:8080"
+      - "8761:8761"
     depends_on:
       - config-server
 
-  mysql-auth:
-    image: mariadb
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: user
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-
-  user-details-service:
-    image: smartcosmos/user-details-service
+  edge-user-devkit:
+    image: smartcosmos/edge-user-devkit
     ports:
-      - "42000:8080"
+      - "42000:42000"
     depends_on:
       - config-server
+      - service-discovery
       - mysql
     links:
      - mysql:mysql
@@ -39,9 +32,11 @@ services:
   auth-server:
     image: smartcosmos/auth-server
     ports:
-      - "9999:8080"
+      - "9999:9999"
     depends_on:
       - config-server
+      - edge-user-devkit
+      - service-discovery
 
   gateway:
     image: smartcosmos/gateway
@@ -49,6 +44,7 @@ services:
       - "8765:8080"
     depends_on:
       - config-server
+      - service-discovery
 
   mysql:
     image: mariadb
@@ -60,10 +56,18 @@ services:
       MYSQL_USER: cosmos
       MYSQL_PASSWORD: dev
 
+  edge-things:
+    image: smartcosmos/edge-things
+    depends_on:
+      - config-server
+      - service-discovery
+      - mysql
+
   ext-things:
     image: smartcosmos/ext-things
     depends_on:
       - config-server
+      - service-discovery
       - mysql
     links:
       - mysql:mysql
@@ -72,6 +76,7 @@ services:
     image: smartcosmos/ext-metadata
     depends_on:
       - config-server
+      - service-discovery
       - mysql
     links:
       - mysql:mysql
@@ -80,6 +85,37 @@ services:
     image: smartcosmos/ext-relationships
     depends_on:
       - config-server
+      - service-discovery
       - mysql
     links:
       - mysql:mysql
+
+  zookeeper:
+    image: jplock/zookeeper:3.4.6
+
+  kafka:
+    image: ches/kafka
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    links:
+      - zookeeper:zookeeper
+
+  events:
+    image: smartcosmos/events
+    depends_on:
+      - config-server
+      - service-discovery
+      - kafka
+    links:
+      - kafka:kafka
+
+  event-listener:
+    image: smartcosmos/event-listener
+    depends_on:
+      - config-server
+      - service-discovery
+      - kafka
+    links:
+      - kafka:kafka
