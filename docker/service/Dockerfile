@@ -1,4 +1,4 @@
-FROM smartcosmos/java:latest
+FROM java:8-alpine
 
 MAINTAINER SMART COSMOS Platform Core Team
 
