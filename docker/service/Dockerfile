@@ -22,7 +22,7 @@ RUN mkdir -p /opt/smartcosmos && \
 
 
 ENV CONFIG_SERVER_URL 'http://config-server:8888'
-ENV JAVA_OPTS='-Xmx512m'
+ENV JAVA_OPTS='-Xmx512m  -XX:NativeMemoryTracking=summary'
 
 # expose default service port
 EXPOSE 8080
