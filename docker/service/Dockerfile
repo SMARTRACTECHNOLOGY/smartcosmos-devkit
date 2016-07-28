@@ -1,8 +1,6 @@
-FROM java:8-alpine
+FROM smartcosmos/java
 
 MAINTAINER SMART COSMOS Platform Core Team
-
-RUN apk --update --no-cache add openssl
 
 # download dockerize script, this is used to wait for the config server
 ENV DOCKERIZE_VERSION v0.2.0
