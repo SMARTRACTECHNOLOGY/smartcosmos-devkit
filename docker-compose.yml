@@ -5,7 +5,7 @@ services:
   config-server:
     image: smartcosmos/config-server
     ports:
-      - "8888:8080"
+      - "8888:8888"
     environment:
       CONFIG_FILE_URI: 'https://github.com/SMARTRACTECHNOLOGY/smartcosmos-cluster-config'
       CONFIG_SERVER_LABEL: devkit
