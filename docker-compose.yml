@@ -5,11 +5,9 @@ services:
   config-server:
     image: smartcosmos/config-server
     environment:
-      CONFIG_FILE_URI: 'file:/etc/config-server'
+      CONFIG_FILE_URI: 'https://github.com/SMARTRACTECHNOLOGY/smartcosmos-cluster-config'
       CONFIG_SERVER_LABEL: devkit
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
-    volumes:
-      - '/Users/sdomula/workspace/smartcosmos-cluster-config:/etc/config-server'
 
   service-discovery:
     image: smartcosmos/service-discovery
@@ -30,7 +28,7 @@ services:
       - "9999:8080"
     depends_on:
       - config-server
-    
+
   gateway:
     image: smartcosmos/gateway
     ports:
