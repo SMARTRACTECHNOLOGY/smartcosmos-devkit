@@ -4,37 +4,25 @@ version: '2'
 services:
   config-server:
     image: smartcosmos/config-server
-    ports:
-      - "8888:8888"
     environment:
-      CONFIG_FILE_URI: 'https://github.com/SMARTRACTECHNOLOGY/smartcosmos-cluster-config'
+      CONFIG_FILE_URI: 'file:/etc/config-server'
       CONFIG_SERVER_LABEL: devkit
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
+    volumes:
+      - '/Users/sdomula/workspace/smartcosmos-cluster-config:/etc/config-server'
 
   service-discovery:
     image: smartcosmos/service-discovery
     ports:
-      - "8761:8080"
+      - "8080:8080"
     depends_on:
       - config-server
 
-  mysql-auth:
-    image: mariadb
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: user
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-
-  user-details-service:
-    image: smartcosmos/user-details-service
-    ports:
-      - "42000:8080"
+  edge-user-devkit:
+    image: smartcosmos/edge-user-devkit
     depends_on:
       - config-server
       - mysql
-    links:
-     - mysql:mysql
 
   auth-server:
     image: smartcosmos/auth-server
@@ -42,7 +30,7 @@ services:
       - "9999:8080"
     depends_on:
       - config-server
-
+    
   gateway:
     image: smartcosmos/gateway
     ports:
@@ -52,8 +40,6 @@ services:
 
   mysql:
     image: mariadb
-    ports:
-      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: devkit
@@ -65,21 +51,15 @@ services:
     depends_on:
       - config-server
       - mysql
-    links:
-      - mysql:mysql
 
   ext-metadata:
     image: smartcosmos/ext-metadata
     depends_on:
       - config-server
       - mysql
-    links:
-      - mysql:mysql
 
   ext-relationships:
     image: smartcosmos/ext-relationships
     depends_on:
       - config-server
       - mysql
-    links:
-      - mysql:mysql
