@@ -16,18 +16,6 @@ services:
     depends_on:
       - config-server
 
-  edge-user-devkit:
-    image: smartcosmos/edge-user-devkit
-    depends_on:
-      - config-server
-      - mysql
-
-  auth-server:
-    image: smartcosmos/auth-server
-    ports:
-      - "9999:8080"
-    depends_on:
-      - config-server
 
   gateway:
     image: smartcosmos/gateway
@@ -35,6 +23,58 @@ services:
       - "8765:8080"
     depends_on:
       - config-server
+      - service-discovery
+
+
+  auth-server:
+    image: smartcosmos/auth-server
+    ports:
+      - "9999:8080"
+    depends_on:
+      - config-server
+      - service-discovery
+      - edge-user-devkit
+
+
+  edge-user-devkit:
+    image: smartcosmos/edge-user-devkit
+    depends_on:
+      - config-server
+      - service-discovery
+      - mysql
+
+
+  edge-things:
+    image: smartcosmos/edge-things
+    depends_on:
+      - config-server
+      - service-discovery
+      - ext-things
+      - ext-metadata
+
+  ext-things:
+    image: smartcosmos/ext-things
+    depends_on:
+      - config-server
+      - service-discovery
+      - mysql
+
+
+  ext-metadata:
+    image: smartcosmos/ext-metadata
+    depends_on:
+      - config-server
+      - service-discovery
+      - mysql
+
+
+  ext-relationships:
+    image: smartcosmos/ext-relationships
+    depends_on:
+      - config-server
+      - service-discovery
+      - mysql
+
 
   mysql:
     image: mariadb
@@ -44,20 +84,4 @@ services:
       MYSQL_USER: cosmos
       MYSQL_PASSWORD: dev
 
-  ext-things:
-    image: smartcosmos/ext-things
-    depends_on:
-      - config-server
-      - mysql
 
-  ext-metadata:
-    image: smartcosmos/ext-metadata
-    depends_on:
-      - config-server
-      - mysql
-
-  ext-relationships:
-    image: smartcosmos/ext-relationships
-    depends_on:
-      - config-server
-      - mysql
