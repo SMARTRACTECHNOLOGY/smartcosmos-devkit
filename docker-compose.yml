@@ -28,6 +28,8 @@ services:
 
   auth-server:
     image: smartcosmos/auth-server
+    # make auth-server public this is needed to get a tocken directly
+    # until we fix gateway --> auth-server comunication.
     ports:
       - "9999:8080"
     depends_on:
