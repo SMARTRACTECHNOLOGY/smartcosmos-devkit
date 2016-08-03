@@ -18,7 +18,7 @@ services:
   gateway:
     image: smartcosmos/gateway
     ports:
-      - "8765:8080"
+      - "8080:8080"
     depends_on:
       - config-server
       - service-discovery
