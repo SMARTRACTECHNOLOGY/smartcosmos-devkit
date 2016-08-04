@@ -51,32 +51,30 @@ services:
       - service-discovery
 
 
-  zookeeper:
-    image: jplock/zookeeper:3.4.6
-
-
-  kafka:
-    image: ches/kafka
-    ports:
-     - "9092:9092"
-    depends_on:
-     - zookeeper
-
-
-  events:
-    image: smartcosmos/events
-    depends_on:
-     - config-server
-     - service-discovery
-     - kafka
-
-
-  event-listener:
-    image: smartcosmos/event-listener
-    depends_on:
-     - config-server
-     - service-discovery
-     - kafka
+  # zookeeper:
+  #   image: jplock/zookeeper:3.4.6
+  #
+  #
+  # kafka:
+  #   image: ches/kafka
+  #   ports:
+  #    - "9092:9092"
+  #   depends_on:
+  #    - zookeeper
+  #
+  #
+  # events:
+  #   image: smartcosmos/events
+  #   depends_on:
+  #    - config-server
+  #    - service-discovery
+  #    - kafka
+  #
+  #
+  # event-listener:
+  #   image: smartcosmos/event-listener
+  #   depends_on:
+  #    - events
 
 
   edge-things:
