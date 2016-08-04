@@ -51,11 +51,15 @@ services:
 
   zookeeper:
     image: jplock/zookeeper:3.4.6
+    ports:
+      - "2181:2181"
 
   kafka:
     image: ches/kafka
     ports:
      - "9092:9092"
+    environment:
+      ZOOKEEPER_IP: "zookeeper"
     depends_on:
      - zookeeper
 
