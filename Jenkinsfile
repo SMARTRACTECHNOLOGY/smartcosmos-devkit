@@ -27,6 +27,7 @@ node {
       }
     }
 
+    // remove images to save space
     sh "docker rmi ${javaImage.id}"
     sh "docker rmi ${serviceImage.id}"
     sh "docker rmi ${nodeServiceImage.id}"
