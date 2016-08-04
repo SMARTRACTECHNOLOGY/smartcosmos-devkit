@@ -61,6 +61,8 @@ services:
 
   events:
     image: smartcosmos/events
+    ports:
+      - "45012:8080"
     depends_on:
      - config-server
      - service-discovery
