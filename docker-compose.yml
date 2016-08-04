@@ -33,15 +33,22 @@ services:
     depends_on:
       - config-server
       - service-discovery
-      - edge-user-devkit
+      # - edge-user-devkit
 
 
-  edge-user-devkit:
-    image: smartcosmos/edge-user-devkit
+  # edge-user-devkit:
+    # image: smartcosmos/edge-user-devkit
+    # depends_on:
+      # - config-server
+      # - service-discovery
+      # - mysql
+
+
+  user-details-service:
+    image: smartcosmos/user-details-service
     depends_on:
       - config-server
       - service-discovery
-      - mysql
 
 
   edge-things:
@@ -49,8 +56,10 @@ services:
     depends_on:
       - config-server
       - service-discovery
+      - auth-server
       - ext-things
       - ext-metadata
+
 
   ext-things:
     image: smartcosmos/ext-things
@@ -83,5 +92,3 @@ services:
       MYSQL_DATABASE: devkit
       MYSQL_USER: cosmos
       MYSQL_PASSWORD: dev
-
-
