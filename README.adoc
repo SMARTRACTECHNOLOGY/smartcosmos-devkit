@@ -10,16 +10,57 @@ containers.
 $ docker-compose up
 ----
 
+If you want to start the services in the background (detached mode) use `-d`.
+
+----
+$ docker-compose up -d
+----
+
+
 If you only want to start specific services run e.g.:
 ----
-$ docker-compose up config_server service_discovery mysql_auth user_details auth_server
+$ docker-compose up -d config_server
 ----
 
+You can start multiple services:
 
-=== scale up
+----
+$ docker-compose up -d edge-things gateway
+----
+
+*NOTE*: The services will start dependent services as well. So `docker-compose up edge-things`
+will start `config-server`, `service-discovery`, `ext-things`, `ext-metadata` and the `auth-server`
+(including all of their dependent services).
+
+=== scale up/down
 
 If you want to scale a the number of a service just run (.e.g. to scale to 5 running `ext-things` services):
 
 ----
 $ docker-compose scale ext-things=5
+----
+
+To *scale down* use the same command and set a lower number.
+
+
+== Start the devkit in AWS
+
+First you have to configure you credentials to aws.
+Then you can use `docker-machine` to create an instance in AWS which can than be provisioned with `docker-compose`.
+
+----
+$ docker-machine create --driver amazonec2 myTest
+----
+
+To get more detailed instruction on how to start machines in AWS read the official documentation: https://docs.docker.com/machine/drivers/aws/.
+
+
+To stop your machine run:
+----
+$ docker-machine stop myTest
+----
+
+To remove it run:
+----
+$ docker-machine rm myTest
 ----
