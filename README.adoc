@@ -4,8 +4,16 @@ This repo contains the work in progress vagrant objects devkit edition. At the
 moment this is the playground to integrate the different objects v3 docker
 containers.
 
+== docs
+This README only contains very basic usage instructions. You can have a much more detailed overview at the docker documentation:
+
+* https://docs.docker.com/engine/understanding-docker/[docker]
+* https://docs.docker.com/compose/overview/[docker-compose]
+* https://docs.docker.com/machine/overview/[docker-machine]
+
 == usage
 
+To start the whole objects cluster run:
 ----
 $ docker-compose up
 ----
