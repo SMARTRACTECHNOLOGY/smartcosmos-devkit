@@ -43,39 +43,39 @@ services:
       # - service-discovery
       # - mysql
 
-
   user-details-service:
     image: smartcosmos/user-details-service
     depends_on:
       - config-server
       - service-discovery
 
+  zookeeper:
+    image: jplock/zookeeper:3.4.6
+    ports:
+      - "2181:2181"
 
-  # zookeeper:
-  #   image: jplock/zookeeper:3.4.6
-  #
-  #
-  # kafka:
-  #   image: ches/kafka
-  #   ports:
-  #    - "9092:9092"
-  #   depends_on:
-  #    - zookeeper
-  #
-  #
-  # events:
-  #   image: smartcosmos/events
-  #   depends_on:
-  #    - config-server
-  #    - service-discovery
-  #    - kafka
-  #
-  #
-  # event-listener:
-  #   image: smartcosmos/event-listener
-  #   depends_on:
-  #    - events
+  kafka:
+    image: ches/kafka
+    ports:
+     - "9092:9092"
+    environment:
+      ZOOKEEPER_IP: "zookeeper"
+    depends_on:
+     - zookeeper
 
+  events:
+    image: smartcosmos/events
+    ports:
+      - "45012:8080"
+    depends_on:
+     - config-server
+     - service-discovery
+     - kafka
+
+  event-listener:
+    image: smartcosmos/event-listener
+    depends_on:
+     - events
 
   edge-things:
     image: smartcosmos/edge-things
@@ -85,7 +85,6 @@ services:
       - auth-server
       - ext-things
       - ext-metadata
-
 
   ext-things:
     image: smartcosmos/ext-things
