@@ -33,21 +33,23 @@ services:
     depends_on:
       - config-server
       - service-discovery
-      # - edge-user-devkit
+      - user-details-devkit
+      - edge-user-devkit
 
 
-  # edge-user-devkit:
-    # image: smartcosmos/edge-user-devkit
-    # depends_on:
-      # - config-server
-      # - service-discovery
-      # - mysql
-
-  user-details-service:
-    image: smartcosmos/user-details-service
+  edge-user-devkit:
+    image: smartcosmos/edge-user-devkit
     depends_on:
       - config-server
       - service-discovery
+      - mysql
+
+  user-details-devkit:
+    image: smartcosmos/user-details-devkit
+    depends_on:
+      - config-server
+      - service-discovery
+      - mysql
 
   zookeeper:
     image: jplock/zookeeper:3.4.6
