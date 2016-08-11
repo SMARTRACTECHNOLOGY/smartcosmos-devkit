@@ -8,6 +8,8 @@ services:
       CONFIG_FILE_URI: 'file:///opt/config'
       CONFIG_SERVER_LABEL: devkit
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
+    ports:
+      - "8888:8888"
     volumes:
       - ~/git/smartcosmos-cluster-config:/opt/config
   service-discovery:
@@ -53,16 +55,19 @@ services:
       - mysql
 
   zookeeper:
-    image: jplock/zookeeper:3.4.6
+    image: wurstmeister/zookeeper
     ports:
       - "2181:2181"
 
   kafka:
-    image: ches/kafka
+    image: wurstmeister/kafka
     ports:
-     - "9092:9092"
+     - "9092"
     environment:
-      ZOOKEEPER_IP: "zookeeper"
+      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_ADVERTISED_PORT: 9092
+      HOSTNAME_COMMAND: "route -n | grep 'UG[ \t]' | awk '{print $$2}'"
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
     depends_on:
      - zookeeper
 
