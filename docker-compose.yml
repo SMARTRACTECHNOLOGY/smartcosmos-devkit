@@ -3,20 +3,20 @@ version: '2'
 
 services:
   config-server:
-    image: smartcosmos/config-server:3.0.0
+    image: smartcosmos/config-server
     environment:
       CONFIG_FILE_URI: 'https://github.com/SMARTRACTECHNOLOGY/smartcosmos-cluster-config'
       CONFIG_SERVER_LABEL: devkit
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
 
   service-discovery:
-    image: smartcosmos/service-discovery:3.0.0
+    image: smartcosmos/service-discovery
     depends_on:
       - config-server
 
 
   gateway:
-    image: smartcosmos/gateway:3.0.0
+    image: smartcosmos/gateway
     ports:
       - "8080:8080"
     depends_on:
@@ -25,7 +25,7 @@ services:
 
 
   auth-server:
-    image: smartcosmos/auth-server:3.0.0
+    image: smartcosmos/auth-server
     # make auth-server public this is needed to get a tocken directly
     # until we fix gateway --> auth-server comunication.
     ports:
@@ -38,14 +38,14 @@ services:
 
 
   edge-user-devkit:
-    image: smartcosmos/edge-user-devkit:3.0.0
+    image: smartcosmos/edge-user-devkit
     depends_on:
       - config-server
       - service-discovery
       - mysql
 
   user-details-devkit:
-    image: smartcosmos/user-details-devkit:3.0.0
+    image: smartcosmos/user-details-devkit
     depends_on:
       - config-server
       - service-discovery
@@ -57,7 +57,7 @@ services:
       - "2181:2181"
 
   kafka:
-    image: ches/kafka:0.10.0.0
+    image: ches/kafka
     ports:
      - "9092:9092"
     environment:
@@ -66,7 +66,7 @@ services:
      - zookeeper
 
   events:
-    image: smartcosmos/events:3.0.0
+    image: smartcosmos/events
     ports:
       - "45012:8080"
     depends_on:
@@ -75,12 +75,12 @@ services:
      - kafka
 
   event-listener:
-    image: smartcosmos/event-listener:3.0.0
+    image: smartcosmos/event-listener
     depends_on:
      - events
 
   edge-things:
-    image: smartcosmos/edge-things:3.0.0
+    image: smartcosmos/edge-things
     depends_on:
       - config-server
       - service-discovery
@@ -89,7 +89,7 @@ services:
       - ext-metadata
 
   ext-things:
-    image: smartcosmos/ext-things:3.0.0
+    image: smartcosmos/ext-things
     depends_on:
       - config-server
       - service-discovery
@@ -97,7 +97,7 @@ services:
 
 
   ext-metadata:
-    image: smartcosmos/ext-metadata:3.0.0
+    image: smartcosmos/ext-metadata
     depends_on:
       - config-server
       - service-discovery
@@ -105,7 +105,7 @@ services:
 
 
   ext-relationships:
-    image: smartcosmos/ext-relationships:3.0.0
+    image: smartcosmos/ext-relationships
     depends_on:
       - config-server
       - service-discovery
@@ -113,7 +113,7 @@ services:
 
 
   mysql:
-    image: mariadb:10.1.16
+    image: mariadb
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: devkit
