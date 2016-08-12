@@ -56,10 +56,12 @@ You must review and accept the
 https://licensing.smartcosmos.net/objects/[SMART COSMOS Objects EULA] before
 working with this developer kit.
 
-== Open Source Development Kit
+== Open Source Framework
 SMART COSMOS includes a number of open sourced frameworks available under the
 Apache License, Version 2. You can clone freely use these frameworks in your
 projects, submit pull requests, and access the latest documentation at GitHub:
+
+https://github.com/SMARTRACTECHNOLOGY/smartcosmos-framework
 
 https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit
 
