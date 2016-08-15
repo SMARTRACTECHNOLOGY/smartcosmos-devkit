@@ -58,6 +58,7 @@ services:
 
   kafka:
     image: ches/kafka
+    mem_limit: 300M
     ports:
      - "9092:9092"
     environment:
