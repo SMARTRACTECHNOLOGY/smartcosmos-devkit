@@ -11,6 +11,8 @@ services:
 
   service-discovery:
     image: smartcosmos/service-discovery
+    ports:
+      - 8761:8080
     depends_on:
       - config-server
 
