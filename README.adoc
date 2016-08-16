@@ -12,14 +12,7 @@ track for both enterprises and developers to Monetize the IoT.
 SMART COSMOS is an ecosystem. It consists of a robust partner network where
 hardware manufacturers, system integrators, software developers and enterprises
 come together to create the IoT. It is comprised of both SaaS and PaaS offerings
-that help you EMBED, ENRICH, EFFECT, and EXPLORE IoT driven data.
-
-SMART COSMOS also includes an education portal,
-*http://lessons.smart-cosmos.com[SMART COSMOS Lessons]*, and a
-vibrant developer community at our
-*https://partner.smart-cosmos.com[Partner Development Portal]*. Developers who
-complete the full Extension Developer learning path, passing all exams, earn the
-right and privileges of being a SMART COSMOS Certified Engineer.
+that help you EMBED, ENABLE, and UTILIZE IoT driven data.
 
 In order to accelerate value creation with the IoT, enterprises must learn how
 to obtain new value from four key areas:
@@ -31,21 +24,9 @@ to obtain new value from four key areas:
 
 The IoT is nothing more than combining a creative mixture of low-cost sensing
 hardware, auto-identification technologies like RFID, and the Cloud! Now, we
-invite you to take the next steps and learn how to use our proven blueprint to
-*Monetize the IoT*.
+invite you to take the next steps and learn how to use our IoT blueprint.
 
-*EXPLORE* the full capabilities of the entire ecosystem by participating in one or
-more Web based learning paths at SMART COSMOS Lessons.
-
-*CREATE* new and innovative IoT Mashups by building Extensions that perform an
-IaaS Cloud Pivot or integrate new applications, features, and REST Web services
-into the platform.
-
-*SELL* innovative Extensions at the SMART COSMOS Market by defining the level of
-support provided, marketing materials, manuals, and of course an appropriate
-recurring revenue model.
-
-Finally, platforms are living designs that are always evolving. If you have
+Platforms are living designs that are always evolving. If you have
 feedback, feature requests, or just want to meet for some drinks and talk
 software design patterns, contact us either at the developer portal or via
 email: mailto:api@smartrac-group.com[api@smartrac-group.com]
@@ -65,24 +46,12 @@ https://github.com/SMARTRACTECHNOLOGY/smartcosmos-framework
 
 https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit
 
-IMPORTANT: The core of the Objects server itself is proprietary and must be
-properly licensed when deployed in a production environment.
+IMPORTANT: The core of the Objects server itself is presently proprietary and must 
+be properly licensed when deployed in a production environment.
 
 In addition to the open source development framework, the entirety of the
 SMART COSMOS REST Web Service APIs are fully documented at our API web site,
 http://api.smartcosmos.net
-
-== SMART COSMOS Lessons: Get Certified
-Software developers have the opportunity to complete the Extension Developer
-learning path at our education portal, SMART COSMOS Lessons. Upon completing
-about 14 hours of self-paced web courses and passing all of the exams, you
-establish yourself as SMART COSMOS expert and have the ability to promote your
-expertise at the https://partner.smart-cosmos.com[Partner Development Portal].
-
-TIP: You need a code to complete the
-http://lessons.smart-cosmos.com/self-signup[SMART COSMOS Lessons self-signup].
-If you don't have one, just ask for one by dropping us an email at
-mailto:api@smartrac-group.com[api@smartrac-group.com].
 
 == SMART COSMOS DevKit
 This README only contains very basic usage instructions. You can have a much more detailed overview at the docker documentation:
