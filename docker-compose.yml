@@ -10,12 +10,17 @@ services:
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
     ports:
       - "8888:8888"
+    networks:
+      - platform-services
+
   service-discovery:
     image: smartcosmos/service-discovery
     ports:
       - 8761:8080
     depends_on:
       - config-server
+    networks:
+      - platform-services
 
   gateway:
     image: smartcosmos/gateway
@@ -27,6 +32,9 @@ services:
       - auth-server
       - edge-things
       - ext-relationships
+    networks:
+      - devkit-gateway
+      - platform-services
 
   auth-server:
     image: smartcosmos/auth-server
@@ -39,7 +47,8 @@ services:
       - service-discovery
       - user-details-devkit
       - edge-user-devkit
-
+    networks:
+      - platform-services
 
   edge-user-devkit:
     image: smartcosmos/edge-user-devkit
@@ -48,6 +57,8 @@ services:
       - service-discovery
       - mysql
       - user-details-devkit
+    networks:
+      - platform-services
 
   user-details-devkit:
     image: smartcosmos/user-details-devkit
@@ -55,11 +66,15 @@ services:
       - config-server
       - service-discovery
       - mysql
+    networks:
+      - platform-services
 
   zookeeper:
     image: jplock/zookeeper:3.4.6
     ports:
       - "2181:2181"
+    networks:
+      - platform-services
 
   kafka:
     image: ches/kafka
@@ -70,6 +85,8 @@ services:
       ZOOKEEPER_IP: "zookeeper"
     depends_on:
      - zookeeper
+    networks:
+      - platform-services
 
   events:
     image: smartcosmos/events
@@ -79,11 +96,15 @@ services:
      - config-server
      - service-discovery
      - kafka
+    networks:
+      - platform-services
 
   event-listener:
     image: smartcosmos/event-listener
     depends_on:
      - events
+    networks:
+      - platform-services
 
   edge-things:
     image: smartcosmos/edge-things
@@ -93,6 +114,8 @@ services:
       - auth-server
       - ext-things
       - ext-metadata
+    networks:
+      - platform-services
 
   ext-things:
     image: smartcosmos/ext-things
@@ -101,7 +124,8 @@ services:
       - service-discovery
       - mysql
       - user-details-devkit
-
+    networks:
+      - platform-services
 
   ext-metadata:
     image: smartcosmos/ext-metadata
@@ -110,7 +134,8 @@ services:
       - service-discovery
       - mysql
       - user-details-devkit
-
+    networks:
+      - platform-services
 
   ext-relationships:
     image: smartcosmos/ext-relationships
@@ -119,7 +144,8 @@ services:
       - service-discovery
       - mysql
       - user-details-devkit
-
+    networks:
+      - platform-services
 
   mysql:
     image: mariadb
