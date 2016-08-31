@@ -2,9 +2,6 @@ FROM mhart/alpine-node:6.3
 
 MAINTAINER SMART COSMOS Platform Core Team
 
-# XXX temporarily add python to resolve node-sass issue.
-RUN apk add --no-cache python
-
 # Create smartcosmos user
 RUN adduser -S smartcosmos -u 1000
 
