@@ -19,7 +19,6 @@ services:
     depends_on:
       - config-server
 
-
   gateway:
     image: smartcosmos/gateway
     ports:
@@ -27,7 +26,9 @@ services:
     depends_on:
       - config-server
       - service-discovery
-
+      - auth-server
+      - edge-things
+      - ext-relationships
 
   auth-server:
     image: smartcosmos/auth-server
