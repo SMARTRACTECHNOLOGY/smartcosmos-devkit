@@ -48,6 +48,7 @@ services:
       - config-server
       - service-discovery
       - mysql
+      - user-details-devkit
 
   user-details-devkit:
     image: smartcosmos/user-details-devkit
@@ -100,6 +101,7 @@ services:
       - config-server
       - service-discovery
       - mysql
+      - user-details-devkit
 
 
   ext-metadata:
@@ -108,6 +110,7 @@ services:
       - config-server
       - service-discovery
       - mysql
+      - user-details-devkit
 
 
   ext-relationships:
@@ -116,6 +119,7 @@ services:
       - config-server
       - service-discovery
       - mysql
+      - user-details-devkit
 
 
   mysql:
