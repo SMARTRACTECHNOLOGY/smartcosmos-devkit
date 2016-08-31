@@ -1,19 +1,68 @@
-= Objects v3 devkit
+= SMART COSMOS Getting Started Guide
+SMARTRAC Technology Fletcher Inc <api@smartrac-group.com>
 
-This repo contains the work in progress vagrant objects devkit edition. At the
-moment this is the playground to integrate the different objects v3 docker
-containers.
+== Welcome to SMART COSMOS
+Welcome to SMART COSMOS!
 
-== docs
+Are you ready to become part of creating something really big? With SMART COSMOS
+you can connect a universe of everyday things to the digital world. In fact,
+SMART COSMOS is the only platform that is purely focused on providing a fast
+track for both enterprises and developers to Monetize the IoT.
+
+SMART COSMOS is an ecosystem. It consists of a robust partner network where
+hardware manufacturers, system integrators, software developers and enterprises
+come together to create the IoT. It is comprised of both SaaS and PaaS offerings
+that help you EMBED, ENABLE, and UTILIZE IoT driven data.
+
+In order to accelerate value creation with the IoT, enterprises must learn how
+to obtain new value from four key areas:
+
+* Data
+* Things
+* People
+* Process
+
+The IoT is nothing more than combining a creative mixture of low-cost sensing
+hardware, auto-identification technologies like RFID, and the Cloud! Now, we
+invite you to take the next steps and learn how to use our IoT blueprint.
+
+Platforms are living designs that are always evolving. If you have
+feedback, feature requests, or just want to meet for some drinks and talk
+software design patterns, contact us either at the developer portal or via
+email: mailto:api@smartrac-group.com[api@smartrac-group.com]
+
+
+== SMART COSMOS Objects License
+You must review and accept the
+https://licensing.smartcosmos.net/objects/[SMART COSMOS Objects EULA] before
+working with this developer kit.
+
+== Open Source Framework
+SMART COSMOS includes a number of open sourced frameworks available under the
+Apache License, Version 2. You can clone freely use these frameworks in your
+projects, submit pull requests, and access the latest documentation at GitHub:
+
+https://github.com/SMARTRACTECHNOLOGY/smartcosmos-framework
+
+https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit
+
+IMPORTANT: The core of the Objects server itself is presently proprietary and must 
+be properly licensed when deployed in a production environment.
+
+In addition to the open source development framework, the entirety of the
+SMART COSMOS REST Web Service APIs are fully documented at our API web site,
+http://api.smartcosmos.net
+
+== SMART COSMOS DevKit
 This README only contains very basic usage instructions. You can have a much more detailed overview at the docker documentation:
 
 * https://docs.docker.com/engine/understanding-docker/[docker]
 * https://docs.docker.com/compose/overview/[docker-compose]
 * https://docs.docker.com/machine/overview/[docker-machine]
 
-== usage
+== Usage
 
-To start the whole objects cluster run:
+To start the whole Objects DevKit run:
 ----
 $ docker-compose up
 ----
@@ -27,7 +76,7 @@ $ docker-compose up -d
 
 If you only want to start specific services run e.g.:
 ----
-$ docker-compose up -d config_server
+$ docker-compose up -d config-server
 ----
 
 You can start multiple services:
@@ -40,7 +89,7 @@ $ docker-compose up -d edge-things gateway
 will start `config-server`, `service-discovery`, `ext-things`, `ext-metadata` and the `auth-server`
 (including all of their dependent services).
 
-=== scale up/down
+=== Scaling
 
 If you want to scale a the number of a service just run (.e.g. to scale to 5 running `ext-things` services):
 
@@ -51,7 +100,7 @@ $ docker-compose scale ext-things=5
 To *scale down* use the same command and set a lower number.
 
 
-== Start the devkit in AWS
+== Start the Devkit in AWS
 
 First you have to configure you credentials to aws.
 Then you can use `docker-machine` to create an instance in AWS which can than be provisioned with `docker-compose`.
