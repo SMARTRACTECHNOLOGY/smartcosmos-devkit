@@ -8,6 +8,8 @@ services:
       CONFIG_FILE_URI: 'https://github.com/SMARTRACTECHNOLOGY/smartcosmos-cluster-config'
       CONFIG_SERVER_LABEL: devkit
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
+    ports:
+      - "8888:8888"
     networks:
       - platform-services
 
@@ -27,6 +29,9 @@ services:
     depends_on:
       - config-server
       - service-discovery
+      - auth-server
+      - edge-things
+      - ext-relationships
     networks:
       - devkit-gateway
       - platform-services
@@ -117,6 +122,7 @@ services:
       - config-server
       - service-discovery
       - mysql
+      - user-details-devkit
     networks:
       - platform-services
 
@@ -126,6 +132,7 @@ services:
       - config-server
       - service-discovery
       - mysql
+      - user-details-devkit
     networks:
       - platform-services
 
@@ -135,6 +142,7 @@ services:
       - config-server
       - service-discovery
       - mysql
+      - user-details-devkit
     networks:
       - platform-services
 
