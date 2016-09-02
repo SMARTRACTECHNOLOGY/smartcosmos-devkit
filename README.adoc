@@ -140,23 +140,6 @@ smartcosmosdevkit_zookeeper_1             /opt/zookeeper/bin/zkServe ...   Up   
 
 At this point all of the services are successfully running, and you can begin hitting the REST API over http://localhost:8080 (through https://curl.haxx.se/[curl] or https://www.getpostman.com/[Postman]) and visiting the DevKit UI at http://localhost:8081 with https://www.google.com/chrome/browser/desktop/[Google Chrome] or https://www.mozilla.org/en-US/firefox/new/[Firefox].
 
-=== Troubleshooting Tips
-
-==== Initial Startup for Slower Systems
-
-When you run the cluster for the first time it will automatically conduct a database setup and migration on the mariadb container that runs the database.  This can rarely cause concurrency problems, since services are all accessing the database at once.  In rare instances this might cause the database to crash on slower systems (in particular ones without a SSD).  In those cases you might need to bring up the services one at a time instead of running `docker-compose up`
-
-==== Services that Exit
-
-Some of the services are dependent on other services running to start properly.  We attempt to add an easing mechanism at startup which requires a certain port to be open until the next service starts.  Sometimes, even though the service is accepting connections on the port it's still not fully ready, which will cause some services to fail and exit.  If you see the following when conducting a `docker-compose ps`:
-----
-smartcosmosdevkit_ext-things_1            ./entrypoint.sh /opt/smart ...   Exit 0
-----
-Then a service is no longer properly running, and will need to be started separately.
-*NOTE*: The services will start dependent services as well. So `docker-compose up edge-things`
-will start `config-server`, `service-discovery`, `ext-things`, `ext-metadata` and the `auth-server`
-(including all of their dependent services).
-
 === Scaling
 
 If you want to scale a the number of a service just run (.e.g. to scale to 5 running `ext-things` services):
@@ -167,6 +150,38 @@ $ docker-compose scale ext-things=5
 
 To *scale down* use the same command and set a lower number.
 
+=== Updating
+
+New builds of the various services are pushed live to Docker Hub as soon as they are updated on GitHub.  You can always check to see if you have the latest version of each container by using the following command:
+
+----
+$ docker-compose pull
+----
+
+=== Starting Over
+
+You can easily erase your DevKit database by removing just the mysql container, you can also destroy the entire environment with `rm`:
+
+----
+$ docker-compose rm
+----
+
+== Troubleshooting Tips
+
+=== Initial Startup for Slower Systems
+
+When you run the cluster for the first time it will automatically conduct a database setup and migration on the mariadb container that runs the database.  This can rarely cause concurrency problems, since services are all accessing the database at once.  In rare instances this might cause the database to crash on slower systems (in particular ones without a SSD).  In those cases you might need to bring up the services one at a time instead of running `docker-compose up`
+
+=== Services that Exit
+
+Some of the services are dependent on other services running to start properly.  We attempt to add an easing mechanism at startup which requires a certain port to be open until the next service starts.  Sometimes, even though the service is accepting connections on the port it's still not fully ready, which will cause some services to fail and exit.  If you see the following when conducting a `docker-compose ps`:
+----
+smartcosmosdevkit_ext-things_1            ./entrypoint.sh /opt/smart ...   Exit 0
+----
+Then a service is no longer properly running, and will need to be started separately.
+*NOTE*: The services will start dependent services as well. So `docker-compose up edge-things`
+will start `config-server`, `service-discovery`, `ext-things`, `ext-metadata` and the `auth-server`
+(including all of their dependent services).
 
 == Start the Devkit in AWS
 
