@@ -52,7 +52,7 @@ be properly licensed when deployed in a production environment.
 
 In addition to the open source development framework, the entirety of the
 SMART COSMOS REST Web Service APIs are fully documented at our API web site,
-http://api.smartcosmos.net
+https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy (temporary location until we update our normal location -- https://api.smartcosmos.net)
 
 == SMART COSMOS DevKit
 This README only contains very basic usage instructions. You can have a much more detailed overview at the docker documentation:
