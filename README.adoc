@@ -204,3 +204,16 @@ To remove it run:
 ----
 $ docker-machine rm myTest
 ----
+
+== Next Steps
+
+SMART COSMOS Objects is considered an 80% solution, meaning we offer various tools and support libraries on the platform to help you get started.  However, the true capabilities of the platform are its flexibility with allowing you to run your own software.  Numerous aspects of the Devkit are open sourced, including many of the services that comprise the docker-compose script outlined here.  Depending on what aspect of the platform you need to extend, these services can act as starting points or samples:
+
+ https://github.com/SMARTRACTECHNOLOGY/smartcosmos-event-listener[Event Listening]::
+ This repository contains true sample code, that merely waits to see one of the many events on SMART COSMOS and gets called to output the event to the log.
+
+ https://github.com/SMARTRACTECHNOLOGY/smartcosmos-edge-things[Complex Things]::
+ SMART COSMOS Objects provides a "catch-all" things service that handles unknown things by default.  Ideally, you want to eventually optimize a particular thing, and this repository can provide a reference to either calling the generic thing service and the generic metadata service, or can merely be a guiding sample for how to implement the necessary REST API.
+
+ https://github.com/SMARTRACTECHNOLOGY/smartcosmos-user-details-devkit[User Details]::
+ In the Devkit user accounts are maintained inside a MariaDB database (the same database that holds the other data), in a production environment you would most likely want to use another database, or an external authentication provider like https://stormpath.com/[Stormpath], Active Directory, https://developers.google.com/identity/[Google], http://openid.net/[OpenID], etc.
