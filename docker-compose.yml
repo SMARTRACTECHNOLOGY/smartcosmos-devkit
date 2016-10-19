@@ -148,7 +148,7 @@ services:
       - platform-services
 
   mysql:
-    image: mariadb
+    image: mariadb:10.1.17
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: devkit
