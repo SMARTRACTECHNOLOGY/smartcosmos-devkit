@@ -10,14 +10,10 @@ services:
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
     ports:
       - "8888:8888"
+    networks:
+      - platform-services
     volumes:
       - ~/git/smartcosmos-cluster-config:/opt/config
-  service-discovery:
-    image: smartcosmos/service-discovery
-    ports:
-      - 8761:8080
-    depends_on:
-      - config-server
 
   gateway:
     image: smartcosmos/gateway
@@ -29,6 +25,9 @@ services:
       - auth-server
       - edge-things
       - ext-relationships
+    networks:
+      - devkit-gateway
+      - platform-services
 
   auth-server:
     image: smartcosmos/auth-server
@@ -41,7 +40,8 @@ services:
       - service-discovery
       - user-details-devkit
       - edge-user-devkit
-
+    networks:
+      - platform-services
 
   edge-user-devkit:
     image: smartcosmos/edge-user-devkit
@@ -50,6 +50,8 @@ services:
       - service-discovery
       - mysql
       - user-details-devkit
+    networks:
+      - platform-services
 
   user-details-devkit:
     image: smartcosmos/user-details-devkit
@@ -57,11 +59,16 @@ services:
       - config-server
       - service-discovery
       - mysql
+      - edge-user-devkit
+    networks:
+      - platform-services
 
   zookeeper:
     image: jplock/zookeeper:3.4.6
     ports:
       - "2181:2181"
+    networks:
+      - platform-services
 
   kafka:
     image: ches/kafka
@@ -72,6 +79,8 @@ services:
       ZOOKEEPER_IP: "zookeeper"
     depends_on:
      - zookeeper
+    networks:
+      - platform-services
 
   events:
     image: smartcosmos/events
@@ -81,11 +90,15 @@ services:
      - config-server
      - service-discovery
      - kafka
+    networks:
+      - platform-services
 
   event-listener:
     image: smartcosmos/event-listener
     depends_on:
      - events
+    networks:
+      - platform-services
 
   edge-things:
     image: smartcosmos/edge-things
@@ -95,6 +108,8 @@ services:
       - auth-server
       - ext-things
       - ext-metadata
+    networks:
+      - platform-services
 
   ext-things:
     image: smartcosmos/ext-things
@@ -102,8 +117,9 @@ services:
       - config-server
       - service-discovery
       - mysql
-      - user-details-devkit
-
+      - edge-user-devkit
+    networks:
+      - platform-services
 
   ext-metadata:
     image: smartcosmos/ext-metadata
@@ -111,8 +127,9 @@ services:
       - config-server
       - service-discovery
       - mysql
-      - user-details-devkit
-
+      - edge-user-devkit
+    networks:
+      - platform-services
 
   ext-relationships:
     image: smartcosmos/ext-relationships
@@ -120,13 +137,38 @@ services:
       - config-server
       - service-discovery
       - mysql
-      - user-details-devkit
-
+      - edge-user-devkit
+    networks:
+      - platform-services
 
   mysql:
-    image: mariadb
+    image: mariadb:10.1.17
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: devkit
       MYSQL_USER: cosmos
       MYSQL_PASSWORD: dev
+    networks:
+       - platform-services
+
+  ui:
+    image: smartcosmos/ui-devkit
+    ports:
+      - "8081:3001"
+    environment:
+      SERVER_PORT: 3001
+      EUREKA_SERVER_HOSTNAME: service-discovery
+      EUREKA_SERVER_PORT: 8080
+      GATEWAY_URL: http://gateway:8080
+      AUTH_URL: http://auth-server:8080
+    depends_on:
+      - service-discovery
+    networks:
+      - devkit-gateway
+      - platform-services
+
+networks:
+  devkit-gateway:
+    driver: bridge
+  platform-services:
+    driver: bridge
