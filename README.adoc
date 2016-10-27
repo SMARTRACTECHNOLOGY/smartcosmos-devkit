@@ -1,5 +1,10 @@
 = SMART COSMOS Getting Started Guide
 SMARTRAC Technology Fletcher Inc <api@smartrac-group.com>
+ifdef::env-github[:USER: SMARTRACTECHNOLOGY]
+ifdef::env-github[:REPO: smartcosmos-devkit]
+ifdef::env-github[:BRANCH: master]
+
+image::https://jenkins.smartcosmos.net/buildStatus/icon?job={USER}/{REPO}/{BRANCH}[Build Status, link=https://jenkins.smartcosmos.net/job/{USER}/job/{REPO}/job/{BRANCH}/]
 
 == Welcome to SMART COSMOS
 Welcome to SMART COSMOS!
