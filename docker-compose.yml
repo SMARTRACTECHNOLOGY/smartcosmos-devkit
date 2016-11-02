@@ -13,25 +13,12 @@ services:
     networks:
       - platform-services
 
-  service-discovery:
-    image: smartcosmos/service-discovery
-    ports:
-      - 8761:8080
-    depends_on:
-      - config-server
-    networks:
-      - platform-services
-
   gateway:
     image: smartcosmos/gateway
     ports:
       - "8080:8080"
     depends_on:
       - config-server
-      - service-discovery
-      - auth-server
-      - edge-things
-      - ext-relationships
     networks:
       - devkit-gateway
       - platform-services
@@ -44,9 +31,6 @@ services:
       - "9999:8080"
     depends_on:
       - config-server
-      - service-discovery
-      - user-details-devkit
-      - edge-user-devkit
     networks:
       - platform-services
 
@@ -54,7 +38,6 @@ services:
     image: smartcosmos/edge-user-devkit
     depends_on:
       - config-server
-      - service-discovery
       - mysql
     networks:
       - platform-services
@@ -63,9 +46,7 @@ services:
     image: smartcosmos/user-details-devkit
     depends_on:
       - config-server
-      - service-discovery
       - mysql
-      - edge-user-devkit
     networks:
       - platform-services
 
@@ -94,7 +75,6 @@ services:
       - "45012:8080"
     depends_on:
      - config-server
-     - service-discovery
      - kafka
     networks:
       - platform-services
@@ -110,10 +90,6 @@ services:
     image: smartcosmos/edge-things
     depends_on:
       - config-server
-      - service-discovery
-      - auth-server
-      - ext-things
-      - ext-metadata
     networks:
       - platform-services
 
@@ -121,9 +97,7 @@ services:
     image: smartcosmos/ext-things
     depends_on:
       - config-server
-      - service-discovery
       - mysql
-      - edge-user-devkit
     networks:
       - platform-services
 
@@ -131,9 +105,7 @@ services:
     image: smartcosmos/ext-metadata
     depends_on:
       - config-server
-      - service-discovery
       - mysql
-      - edge-user-devkit
     networks:
       - platform-services
 
@@ -141,9 +113,7 @@ services:
     image: smartcosmos/ext-relationships
     depends_on:
       - config-server
-      - service-discovery
       - mysql
-      - edge-user-devkit
     networks:
       - platform-services
 
@@ -163,12 +133,8 @@ services:
       - "8081:3001"
     environment:
       SERVER_PORT: 3001
-      EUREKA_SERVER_HOSTNAME: service-discovery
-      EUREKA_SERVER_PORT: 8080
       GATEWAY_URL: http://gateway:8080
       AUTH_URL: http://auth-server:8080
-    depends_on:
-      - service-discovery
     networks:
       - devkit-gateway
       - platform-services
