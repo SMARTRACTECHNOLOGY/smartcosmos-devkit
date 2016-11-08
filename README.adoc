@@ -147,7 +147,7 @@ At this point all of the services are successfully running, and you can begin hi
 
 === Scaling
 
-If you want to scale a the number of a service just run (.e.g. to scale to 5 running `ext-things` services):
+If you want to scale the number of a service just run (.e.g. to scale to 5 running `ext-things` services):
 
 ----
 $ docker-compose scale ext-things=5
