@@ -1,0 +1,54 @@
+info:
+  component: Zuul Server
+
+server:
+  port: ${smartcosmos.service.gateway.port}
+
+zuul:
+  sensitiveHeaders:
+  ignoredServices: "*"
+  prefix:
+  routes:
+    edge-things:
+      path: /things/**
+      url: ${smartcosmos.service.edge-things.address}
+    ext-metadata:
+      path: /metadata/**
+      url: ${smartcosmos.service.ext-metadata.address}
+    ext-relationships:
+      path: /relationships/**
+      url: ${smartcosmos.service.ext-relationships.address}
+    users:
+      path: /users/**
+      stripPrefix: false
+      url: ${smartcosmos.service.edge-user.address}
+    tenants:
+      path: /tenants/**
+      stripPrefix: false
+      url: ${smartcosmos.service.edge-user.address}
+    roles:
+      path: /roles/**
+      stripPrefix: false
+      url: ${smartcosmos.service.edge-user.address}
+    oauth:
+      path: /oauth/**
+      stripPrefix: false
+      url: ${smartcosmos.service.auth-server.address}
+
+smartcosmos:
+  security:
+    resource:
+      authorization-server:
+        location-uri: ${smartcosmos.service.auth-server.address}
+        name: ${security.oauth2.client.client-id}
+        password: ${security.oauth2.client.client-secret}
+
+logging:
+  level:
+    ROOT: INFO
+    com.netflix.zuul: INFO
+    org.springframework:
+      boot.autoconfigure.security.oauth2: INFO
+      security.oauth2: INFO
+      security: INFO
+      web.client: INFO

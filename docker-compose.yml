@@ -5,13 +5,15 @@ services:
   config-server:
     image: smartcosmos/config-server
     environment:
-      CONFIG_FILE_URI: 'https://github.com/SMARTRACTECHNOLOGY/smartcosmos-cluster-config'
+      CONFIG_FILE_URI: 'file:///opt/config'
       CONFIG_SERVER_LABEL: devkit
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
     ports:
       - "8888:8888"
     networks:
       - platform-services
+    volumes:
+      - ./config:/opt/config
 
   gateway:
     image: smartcosmos/gateway
@@ -25,8 +27,6 @@ services:
 
   auth-server:
     image: smartcosmos/auth-server
-    # make auth-server public this is needed to get a tocken directly
-    # until we fix gateway --> auth-server comunication.
     ports:
       - "9999:8080"
     depends_on:
@@ -36,6 +36,8 @@ services:
 
   edge-user-devkit:
     image: smartcosmos/edge-user-devkit
+    ports:
+      - "45371:8080"
     depends_on:
       - config-server
       - mysql
@@ -44,6 +46,8 @@ services:
 
   user-details-devkit:
     image: smartcosmos/user-details-devkit
+    ports:
+      - "7777:8080"
     depends_on:
       - config-server
       - mysql
@@ -88,6 +92,8 @@ services:
 
   edge-things:
     image: smartcosmos/edge-things
+    ports:
+      - "50594:8080"
     depends_on:
       - config-server
     networks:
@@ -95,6 +101,8 @@ services:
 
   ext-things:
     image: smartcosmos/ext-things
+    ports:
+      - "45336:8080"
     depends_on:
       - config-server
       - mysql
@@ -103,6 +111,8 @@ services:
 
   ext-metadata:
     image: smartcosmos/ext-metadata
+    ports:
+      - "45037:8080"
     depends_on:
       - config-server
       - mysql
@@ -111,6 +121,8 @@ services:
 
   ext-relationships:
     image: smartcosmos/ext-relationships
+    ports:
+      - "45369:8080"
     depends_on:
       - config-server
       - mysql
