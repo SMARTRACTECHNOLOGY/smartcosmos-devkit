@@ -6,14 +6,14 @@ services:
     image: smartcosmos/config-server
     environment:
       SPRING_PROFILES: native
-      CONFIG_SEARCH_LOCATIONS: file:/opt/config
+      CONFIG_SEARCH_LOCATIONS: file:/opt/smartcosmos/config
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
     ports:
       - "8888:8888"
     networks:
       - platform-services
     volumes:
-      - ./config:/opt/config
+      - ./config:/opt/smartcosmos/config
 
   gateway:
     image: smartcosmos/gateway
@@ -27,12 +27,16 @@ services:
 
   auth-server:
     image: smartcosmos/auth-server
+    environment:
+      SPRING_CONFIG_LOCATION: 'file:/opt/smartcosmos/config/application.yml, file:/opt/smartcosmos/config/smartcosmos-auth-server.yml'
     ports:
       - "9999:8080"
     depends_on:
       - config-server
     networks:
       - platform-services
+    volumes:
+      - ./config:/opt/smartcosmos/config
 
   edge-user-devkit:
     image: smartcosmos/edge-user-devkit

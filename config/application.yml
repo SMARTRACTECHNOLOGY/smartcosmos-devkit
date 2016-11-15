@@ -15,56 +15,52 @@ eureka:
 smartcosmos:
   service:
     kafka:
-      host: ${KAFKA_HOST:'http://localhost'}
+      host: ${KAFKA_HOST:'http://kafka'}
       port: 9092
       address: ${smartcosmos.service.kafka.host}:${smartcosmos.service.kafka.port}
     zookeeper:
-      host: ${ZOOKEEPER_HOST:'http://localhost'}
+      host: ${ZOOKEEPER_HOST:'http://zookeeper'}
       port: 2181
       address: ${smartcosmos.service.zookeeper.host}:${smartcosmos.service.zookeeper.port}
     gateway:
-      host: ${GATEWAY_HOST:'http://localhost'}
+      host: ${GATEWAY_HOST:'http://gateway'}
       port: 8080
       address: ${smartcosmos.service.gateway.host}:${smartcosmos.service.gateway.port}
     auth-server:
-      host: http://localhost
-      port: 9999
+      host: http://auth-server
+      port: 8080
       address: ${smartcosmos.service.auth-server.host}:${smartcosmos.service.auth-server.port}
     config-server:
-      host: http://localhost
-      port: 8888
+      host: http://config-server
+      port: 8080
       address: ${smartcosmos.service.config-server.host}:${smartcosmos.service.config-server.port}
     edge-things:
-      host: http://localhost
-      port: 50594
+      host: http://edge-things
+      port: 8080
       address: ${smartcosmos.service.edge-things.host}:${smartcosmos.service.edge-things.port}
     edge-user:
-      host: http://localhost
-      port: 45371
+      host: http://edge-user
+      port: 8080
       address: ${smartcosmos.service.edge-user.host}:${smartcosmos.service.edge-user.port}
     events:
-      host: http://localhost
-      port: 45012
+      host: http://events
+      port: 8080
       address: ${smartcosmos.service.events.host}:${smartcosmos.service.events.port}
     ext-metadata:
-      host: http://localhost
-      port: 45037
+      host: http://ext-metadata
+      port: 8080
       address: ${smartcosmos.service.ext-metadata.host}:${smartcosmos.service.ext-metadata.port}
     ext-things:
-      host: http://localhost
-      port: 45336
+      host: http://ext-things
+      port: 8080
       address: ${smartcosmos.service.ext-things.host}:${smartcosmos.service.ext-things.port}
     ext-relationships:
-      host: http://localhost
-      port: 45369
+      host: http://ext-relationships
+      port: 8080
       address: ${smartcosmos.service.ext-relationships.host}:${smartcosmos.service.ext-relationships.port}
-    flows:
-      host: http://localhost
-      port: 8085
-      address: ${smartcosmos.service.flows.host}:${smartcosmos.service.flows.port}
     user-details:
-      host: http://localhost
-      port: 7777
+      host: http://user-details
+      port: 8080
       address: ${smartcosmos.service.user-details.host}:${smartcosmos.service.user-details.port}
 
   datasource:
@@ -92,8 +88,8 @@ security:
     client:
       accessTokenUri: ${smartcosmos.authorization-server}/oauth/token
       user-authorization-uri: ${smartcosmos.authorization-server}/oauth/authorize
-      client-id: '{cipher}ef4e264a69ea97cf574bc96b7bcf364af4a9ab61fb2ad17097e88311d2878eb42e265b0a05e46c3f1ed9172ee1e335fd'
-      client-secret: '{cipher}af7a1662ba0d19daf3f5e3ab2da8947f243ba3bc14d889d21627223bbed726f8e7ac793a8952c00367343918134daef8'
+      client-id: 'smartcosmosservice'
+      client-secret: '9HhnNDhfGEXfNEn6'
     resource:
       jwt:
         key-value: |
