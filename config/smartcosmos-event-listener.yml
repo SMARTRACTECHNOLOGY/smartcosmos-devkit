@@ -1,0 +1,5 @@
+server:
+  port: 8080
+
+smartcosmos:
+  event-listener.topic: "thing.read"

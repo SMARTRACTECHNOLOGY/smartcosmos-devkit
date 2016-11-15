@@ -5,15 +5,15 @@ services:
   config-server:
     image: smartcosmos/config-server
     environment:
-      CONFIG_FILE_URI: 'file:///opt/config/'
-      CONFIG_SERVER_LABEL: devkit
+      SPRING_PROFILES: native
+      CONFIG_SEARCH_LOCATIONS: file:/opt/config
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
     ports:
       - "8888:8888"
     networks:
       - platform-services
     volumes:
-      - ~/smartcosmos-devkit/config:/opt/config
+      - ./config:/opt/config
 
   gateway:
     image: smartcosmos/gateway
