@@ -5,7 +5,7 @@ services:
   config-server:
     image: smartcosmos/config-server
     environment:
-      CONFIG_FILE_URI: 'file://opt/config/'
+      CONFIG_FILE_URI: 'file:///opt/config/'
       CONFIG_SERVER_LABEL: devkit
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
     ports:
@@ -13,7 +13,7 @@ services:
     networks:
       - platform-services
     volumes:
-      - ./smartcosmos-cluster-config:/opt/config:ro
+      - ~/smartcosmos-devkit/config:/opt/config
 
   gateway:
     image: smartcosmos/gateway
