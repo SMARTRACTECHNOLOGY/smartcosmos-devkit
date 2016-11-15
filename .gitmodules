@@ -1,3 +1,4 @@
 [submodule "smartcosmos-cluster-config"]
 	path = smartcosmos-cluster-config
 	url = https://github.com/SMARTRACTECHNOLOGY/smartcosmos-cluster-config
+	branch = devkit-local-ports

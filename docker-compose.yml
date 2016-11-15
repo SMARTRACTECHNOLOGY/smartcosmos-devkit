@@ -13,7 +13,7 @@ services:
     networks:
       - platform-services
     volumes:
-      - ./smartcosmos-cluster-config:/opt/config
+      - ~/git/smartcosmos-devkit/smartcosmos-cluster-config:/opt/config
 
   gateway:
     image: smartcosmos/gateway
@@ -82,7 +82,7 @@ services:
      - kafka
     networks:
       - platform-services
-      
+
   edge-things:
     image: smartcosmos/edge-things
     ports:
