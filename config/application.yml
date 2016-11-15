@@ -8,65 +8,63 @@ management:
   # security:
   #   enabled: false
 
-kafka:
-  broker:
-    host: http://kafka
-    port: 9092
-    address: ${kafka.broker.host}:${kafka.broker.port}
-  zookeeper:
-    host: http://zookeeper
-    port: 2181
-    address: ${kafka.zookeeper.host}:${kafka.zookeeper.port}
-
 eureka:
   client:
     enabled: false
 
 smartcosmos:
   service:
+    kafka:
+      host: ${KAFKA_HOST:'http://localhost'}
+      port: 9092
+      address: ${smartcosmos.service.kafka.host}:${smartcosmos.service.kafka.port}
+    zookeeper:
+      host: ${ZOOKEEPER_HOST:'http://localhost'}
+      port: 2181
+      address: ${smartcosmos.service.zookeeper.host}:${smartcosmos.service.zookeeper.port}
     gateway:
-      host: http://gateway
+      host: ${GATEWAY_HOST:'http://localhost'}
       port: 8080
       address: ${smartcosmos.service.gateway.host}:${smartcosmos.service.gateway.port}
     auth-server:
-      host: http://auth-server
-      port: 8080
+      host: http://localhost
+      port: 9999
       address: ${smartcosmos.service.auth-server.host}:${smartcosmos.service.auth-server.port}
     config-server:
-      host: http://config-server
-      port: 8080
+      host: http://localhost
+      port: 8888
       address: ${smartcosmos.service.config-server.host}:${smartcosmos.service.config-server.port}
     edge-things:
-      host: http://edge-things
-      port: 8080
+      host: http://localhost
+      port: 50594
       address: ${smartcosmos.service.edge-things.host}:${smartcosmos.service.edge-things.port}
     edge-user:
-      host: http://edge-user-devkit
-      port: 8080
+      host: http://localhost
+      port: 45371
       address: ${smartcosmos.service.edge-user.host}:${smartcosmos.service.edge-user.port}
     events:
-      host: http://events
-      port: 8080
+      host: http://localhost
+      port: 45012
       address: ${smartcosmos.service.events.host}:${smartcosmos.service.events.port}
     ext-metadata:
-      host: http://ext-metadata
-      port: 8080
+      host: http://localhost
+      port: 45037
       address: ${smartcosmos.service.ext-metadata.host}:${smartcosmos.service.ext-metadata.port}
     ext-things:
-      host: http://ext-things
-      port: 8080
+      host: http://localhost
+      port: 45336
       address: ${smartcosmos.service.ext-things.host}:${smartcosmos.service.ext-things.port}
     ext-relationships:
-      host: http://ext-relationships
-      port: 8080
+      host: http://localhost
+      port: 45369
       address: ${smartcosmos.service.ext-relationships.host}:${smartcosmos.service.ext-relationships.port}
     flows:
-      host: http://flows
-      port: 8080
+      host: http://localhost
+      port: 8085
       address: ${smartcosmos.service.flows.host}:${smartcosmos.service.flows.port}
     user-details:
-      host: http://user-details-devkit
-      port: 8080
+      host: http://localhost
+      port: 7777
       address: ${smartcosmos.service.user-details.host}:${smartcosmos.service.user-details.port}
 
   datasource:

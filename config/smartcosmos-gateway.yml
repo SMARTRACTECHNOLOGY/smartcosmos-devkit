@@ -1,8 +1,6 @@
 info:
   component: Zuul Server
 
-server:
-  port: ${smartcosmos.service.gateway.port}
 
 zuul:
   sensitiveHeaders:

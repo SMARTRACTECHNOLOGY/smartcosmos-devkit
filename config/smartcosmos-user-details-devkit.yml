@@ -1,7 +1,5 @@
 # User Details DevKit configuration
 
-server:
-  port: 8080
 
 flyway:
   enabled: true
