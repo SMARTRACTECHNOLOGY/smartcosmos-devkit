@@ -13,7 +13,7 @@ services:
     networks:
       - platform-services
     volumes:
-      - ./config:/opt/config
+      - ./smartcosmos-cluster-config:/opt/config
 
   gateway:
     image: smartcosmos/gateway
@@ -82,14 +82,7 @@ services:
      - kafka
     networks:
       - platform-services
-
-  event-listener:
-    image: smartcosmos/event-listener
-    depends_on:
-     - events
-    networks:
-      - platform-services
-
+      
   edge-things:
     image: smartcosmos/edge-things
     ports:
