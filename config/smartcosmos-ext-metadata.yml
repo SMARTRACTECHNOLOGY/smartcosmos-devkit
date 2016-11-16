@@ -1,10 +1,10 @@
 server:
-  port: ${smartcosmos.service.ext-metadata.address}
+  port: ${smartcosmos.service.ext-metadata.port}
 
 flyway:
   enabled: true
   baselineOnMigrate: true
-  
+
 spring:
   datasource:
     #

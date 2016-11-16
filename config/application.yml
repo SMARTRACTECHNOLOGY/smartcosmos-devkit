@@ -81,7 +81,7 @@ smartcosmos:
       address: ${smartcosmos.service.user-details.host}:${smartcosmos.service.user-details.port}
 
   datasource:
-    default-host: localhost
+    default-host: 172.17.0.1
     default-username: cosmos
     default-password: dev
     default-db: devkit
