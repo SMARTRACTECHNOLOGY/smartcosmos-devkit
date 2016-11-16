@@ -15,51 +15,63 @@ eureka:
 smartcosmos:
   service:
     kafka:
-      host: ${${HOST_ADDRESS:KAFKA_HOST}:'http://kafka'}
+      default: http://kafka
+      host: ${HOST_ADDRESS:${smartcosmos.service.kafka.default}}
       port: 9092
       address: ${smartcosmos.service.kafka.host}:${smartcosmos.service.kafka.port}
     zookeeper:
-      host: ${${HOST_ADDRESS:ZOOKEEPER_HOST}:'http://zookeeper'}
+      default: http://zookeeper
+      host: ${${HOST_ADDRESS:ZOOKEEPER_HOST}:${smartcosmos.service.zookeeper.default}}
       port: 2181
       address: ${smartcosmos.service.zookeeper.host}:${smartcosmos.service.zookeeper.port}
     gateway:
-      host: ${${HOST_ADDRESS:GATEWAY_HOST}:'http://gateway'}
+      default: http://gateway
+      host: ${${HOST_ADDRESS:GATEWAY_HOST}:${smartcosmos.service.gateway.default}}
       port: 8080
       address: ${smartcosmos.service.gateway.host}:${smartcosmos.service.gateway.port}
     auth-server:
-      host: ${HOST_ADDRESS:'http://auth-server'}
+      default: http://auth-server
+      host: ${HOST_ADDRESS:${smartcosmos.service.auth-server.default}}
       port: 9999
       address: ${smartcosmos.service.auth-server.host}:${smartcosmos.service.auth-server.port}
     config-server:
-      host: ${HOST_ADDRESS:'http://config-server'}
+      default: http://config-server
+      host: ${HOST_ADDRESS:${smartcosmos.service.auth-server.default}}
       port: 8888
       address: ${smartcosmos.service.config-server.host}:${smartcosmos.service.config-server.port}
     edge-things:
-      host: ${HOST_ADDRESS:'http://edge-things'}
+      default: http://edge-things
+      host: ${HOST_ADDRESS:${smartcosmos.service.edge-things.default}}
       port: 50594
       address: ${smartcosmos.service.edge-things.host}:${smartcosmos.service.edge-things.port}
     edge-user:
-      host: ${HOST_ADDRESS:'http://edge-user'}
+      default: http://edge-user
+      host: ${HOST_ADDRESS:${smartcosmos.service.edge-user.default}}
       port: 45371
       address: ${smartcosmos.service.edge-user.host}:${smartcosmos.service.edge-user.port}
     events:
-      host: ${HOST_ADDRESS:'http://events'}
+      default: http://events
+      host: ${HOST_ADDRESS:${smartcosmos.service.events.default}}
       port: 45012
       address: ${smartcosmos.service.events.host}:${smartcosmos.service.events.port}
     ext-metadata:
-      host: ${HOST_ADDRESS:'http://ext-metadata'}
+      default: http://ext-metadata
+      host: ${HOST_ADDRESS:${smartcosmos.service.ext-metadata.default}}
       port: 45037
       address: ${smartcosmos.service.ext-metadata.host}:${smartcosmos.service.ext-metadata.port}
     ext-things:
-      host: ${HOST_ADDRESS:'http://ext-things'}
+      default: http://ext-things
+      host: ${HOST_ADDRESS:${smartcosmos.service.ext-things.default}}
       port: 45336
       address: ${smartcosmos.service.ext-things.host}:${smartcosmos.service.ext-things.port}
     ext-relationships:
-      host: ${HOST_ADDRESS:'http://ext-relationships'}
+      default: http://ext-relationships
+      host: ${HOST_ADDRESS:${smartcosmos.service.ext-relationships.default}}
       port: 45369
       address: ${smartcosmos.service.ext-relationships.host}:${smartcosmos.service.ext-relationships.port}
     user-details:
-      host: ${HOST_ADDRESS:'http://user-details'}
+      default: http://user-details
+      host: ${HOST_ADDRESS:${smartcosmos.service.user-details.default}}
       port: 7777
       address: ${smartcosmos.service.user-details.host}:${smartcosmos.service.user-details.port}
 
