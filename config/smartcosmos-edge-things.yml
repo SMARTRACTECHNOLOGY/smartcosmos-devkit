@@ -1,3 +1,6 @@
+server:
+  port: ${smartcosmos.service.edge-things.port}
+
 smartcosmos:
   edge:
     things:

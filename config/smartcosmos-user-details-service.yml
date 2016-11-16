@@ -1,3 +1,5 @@
+server:
+  port: ${smartcosmos.service.user-details.port}
 
 smartcosmos:
   security:

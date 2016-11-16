@@ -1,5 +1,8 @@
 # User Management DevKit configuration
 
+server:
+  port: 45371
+
 flyway:
   enabled: true
   baselineOnMigrate: true

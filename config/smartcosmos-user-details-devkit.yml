@@ -1,5 +1,7 @@
 # User Details DevKit configuration
 
+server:
+  port: ${smartcosmos.service.user-details.port}
 
 flyway:
   enabled: true
