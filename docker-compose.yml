@@ -27,8 +27,8 @@ services:
 
   auth-server:
     image: smartcosmos/auth-server
-    environment:
-      SPRING_CONFIG_LOCATION: 'file:/opt/smartcosmos/config/application.yml, file:/opt/smartcosmos/config/smartcosmos-auth-server.yml'
+    #environment:
+      #SPRING_CONFIG_LOCATION: 'file:/opt/smartcosmos/config/application.yml, file:/opt/smartcosmos/config/smartcosmos-auth-server.yml'
     ports:
       - "9999:8080"
     depends_on:
