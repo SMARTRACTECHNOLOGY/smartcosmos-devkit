@@ -1,3 +1,5 @@
+server:
+  port: 45336
 
 flyway:
   enabled: true

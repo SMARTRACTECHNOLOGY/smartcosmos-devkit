@@ -1,5 +1,8 @@
 # Relationships RDAO Configuration
 
+server:
+  port: 45369
+
 flyway:
   enabled: true
   baselineOnMigrate: true

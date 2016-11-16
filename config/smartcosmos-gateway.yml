@@ -36,6 +36,9 @@ zuul:
       url: ${smartcosmos.service.auth-server.address}
 
 smartcosmos:
+  gateway:
+    pre-authorization-filter:
+      enabled: false
   security:
     resource:
       authorization-server:
