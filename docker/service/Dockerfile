@@ -22,6 +22,15 @@ RUN mkdir -p /opt/smartcosmos && \
 ENV CONFIG_SERVER_URL 'http://config-server:8888'
 ENV JAVA_OPTS '-Xmx256m'
 
+# Adds in an explicit ability to target file files directly.
+ENV SPRING_CONFIG_LOCATION ''
+
+# Adds the ability to define additional parameters to pass to the program.
+ENV SPRING_PARAMETERS ''
+
+# Defines the server port directly and explicitly to avoid confusion of who sets that
+ENV SERVER_PORT '--server.port=8080'
+
 # expose default service port
 EXPOSE 8080
 
