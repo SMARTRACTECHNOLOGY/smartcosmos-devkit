@@ -12,8 +12,6 @@ eureka:
   client:
     enabled: false
 
-
-
 smartcosmos:
   host:
     address: http://172.17.0.1
@@ -134,3 +132,11 @@ logging:
     org.apache.kafka.clients:
       producer: WARN
       consumer: WARN
+---
+
+spring:
+    profiles: docker
+server:
+  port: 8080
+management:
+  port: 8081
