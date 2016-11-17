@@ -119,6 +119,8 @@ security:
           -----END PUBLIC KEY-----
 
 spring:
+  cloud.config:
+    overrideSystemProperties: true
   jackson:
     deserialization:
       ACCEPT_SINGLE_VALUE_AS_ARRAY: true
