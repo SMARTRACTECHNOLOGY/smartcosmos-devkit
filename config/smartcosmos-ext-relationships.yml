@@ -1,12 +1,12 @@
 # Relationships RDAO Configuration
 
 server:
-  port: 45369
+  port: ${smartcosmos.service.ext-relationships.port}
 
 flyway:
   enabled: true
   baselineOnMigrate: true
-  
+
 spring:
   datasource:
     #

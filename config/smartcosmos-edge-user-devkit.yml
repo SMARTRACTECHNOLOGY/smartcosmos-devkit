@@ -1,7 +1,7 @@
 # User Management DevKit configuration
 
 server:
-  port: 45371
+  port: ${smartcosmos.service.edge-user.port}
 
 flyway:
   enabled: true

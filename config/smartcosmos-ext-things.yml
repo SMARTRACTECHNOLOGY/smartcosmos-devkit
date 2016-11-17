@@ -1,10 +1,10 @@
 server:
-  port: 45336
+  port: ${smartcosmos.service.ext-things.port}
 
 flyway:
   enabled: true
   baselineOnMigrate: true
-  
+
 spring:
   datasource:
     #
@@ -26,4 +26,3 @@ spring:
     hibernate:
       ddl-auto: validate
       naming_strategy: org.hibernate.cfg.EJB3NamingStrategy
-
