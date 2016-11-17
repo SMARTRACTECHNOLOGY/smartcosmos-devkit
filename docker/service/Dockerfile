@@ -29,7 +29,7 @@ ENV SPRING_CONFIG_LOCATION ''
 ENV SPRING_PARAMETERS ''
 
 # Defines the server port directly and explicitly to avoid confusion of who sets that
-ENV SERVER_PORT '--server.port=8080'
+ENV SERVER_PORT '--server.port=8080 --management.port=8081'
 
 # expose default service port
 EXPOSE 8080
