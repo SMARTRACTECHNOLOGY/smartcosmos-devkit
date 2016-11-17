@@ -1,12 +1,12 @@
 # User Details DevKit configuration
 
-server:
-  port: ${smartcosmos.service.user-details.port}
+# server:
+#   port: ${smartcosmos.service.user-details.port}
 
 flyway:
   enabled: true
   baselineOnMigrate: true
-  
+
 spring:
   datasource:
     #

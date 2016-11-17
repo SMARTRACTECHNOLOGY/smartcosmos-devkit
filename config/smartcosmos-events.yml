@@ -1,2 +1,2 @@
-server:
-  port: ${smartcosmos.service.events.port}
+# server:
+#   port: ${smartcosmos.service.events.port}
