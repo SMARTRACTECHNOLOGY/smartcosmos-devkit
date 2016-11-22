@@ -3,7 +3,7 @@ info:
 
 server:
   port: ${smartcosmos.service.gateway.port}
-  context-path: /rest
+  # context-path: /rest
 
 zuul:
   sensitiveHeaders:
