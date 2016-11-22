@@ -20,7 +20,7 @@ RUN mkdir -p /opt/smartcosmos && \
 
 
 ENV CONFIG_SERVER_URL 'http://config-server:8888'
-ENV JAVA_OPTS '-Xmx256m'
+ENV JAVA_OPTS '-Xmx256m -Dspring.profiles.active=docker'
 
 # Adds in an explicit ability to target file files directly.
 ENV SPRING_CONFIG_LOCATION ''
