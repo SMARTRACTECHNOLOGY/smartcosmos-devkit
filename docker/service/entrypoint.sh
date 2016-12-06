@@ -10,6 +10,6 @@ if [[ -z "${SPRING_CONFIG_LOCATION// }" ]]; then
         java $JAVA_OPTS ${spring_profile_options} \
         -jar $@ $SERVER_PORT $SPRING_PARAMETERS
 else
-  java $JAVA_OPTS ${spring_profile_options} \
+  exec java $JAVA_OPTS ${spring_profile_options} \
         -jar $@ $SERVER_PORT $SPRING_CONFIG_LOCATION $SPRING_PARAMETERS
 fi
