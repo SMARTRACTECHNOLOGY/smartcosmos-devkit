@@ -5,6 +5,6 @@ if [[ -z "${SPRING_CONFIG_LOCATION// }" ]]; then
         java $JAVA_OPTS -Dspring.profiles.active=${SPRING_PROFILE} \
         -jar $@ $SERVER_PORT $SPRING_PARAMETERS
 else
-  java $JAVA_OPTS -Dspring.profiles.active=${SPRING_PROFILE} \
+  exec java $JAVA_OPTS -Dspring.profiles.active=${SPRING_PROFILE} \
         -jar $@ $SERVER_PORT $SPRING_CONFIG_LOCATION $SPRING_PARAMETERS
 fi
