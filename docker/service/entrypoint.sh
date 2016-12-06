@@ -1,7 +1,7 @@
 #!/bin/sh
 
 spring_profile_options=""
-if [[ -z "${SPRING_PROFILE}" ]]; then
+if [[ ! -z "${SPRING_PROFILE}" ]]; then
   spring_profile_options="-Dspring.profiles.active=${SPRING_PROFILE}"
 fi
 
