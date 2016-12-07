@@ -1,0 +1,91 @@
+# server:
+#   port: ${smartcosmos.service.user-details.port}
+
+smartcosmos:
+  security:
+    resource:
+      user-details:
+        user:
+          name: '{cipher}05b479a618112ef05d1e99c1b9f203405ba6d24e0ef12b76764c8af11da679f1'
+          password: '{cipher}95aa290e4fd9d380ef9fe9abb492065d1fff2b74f4c32a3aa8c8c07a7882b997'
+    users[bob]:
+      username: bob
+      password: pwd
+      # some other tenant
+      tenant-urn: urn:tenant:uuid:53f452c2-5a01-44fd-9956-3ecff7c32b30
+      # tenant-urn that matches demo test data
+      # tenant-urn: urn:tenant:uuid:11E5603E-AEFF-16DB-B6D1-334A80A70875
+      user-urn: urn:user:uuid:B7FC80E4-C256-4319-B632-8D8DC182F15D
+      authorities:
+        - https://authorities.smartcosmos.net/metadata/create
+        - https://authorities.smartcosmos.net/metadata/delete
+        - https://authorities.smartcosmos.net/metadata/read
+        - https://authorities.smartcosmos.net/metadata/update
+        - https://authorities.smartcosmos.net/relationships/create
+        - https://authorities.smartcosmos.net/relationships/delete
+        - https://authorities.smartcosmos.net/relationships/ignoreUserTenant
+        - https://authorities.smartcosmos.net/relationships/read
+        - https://authorities.smartcosmos.net/roles/create
+        - https://authorities.smartcosmos.net/roles/delete
+        - https://authorities.smartcosmos.net/roles/ignoreUserTenant
+        - https://authorities.smartcosmos.net/roles/read
+        - https://authorities.smartcosmos.net/roles/update
+        - https://profiles-authorities.smartcosmos.net/tag/properties/definition
+        - https://profiles-authorities.smartcosmos.net/query/batches
+        - https://profiles-authorities.smartcosmos.net/query/tags
+        - https://profiles-authorities.smartcosmos.net/tag/key/read
+        - https://profiles-authorities.smartcosmos.net/tag/value/read
+        - https://profiles-authorities.smartcosmos.net/tag/value/update
+        - https://profiles-authorities.smartcosmos.net/tag/verification
+        - https://profiles-authorities.smartcosmos.net/tag/properties/read
+        - https://authorities.smartcosmos.net/tenants/read
+        - https://authorities.smartcosmos.net/tenants/update
+        - https://authorities.smartcosmos.net/things/create
+        - https://authorities.smartcosmos.net/things/delete
+        - https://authorities.smartcosmos.net/things/ignoreUserTenant
+        - https://authorities.smartcosmos.net/things/read
+        - https://authorities.smartcosmos.net/things/update
+        - https://authorities.smartcosmos.net/users/create
+        - https://authorities.smartcosmos.net/users/delete
+        - https://authorities.smartcosmos.net/users/read
+        - https://profiles-authorities.smartcosmos.net/authentication/signature
+        - https://profiles-authorities.smartcosmos.net/authentication/otp
+        - https://profiles-authorities.smartcosmos.net/query/batches
+        - https://profiles-authorities.smartcosmos.net/query/tags
+        - https://profiles-authorities.smartcosmos.net/tag/key/read
+        - https://profiles-authorities.smartcosmos.net/tag/value/read
+        - https://profiles-authorities.smartcosmos.net/tag/value/update
+        - https://profiles-authorities.smartcosmos.net/tag/properties/read
+    users[round-rock]:
+      username: round-rock
+      password: rrpwd
+      # some other tenant
+      tenant-urn: urn:tenant:uuid:CF565E32-5C6B-4391-84BA-8281D7C89C5C
+      # tenant-urn that matches demo test data
+      # tenant-urn: urn:tenant:uuid:11E5603E-AEFF-16DB-B6D1-334A80A70875
+      user-urn: urn:user:uuid:2DEEEB47-B619-45CB-8680-4FA38FCD9A7B
+      authorities:
+        - https://authorities.smartcosmos.net/things/read
+        - https://authorities.smartcosmos.net/metadata/read
+        - https://authorities.smartcosmos.net/relationships/read
+        - https://authorities.smartcosmos.net/metadata/ignoreUserTenant
+        - https://authorities.smartcosmos.net/things/ignoreUserTenant
+    users[tagdata]:
+      username: tagdata
+      password: tagpwd
+      # some other tenant
+      tenant-urn: urn:tenant:uuid:67F48B71-0C55-4D37-A21F-FC70AADD8549
+      # tenant-urn that matches demo test data
+      # tenant-urn: urn:tenant:uuid:11E5603E-AEFF-16DB-B6D1-334A80A70875
+      user-urn: urn:user:uuid:7F8358B7-19F7-4F8B-A986-5F9F80904A11
+      authorities:
+        - https://authorities.smartcosmos.net/things/read
+        - https://authorities.smartcosmos.net/metadata/read
+        - https://authorities.smartcosmos.net/relationships/read
+        - https://authorities.smartcosmos.net/metadata/ignoreUserTenant
+        - https://authorities.smartcosmos.net/things/ignoreUserTenant
+
+security:
+  user:
+    name: '{cipher}05b479a618112ef05d1e99c1b9f203405ba6d24e0ef12b76764c8af11da679f1'
+    password: '{cipher}95aa290e4fd9d380ef9fe9abb492065d1fff2b74f4c32a3aa8c8c07a7882b997'

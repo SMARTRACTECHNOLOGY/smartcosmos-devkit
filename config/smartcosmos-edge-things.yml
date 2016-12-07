@@ -1,0 +1,9 @@
+# server:
+#   port: ${smartcosmos.service.edge-things.port}
+
+smartcosmos:
+  edge:
+    things:
+      local:
+        things: ${smartcosmos.service.ext-things.address}
+        metadata: ${smartcosmos.service.ext-metadata.address}

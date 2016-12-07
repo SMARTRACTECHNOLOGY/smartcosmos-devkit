@@ -5,13 +5,15 @@ services:
   config-server:
     image: smartcosmos/config-server
     environment:
-      CONFIG_FILE_URI: 'https://github.com/SMARTRACTECHNOLOGY/smartcosmos-cluster-config'
-      CONFIG_SERVER_LABEL: devkit
+      SPRING_PROFILES: native
+      CONFIG_SEARCH_LOCATIONS: file:/opt/smartcosmos/config
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
     ports:
       - "8888:8888"
     networks:
       - platform-services
+    volumes:
+      - ./config:/opt/smartcosmos/config
 
   gateway:
     image: smartcosmos/gateway
@@ -25,17 +27,21 @@ services:
 
   auth-server:
     image: smartcosmos/auth-server
-    # make auth-server public this is needed to get a tocken directly
-    # until we fix gateway --> auth-server comunication.
+    #environment:
+      #SPRING_CONFIG_LOCATION: 'file:/opt/smartcosmos/config/application.yml, file:/opt/smartcosmos/config/smartcosmos-auth-server.yml'
     ports:
       - "9999:8080"
     depends_on:
       - config-server
     networks:
       - platform-services
+    volumes:
+      - ./config:/opt/smartcosmos/config
 
   edge-user-devkit:
     image: smartcosmos/edge-user-devkit
+    ports:
+      - "45371:8080"
     depends_on:
       - config-server
       - mysql
@@ -44,6 +50,8 @@ services:
 
   user-details-devkit:
     image: smartcosmos/user-details-devkit
+    ports:
+      - "7777:8080"
     depends_on:
       - config-server
       - mysql
@@ -79,15 +87,10 @@ services:
     networks:
       - platform-services
 
-  event-listener:
-    image: smartcosmos/event-listener
-    depends_on:
-     - events
-    networks:
-      - platform-services
-
   edge-things:
     image: smartcosmos/edge-things
+    ports:
+      - "50594:8080"
     depends_on:
       - config-server
     networks:
@@ -95,6 +98,8 @@ services:
 
   ext-things:
     image: smartcosmos/ext-things
+    ports:
+      - "45336:8080"
     depends_on:
       - config-server
       - mysql
@@ -103,6 +108,8 @@ services:
 
   ext-metadata:
     image: smartcosmos/ext-metadata
+    ports:
+      - "45037:8080"
     depends_on:
       - config-server
       - mysql
@@ -111,6 +118,8 @@ services:
 
   ext-relationships:
     image: smartcosmos/ext-relationships
+    ports:
+      - "45369:8080"
     depends_on:
       - config-server
       - mysql
@@ -119,6 +128,8 @@ services:
 
   mysql:
     image: mariadb:10.1.17
+    ports:
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: devkit

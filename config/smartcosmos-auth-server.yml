@@ -1,0 +1,38 @@
+info:
+  component: Auth Server
+
+# server:
+#   port: ${smartcosmos.service.auth-server.port}
+
+security:
+  oauth2:
+    client:
+      accessTokenUri:
+      user-authorization-uri:
+      client-id:
+      client-secret:
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework:
+        security: INFO
+        web.client: INFO
+
+smartcosmos:
+  security:
+    resource:
+      keystore:
+        location: "classpath:smartcosmos.jks"
+        password: 'x7JeP2BE4sSXar'
+        keypair: smartcosmosdev
+        keypairPassword: 'giE3qVTSlRoAWIJ'
+      client-id: 'smartcosmosservice'
+      client-secret: '9HhnNDhfGEXfNEn6'
+      user-details:
+        user:
+          name: 'user'
+          password: 'password'
+        server:
+          location-uri: ${smartcosmos.service.user-details.address}
+      cachedUserKeepAliveSecs: 300

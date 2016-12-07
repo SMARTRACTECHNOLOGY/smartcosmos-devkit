@@ -1,0 +1,144 @@
+# server:
+# Debug option: prevent timeout
+#  session:
+#    timeout: 60000
+
+management:
+  port: 0
+  # security:
+  #   enabled: false
+
+eureka:
+  client:
+    enabled: false
+
+smartcosmos:
+  host:
+    address: http://172.17.0.1
+
+  service:
+    kafka:
+      default: http://kafka
+      host: ${smartcosmos.host.address:${smartcosmos.service.kafka.default}}
+      port: 9092
+      address: ${smartcosmos.service.kafka.host}:${smartcosmos.service.kafka.port}
+    zookeeper:
+      default: http://zookeeper
+      host: ${smartcosmos.host.address:${smartcosmos.service.zookeeper.default}}
+      port: 2181
+      address: ${smartcosmos.service.zookeeper.host}:${smartcosmos.service.zookeeper.port}
+    gateway:
+      default: http://gateway
+      host: ${smartcosmos.host.address:${smartcosmos.service.gateway.default}}
+      port: 8080
+      address: ${smartcosmos.service.gateway.host}:${smartcosmos.service.gateway.port}
+    auth-server:
+      default: http://auth-server
+      host: ${smartcosmos.host.address:${smartcosmos.service.auth-server.default}}
+      port: 9999
+      address: ${smartcosmos.service.auth-server.host}:${smartcosmos.service.auth-server.port}
+    config-server:
+      default: http://config-server
+      host: ${smartcosmos.host.address:${smartcosmos.service.auth-server.default}}
+      port: 8888
+      address: ${smartcosmos.service.config-server.host}:${smartcosmos.service.config-server.port}
+    edge-things:
+      default: http://edge-things
+      host: ${smartcosmos.host.address:${smartcosmos.service.edge-things.default}}
+      port: 50594
+      address: ${smartcosmos.service.edge-things.host}:${smartcosmos.service.edge-things.port}
+    edge-user:
+      default: http://edge-user
+      host: ${smartcosmos.host.address:${smartcosmos.service.edge-user.default}}
+      port: 45371
+      address: ${smartcosmos.service.edge-user.host}:${smartcosmos.service.edge-user.port}
+    events:
+      default: http://events
+      host: ${smartcosmos.host.address:${smartcosmos.service.events.default}}
+      port: 45012
+      address: ${smartcosmos.service.events.host}:${smartcosmos.service.events.port}
+    ext-metadata:
+      default: http://ext-metadata
+      host: ${smartcosmos.host.address:${smartcosmos.service.ext-metadata.default}}
+      port: 45037
+      address: ${smartcosmos.service.ext-metadata.host}:${smartcosmos.service.ext-metadata.port}
+    ext-things:
+      default: http://ext-things
+      host: ${smartcosmos.host.address:${smartcosmos.service.ext-things.default}}
+      port: 45336
+      address: ${smartcosmos.service.ext-things.host}:${smartcosmos.service.ext-things.port}
+    ext-relationships:
+      default: http://ext-relationships
+      host: ${smartcosmos.host.address:${smartcosmos.service.ext-relationships.default}}
+      port: 45369
+      address: ${smartcosmos.service.ext-relationships.host}:${smartcosmos.service.ext-relationships.port}
+    user-details:
+      default: http://user-details
+      host: ${smartcosmos.host.address:${smartcosmos.service.user-details.default}}
+      port: 7777
+      address: ${smartcosmos.service.user-details.host}:${smartcosmos.service.user-details.port}
+
+  datasource:
+    default-host: 172.17.0.1
+    default-username: cosmos
+    default-password: dev
+    default-db: devkit
+
+info:
+  description: SMART COSMOS Cluster Services
+  url: https://www.smart-cosmos.com/
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 10000
+
+
+security:
+  oauth2:
+    client:
+      accessTokenUri: ${smartcosmos.authorization-server}/oauth/token
+      user-authorization-uri: ${smartcosmos.authorization-server}/oauth/authorize
+      client-id: 'smartcosmosservice'
+      client-secret: '9HhnNDhfGEXfNEn6'
+    resource:
+      jwt:
+        key-value: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhLD+JUbjIKXzIJECP19V
+          EKW5MQCFM7sIRiHeEgSh9pSpcn0W2fyDgUfZuSgWp6GCjmRaTrFwVt9zhUrOC/Nq
+          VyaYvV5nwqaNv02CkAMpRBWpFKcdMdx2mMjDGvklY2BIvG8X/9BWUhWyvX5Ye0Vb
+          MLIfcg2sLcqJQ/tpB9GAZJGitjP051KEJuOodrZTUQwrcz7cIUQGsT3jau5WjyIm
+          wc7WG5jExUkXMcdRIo9eQAMNfl/PpW1eb648Tymmj4C4pT5DTYIjF0p6V+TSCfaP
+          H7qQPYIAx4HfKd74sY/0Jom42Vml4YnNZuDQWm9Z+K79MI3GQXbXB/Rng+fAwilf
+          PQIDAQAB
+          -----END PUBLIC KEY-----
+
+spring:
+  cloud.config:
+    overrideSystemProperties: true
+  jackson:
+    deserialization:
+      ACCEPT_SINGLE_VALUE_AS_ARRAY: true
+
+logging:
+  level:
+    ROOT: INFO
+    com.netflix:
+      eureka.registry: WARN
+      discovery.shared.resolver.aws.ConfigClusterResolver: WARN
+    org.apache.kafka.clients:
+      producer: WARN
+      consumer: WARN
+---
+
+spring:
+    profiles: docker
+server:
+  port: 8080
+management:
+  port: 8081
