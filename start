@@ -19,7 +19,7 @@ function http_get_succeeds() {
   local started=false
   local status=${undefined_status}
 
-  while [[ $started = false ]] && [[ $attempt -lt 10 ]]; do
+  while [[ ${started} = false ]] && [[ ${attempt} -lt 10 ]]; do
     set +e
     status=$(curl -s -o /dev/null -w "%{http_code}" url)
     set -e
@@ -41,8 +41,8 @@ function http_get_succeeds() {
 
 function container_is_up() {
   local readonly name=${1}
-  local container_count=$(docker-compose ps | grep -E "$name" | wc -l)
-  local container_up_count=$(docker-compose ps | grep -E "$name" | grep "Up" | wc -l)
+  local container_count=$(docker-compose ps | grep -E "${name}" | wc -l)
+  local container_up_count=$(docker-compose ps | grep -E "${name}" | grep "Up" | wc -l)
 
   if [[ ${container_count} -eq ${container_up_count} ]]; then
     return 0
@@ -56,9 +56,9 @@ function spinner() {
     local s='-\|/';
     local i=0;
 
-    while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
+    while [ "$(ps a | awk '{print $1}' | grep ${pid})" ]; do
       i=$(( (i+1) %4 ))
-      printf "\r${s:$i:1}"
+      printf "\r${s:${i}:1}"
       sleep .15
     done
 
@@ -127,7 +127,7 @@ function main() {
   services
 
   END=$(date +%s)
-  DIFF=$(( $END - $START ))
+  DIFF=$(( ${END} - ${START} ))
   echo -e "\nStarting the ${bold}${ORANGE}SMART COSMOS DevKit${DEFAULT_COLOR} took ${DIFF} seconds.\n"
   echo -e "${ORANGE}→ Services started:${DEFAULT_COLOR}\n$ docker ps\n"
   docker ps
@@ -138,6 +138,8 @@ function main() {
   else
     err "The gateway did not respond. It may become available later, please check the log:\n$ docker-compose logs -f gateway"
   fi
+
+  echo -e "\nP.S.: Use the following command to stop all services when you're done:\t$ docker-compose down"
 }
 
 main "$@"
