@@ -24,7 +24,8 @@ function http_get_succeeds() {
     status=$(curl -s -o /dev/null -w "%{http_code}" url)
     set -e
     if [[ ${undefined_status} = ${status} ]]; then
-      sleep $((attempt*DELAY))s & spinner
+      sleep $((attempt*DELAY))s &
+      spinner
     else
       started=true
     fi
@@ -39,11 +40,11 @@ function http_get_succeeds() {
 }
 
 function container_is_up() {
-  local readonly name=${1}
-  local container_count=$(docker-compose ps | grep -E "${name}" | wc -l)
-  local container_up_count=$(docker-compose ps | grep -E "${name}" | grep "Up" | wc -l)
+  local readonly pattern=${1}
+  local container_count=$(docker-compose ps | grep -E "${pattern}" | wc -l)
+  local container_up_count=$(docker-compose ps | grep -E "${pattern}" | grep "Up" | wc -l)
 
-  if [[ ${container_count} -eq ${container_up_count} ]]; then
+  if [[ ${container_count} -eq ${container_up_count} ]] && [[ ${container_up_count} -gt 0 ]]; then
     return 0
   else
     return 1
@@ -94,19 +95,22 @@ function services() {
   echo -e "\n${ORANGE}→ Starting user and auth services...${DEFAULT_COLOR}"
   docker-compose up -d edge-user-devkit user-details-devkit auth-server
   if ! container_is_up "edge-user-devkit|user-details-devkit|auth-server"; then
-    sleep 60s & spinner
+    sleep 60s &
+    spinner
   fi
 
   echo -e "\n${ORANGE}→ Starting core services...${DEFAULT_COLOR}"
   docker-compose up -d ext-relationships ext-metadata ext-things edge-things
   if ! container_is_up "ext-relationships|ext-metadata|ext-things|edge-things"; then
-    sleep 90s & spinner
+    sleep 90s &
+    spinner
   fi
 
   echo -e "\n${ORANGE}→ Starting event service...${DEFAULT_COLOR}"
   docker-compose up -d events
   if ! container_is_up "events"; then
-    sleep 10s & spinner
+    sleep 10s &
+    spinner
   fi
 
   echo -e "\n${ORANGE}→ Starting user interface...${DEFAULT_COLOR}"
