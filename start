@@ -56,7 +56,7 @@ function spinner() {
     local s='-\|/';
     local i=0;
 
-    while [ "$(ps a | awk '{print $1}' | grep ${pid})" ]; do
+    while [[ "$(ps a | awk '{print $1}' | grep ${pid})" ]]; do
       i=$(( (i+1) %4 ))
       printf "\r${s:${i}:1}"
       sleep .15
