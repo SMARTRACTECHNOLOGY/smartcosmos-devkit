@@ -44,7 +44,7 @@ function container_is_up() {
   local container_count=$(docker-compose ps | grep -E "${pattern}" | wc -l)
   local container_up_count=$(docker-compose ps | grep -E "${pattern}" | grep "Up" | wc -l)
 
-  if [[ ${container_count} -eq ${container_up_count} ]]; then
+  if [[ ${container_count} -eq ${container_up_count} ]] && [[ ${container_up_count} -gt 0 ]]; then
     return 0
   else
     return 1
