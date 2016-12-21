@@ -24,7 +24,7 @@ function http_get_succeeds() {
     status=$(curl -s -o /dev/null -w "%{http_code}" url)
     set -e
     if [[ ${undefined_status} = ${status} ]]; then
-      sleep $((attempt*DELAY))s &
+      sleep $((attempt*delay))s &
       spinner
     else
       started=true
