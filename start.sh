@@ -10,21 +10,20 @@ readonly ORANGE='\033[0;33m'
 readonly DEFAULT_COLOR='\033[0m'
 
 function http_get_succeeds() {
-  local readonly URL=${1}
-  local readonly HTTP_OK="200"
-  local readonly UNDEFINED_STATUS="000"
-  local readonly MAX_ATTEMPTS=15
-  local readonly DELAY=2
+  local readonly url=${1}
+  local readonly undefined_status="000"
+  local readonly max_attempts=15
+  local readonly delay=2
 
   local attempt=0
   local started=false
-  local status=${UNDEFINED_STATUS}
+  local status=${undefined_status}
 
   while [ $started = false ] && [ $attempt -lt 10 ]; do
     set +e
-    status=$(curl -s -o /dev/null -w "%{http_code}" ${URL})
+    status=$(curl -s -o /dev/null -w "%{http_code}" ${url})
     set -e
-    if [ ${UNDEFINED_STATUS} = ${status} ]
+    if [ ${undefined_status} = ${status} ]
     then
       sleep $((attempt*DELAY))s & spinner
     else
@@ -33,7 +32,7 @@ function http_get_succeeds() {
     attempt=$((attempt + 1))
   done
 
-  if [ ${attempt} -eq ${MAX_ATTEMPTS} ] && [ ${started} = false ]; then
+  if [ ${attempt} -eq ${max_attempts} ] && [ ${started} = false ]; then
     return 1
   else
     return 0
@@ -41,9 +40,9 @@ function http_get_succeeds() {
 }
 
 function container_is_up() {
-  local readonly NAME=${1}
-  local container_count=$(docker-compose ps | grep -E "$NAME" | wc -l)
-  local container_up_count=$(docker-compose ps | grep -E "$NAME" | grep "Up" | wc -l)
+  local readonly name=${1}
+  local container_count=$(docker-compose ps | grep -E "$name" | wc -l)
+  local container_up_count=$(docker-compose ps | grep -E "$name" | grep "Up" | wc -l)
 
   if [ ${container_count} -eq ${container_up_count} ]; then
     return 0
@@ -77,7 +76,7 @@ function prerequisites() {
 }
 
 function configserver() {
-  local readonly CONFIG_SERVER_STATUS_URL="http://localhost:8888/admin/status"
+  local readonly config_server_status_url="http://localhost:8888/admin/status"
 
   echo "\n${ORANGE}→ Starting config-server...${DEFAULT_COLOR}"
 
@@ -85,7 +84,7 @@ function configserver() {
 
   echo "Waiting for the server to become available..."
 
-  if http_get_succeeds ${CONFIG_SERVER_STATUS_URL}; then
+  if http_get_succeeds ${config_server_status_urL}; then
     echo "${GREEN}✓${DEFAULT_COLOR} Done."
   else
     err "The config server did not respond. It may become available later, please check the log:\n$ docker-compose logs -f config-server"
