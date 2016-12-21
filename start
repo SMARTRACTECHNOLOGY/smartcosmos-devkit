@@ -25,7 +25,8 @@ function http_get_succeeds() {
     set -e
     if [[ ${undefined_status} = ${status} ]]
     then
-      sleep $((attempt*DELAY))s & spinner
+      sleep $((attempt*DELAY))s &
+      spinner
     else
       started=true
     fi
@@ -95,19 +96,22 @@ function services() {
   echo -e "\n${ORANGE}→ Starting user and auth services...${DEFAULT_COLOR}"
   docker-compose up -d edge-user-devkit user-details-devkit auth-server
   if ! container_is_up "edge-user-devkit|user-details-devkit|auth-server"; then
-    sleep 60s & spinner
+    sleep 60s &
+    spinner
   fi
 
   echo -e "\n${ORANGE}→ Starting core services...${DEFAULT_COLOR}"
   docker-compose up -d ext-relationships ext-metadata ext-things edge-things
   if ! container_is_up "ext-relationships|ext-metadata|ext-things|edge-things"; then
-    sleep 90s & spinner
+    sleep 90s &
+    spinner
   fi
 
   echo -e "\n${ORANGE}→ Starting event service...${DEFAULT_COLOR}"
   docker-compose up -d events
   if ! container_is_up "events"; then
-    sleep 10s & spinner
+    sleep 10s &
+    spinner
   fi
 
   echo -e "\n${ORANGE}→ Starting user interface...${DEFAULT_COLOR}"
