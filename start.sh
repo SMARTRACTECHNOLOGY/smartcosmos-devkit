@@ -4,9 +4,10 @@
 
 set -e
 
-readonly red='\033[0;31m'
-readonly green='\033[0;32m'
-readonly default_color='\033[0m'
+readonly RED='\033[0;31m'
+readonly GREEN='\033[0;32m'
+readonly ORANGE='\033[0;33m'
+readonly DEFAULT_COLOR='\033[0m'
 
 function http_get_succeeds() {
   local readonly URL=${1}
@@ -67,61 +68,60 @@ function spinner() {
 }
 
 function err() {
-  echo "${red}✗${default_color} $@" >&2
+  echo "${RED}✗${DEFAULT_COLOR} $@" >&2
 }
 
 function prerequisites() {
-  echo "\n→ Starting database and message queue services..."
+  echo "\n${ORANGE}→ Starting database and message queue services...${DEFAULT_COLOR}"
   docker-compose up -d mysql zookeeper kafka
 }
 
 function configserver() {
   local readonly CONFIG_SERVER_STATUS_URL="http://localhost:8888/admin/status"
 
-  echo "\n→ Starting config-server..."
+  echo "\n${ORANGE}→ Starting config-server...${DEFAULT_COLOR}"
 
   docker-compose up -d config-server
 
   echo "Waiting for the server to become available..."
 
   if http_get_succeeds ${CONFIG_SERVER_STATUS_URL}; then
-    echo "${green}✓${default_color} Done."
+    echo "${GREEN}✓${DEFAULT_COLOR} Done."
   else
     err "The config server did not respond. It may become available later, please check the log:\n$ docker-compose logs -f config-server"
   fi
 }
 
 function services() {
-  echo "\n→ Starting user and auth services..."
+  echo "\n${ORANGE}→ Starting user and auth services...${DEFAULT_COLOR}"
   docker-compose up -d edge-user-devkit user-details-devkit auth-server
   if ! container_is_up "edge-user-devkit|user-details-devkit|auth-server"; then
     sleep 60s & spinner
   fi
 
-  echo "\n→ Starting core services..."
+  echo "\n${ORANGE}→ Starting core services...${DEFAULT_COLOR}"
   docker-compose up -d ext-relationships ext-metadata ext-things edge-things
   if ! container_is_up "ext-relationships|ext-metadata|ext-things|edge-things"; then
     sleep 90s & spinner
   fi
 
-  echo "\n→ Starting event service..."
+  echo "\n${ORANGE}→ Starting event service...${DEFAULT_COLOR}"
   docker-compose up -d events
   if ! container_is_up "events"; then
     sleep 10s & spinner
   fi
 
-  echo "\n→ Starting user interface..."
+  echo "\n${ORANGE}→ Starting user interface...${DEFAULT_COLOR}"
   docker-compose up -d ui
 
-  echo "\n→ Starting gateway..."
+  echo "\n${ORANGE}→ Starting gateway...${DEFAULT_COLOR}"
   docker-compose up -d gateway
 }
 
 function main() {
   START=$(date +%s)
 
-  echo "Welcome to SMART COSMOS DevKit"
-  echo "=============================="
+  echo "${ORANGE}Welcome to SMART COSMOS DevKit${DEFAULT_COLOR}"
 
   prerequisites
   configserver
@@ -129,13 +129,13 @@ function main() {
 
   END=$(date +%s)
   DIFF=$(( $END - $START ))
-  echo "\nStarting the SMART COSMOS DevKit took $DIFF seconds.\n"
-  echo "→ Services started:\n$ docker ps\n"
+  echo "\nStarting the ${bold}${ORANGE}SMART COSMOS DevKit${DEFAULT_COLOR} took ${DIFF} seconds.\n"
+  echo "${ORANGE}→ Services started:${DEFAULT_COLOR}\n$ docker ps\n"
   docker ps
   echo "\nNote that it will take a few moments until they are available and can answer requests! 💡"
 
   if http_get_succeeds "http://localhost:8080"; then
-    echo "You're ready to take off now! Enjoy your SMART COSMOS adventures! 🚀"
+    echo "${GREEN}You're ready to take off now! Enjoy your SMART COSMOS adventures!${DEFAULT_COLOR} 🚀"
   else
     err "The gateway did not respond. It may become available later, please check the log:\n$ docker-compose logs -f gateway"
   fi
