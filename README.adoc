@@ -90,7 +90,7 @@ $ docker-compose up -d mysql zookeeper kafka
 ----
  * SMART COSMOS Support Mechanisms
 ----
-$ docker-compose up -d config-server edge-user-devkit user-details-devkit auth-server events event-listener ui
+$ docker-compose up -d config-server edge-user-devkit user-details-devkit auth-server events ui
 ----
  * SMART COSMOS Core Services
 ----

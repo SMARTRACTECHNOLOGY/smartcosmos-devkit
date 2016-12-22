@@ -1,0 +1,155 @@
+#!/bin/bash
+#
+# Start the DevKit services separately to speed up the process.
+
+set -e
+
+readonly RED='\033[0;31m'
+readonly GREEN='\033[0;32m'
+readonly ORANGE='\033[0;33m'
+readonly DEFAULT_COLOR='\033[0m'
+
+function http_get_succeeds() {
+  local readonly url=${1}
+  local readonly undefined_status="000"
+  local readonly max_attempts=50
+  local readonly delay=2
+
+  local attempt=0
+  local started=false
+  local status=${undefined_status}
+  local sleep_time=0
+
+  while [[ ${started} = false ]] && [[ ${attempt} -lt ${max_attempts} ]]; do
+    set +e
+    status=$(curl -s -o /dev/null -w "%{http_code}" ${url})
+    set -e
+    if [[ "${status}" != "${undefined_status}" ]]; then
+      started=true
+    else
+      if [[ attempts -lt 10 ]]; then
+        sleep_time=$((attempt * delay))
+      else
+        sleep_time=5
+      fi
+      sleep ${sleep_time} & spinner
+    fi
+    attempt=$((attempt + 1))
+  done
+
+  if [[ ${attempt} -eq ${max_attempts} ]] && [[ ${started} = false ]]; then
+    return 1
+  else
+    return 0
+  fi
+}
+
+function container_is_up() {
+  local readonly pattern=${1}
+  local container_count=$(docker ps --no-trunc | grep -E "${pattern}" | wc -l)
+  local container_up_count=$(docker ps --no-trunc | grep -E "${pattern}" | grep "Up" | wc -l)
+
+  if [[ ${container_count} -eq ${container_up_count} ]] && [[ ${container_up_count} -gt 0 ]]; then
+    echo 0
+  else
+    echo 1
+  fi
+}
+
+function spinner() {
+    local pid=$!
+    local s='-\|/';
+    local i=0;
+
+    while [[ "$(ps a | awk '{print $1}' | grep ${pid})" ]]; do
+      i=$(( (i+1) %4 ))
+      printf "\r${s:${i}:1}"
+      sleep .15
+    done
+
+    printf "\b\b\b\b\b\b"
+    printf "    \b\b\b\b"
+}
+
+function err() {
+  echo -e "${RED}✗${DEFAULT_COLOR} $@" >&2
+}
+
+function prerequisites() {
+  echo -e "\n${ORANGE}→ Starting database and message queue services...${DEFAULT_COLOR}"
+  docker-compose up -d mysql zookeeper kafka
+}
+
+function configserver() {
+  local readonly config_server_status_url="http://localhost:8888/admin/status"
+
+  echo -e "\n${ORANGE}→ Starting config-server...${DEFAULT_COLOR}"
+
+  docker-compose up -d config-server
+
+  echo -e "Waiting for the server to become available..."
+
+  if http_get_succeeds ${config_server_status_url}; then
+    echo -e "${GREEN}✓${DEFAULT_COLOR} Done."
+  else
+    err "The config server did not respond. It may become available later, please check the log:\n$ docker-compose logs -f config-server"
+  fi
+}
+
+function start() {
+  local readonly names=${1}
+  local readonly delay=${2}
+  local readonly regex=${names// /|}
+
+  local up=$( container_is_up ${regex} )
+  docker-compose up -d ${names}
+  if [[ "${up}" != "0" ]]; then
+    sleep ${delay}s &
+    spinner
+  fi
+}
+
+function services() {
+  echo -e "\n${ORANGE}→ Starting user and auth services...${DEFAULT_COLOR}"
+  start "edge-user-devkit user-details-devkit auth-server" 60
+
+  echo -e "\n${ORANGE}→ Starting core services...${DEFAULT_COLOR}"
+  start "ext-relationships ext-metadata ext-things edge-things" 90
+
+  echo -e "\n${ORANGE}→ Starting event service...${DEFAULT_COLOR}"
+  start "events" 15
+
+  echo -e "\n${ORANGE}→ Starting user interface...${DEFAULT_COLOR}"
+  start "ui" 15
+
+  echo -e "\n${ORANGE}→ Starting gateway...${DEFAULT_COLOR}"
+  start "gateway" 15
+}
+
+function main() {
+  START=$(date +%s)
+
+  echo -e "${ORANGE}Welcome to SMART COSMOS DevKit${DEFAULT_COLOR}"
+
+  prerequisites
+  configserver
+  services
+
+  END=$(date +%s)
+  DIFF=$(( ${END} - ${START} ))
+  echo -e "\nStarting the ${bold}${ORANGE}SMART COSMOS DevKit${DEFAULT_COLOR} took ${DIFF} seconds.\n"
+  echo -e "${ORANGE}→ Services started:${DEFAULT_COLOR}\n$ docker ps\n"
+  docker ps
+  echo -e "\nNote that it will take a few moments until they are available and can answer requests! 💡"
+
+  echo -e "\nWaiting for the gateway to become ready..."
+  if http_get_succeeds "http://localhost:8080"; then
+    echo -e "${GREEN}You're ready to take off now! Enjoy your SMART COSMOS adventures!${DEFAULT_COLOR} 🚀"
+  else
+    err "The gateway did not respond. It may become available later, please check the log:\n$ docker-compose logs -f gateway"
+  fi
+
+  echo -e "\nP.S.: Use the following command to stop all services when you're done:\t$ docker-compose down"
+}
+
+main "$@"
