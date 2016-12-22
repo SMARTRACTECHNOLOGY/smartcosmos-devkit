@@ -47,7 +47,7 @@ def get_up_container_data():
     except ValueError:
         pass
     for line in lines:
-        if 'UP' not in line:
+        if 'Up' not in line:
             lines.remove(line)
     return lines
 
