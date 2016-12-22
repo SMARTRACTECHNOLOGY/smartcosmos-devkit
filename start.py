@@ -14,7 +14,7 @@ def err(message):
     print(RED + '✗ ' + DEFAULT_COLOR + message)
 
 def http_get_succeeds(host, path = '/'):
-    max_attempts = 3
+    max_attempts = 10
     delay = 2
 
     attempts = 0
@@ -28,7 +28,7 @@ def http_get_succeeds(host, path = '/'):
             status = connection.getresponse().status
             if status != None:
                 success = True
-        except StandardError:
+        except StandardError and httplib.BadStatusLine:
             success = False
             time.sleep(attempts * delay)
         attempts += 1
