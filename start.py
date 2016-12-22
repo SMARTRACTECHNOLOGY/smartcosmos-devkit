@@ -54,13 +54,17 @@ def get_up_container_data():
 def is_in_data(name, data):
     for entry in data:
         if name in entry:
+            print(name + ' is in entry')
             return True
     return False
 
 def containers_are_up(names):
+    print(names)
     container_data = get_up_container_data()
+    print(container_data)
     for name in names:
         if not is_in_data(name, container_data):
+            print(name + ' is not in data')
             return False
     return True
 
