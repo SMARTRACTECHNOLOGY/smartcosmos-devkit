@@ -12,22 +12,21 @@ readonly DEFAULT_COLOR='\033[0m'
 function http_get_succeeds() {
   local readonly url=${1}
   local readonly undefined_status="000"
-  local readonly max_attempts=15
+  local readonly max_attempts=10
   local readonly delay=2
 
   local attempt=0
   local started=false
   local status=${undefined_status}
 
-  while [[ ${started} = false ]] && [[ ${attempt} -lt 10 ]]; do
+  while [[ ${started} = false ]] && [[ ${attempt} -lt ${max_attempts} ]]; do
     set +e
-    status=$(curl -s -o /dev/null -w "%{http_code}" url)
+    status=$(curl -s -o /dev/null -w "%{http_code}" ${url})
     set -e
-    if [[ ${undefined_status} = ${status} ]]; then
-      sleep $((attempt*delay))s &
-      spinner
-    else
+    if [[ "${status}" != "${undefined_status}" ]]; then
       started=true
+    else
+      sleep $((attempt*delay))s & spinner
     fi
     attempt=$((attempt + 1))
   done
@@ -84,7 +83,7 @@ function configserver() {
 
   echo -e "Waiting for the server to become available..."
 
-  if http_get_succeeds ${config_server_status_urL}; then
+  if http_get_succeeds ${config_server_status_url}; then
     echo -e "${GREEN}✓${DEFAULT_COLOR} Done."
   else
     err "The config server did not respond. It may become available later, please check the log:\n$ docker-compose logs -f config-server"
