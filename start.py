@@ -39,10 +39,13 @@ def http_get_succeeds(host, path = '/'):
         return True
 
 def get_up_container_data():
-    ps = subprocess.Popen(('docker', 'ps --no-trunc'), stdout=subprocess.PIPE)
+    ps = subprocess.Popen(('docker', 'ps', '--no-trunc'), stdout=subprocess.PIPE)
     lines = ps.communicate()[0].split('\n')
     del lines[0]
-    lines.remove('')
+    try:
+        lines.remove('')
+    except ValueError:
+        pass
     for line in lines:
         if 'UP' not in line:
             lines.remove(line)
