@@ -28,7 +28,7 @@ function http_get_succeeds() {
       started=true
     else
       if [[ attempts -lt 10 ]]; then
-        sleep_time=${attempt}*${delay}
+        sleep_time=$((attempt * delay))
       else
         sleep_time=5
       fi
