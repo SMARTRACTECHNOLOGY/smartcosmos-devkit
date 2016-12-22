@@ -40,8 +40,8 @@ function http_get_succeeds() {
 
 function container_is_up() {
   local readonly pattern=${1}
-  local container_count=$(docker-compose ps | grep -E "${pattern}" | wc -l)
-  local container_up_count=$(docker-compose ps | grep -E "${pattern}" | grep "Up" | wc -l)
+  local container_count=$(docker ps --no-trunc | grep -E "${pattern}" | wc -l)
+  local container_up_count=$(docker ps --no-trunc | grep -E "${pattern}" | grep "Up" | wc -l)
 
   if [[ ${container_count} -eq ${container_up_count} ]] && [[ ${container_up_count} -gt 0 ]]; then
     return 0
