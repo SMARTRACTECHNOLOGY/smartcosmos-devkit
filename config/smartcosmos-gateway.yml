@@ -10,6 +10,9 @@ zuul:
   ignoredServices: "*"
   prefix:
   routes:
+    edge-bulkimport:
+      path: /bulkimport/**
+      url: ${smartcosmos.service.edge-bulkimport.address}
     edge-things:
       path: /things/**
       url: ${smartcosmos.service.edge-things.address}
