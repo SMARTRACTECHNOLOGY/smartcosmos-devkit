@@ -1,0 +1,58 @@
+{
+  "things": [
+    {
+      "type":"Person",
+      "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000001",
+      "active":true,
+      "name":"John",
+      "gender":"male",
+      "birthdate":"1/1/1970",
+      "profession":"truck driver"
+    },
+    {
+      "type":"Person",
+      "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000002",
+      "active":true,
+      "name":"Anne",
+      "gender":"female",
+      "birthdate":"1/1/1972",
+      "profession":"nurse"
+    },
+    {
+      "type":"Building",
+      "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000003",
+      "active":true,
+      "name":"John's Appartment",
+      "size":"800sqft"
+    },
+    {
+      "type":"Vehicle",
+      "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000004",
+      "active":true,
+      "name":"John's Truck",
+      "manufacturer": "Toyota",
+      "model": "Pickup Truck",
+      "color": "white"
+    },
+    {
+      "type":"Vehicle",
+      "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000005",
+      "active":true,
+      "name":"John's Sports Car",
+      "manufacturer": "Ford",
+      "model": "Mustang GT",
+      "color": "red"
+    }],
+  "relationships": [
+    {
+      "source": {
+        "type":"Person",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000001"
+      },
+      "target": {
+        "type":"Person",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000002"
+      },
+      "relationshipType":"is married to"
+    }]
+}
