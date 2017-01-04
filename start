@@ -76,6 +76,9 @@ function err() {
 }
 
 function prerequisites() {
+  echo -e "\n${ORANGE}→ Updating all images...${DEFAULT_COLOR}"
+  docker-compose pull
+
   echo -e "\n${ORANGE}→ Starting database and message queue services...${DEFAULT_COLOR}"
   docker-compose up -d mysql zookeeper kafka
 }
