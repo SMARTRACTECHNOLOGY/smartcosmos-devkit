@@ -14,7 +14,6 @@ These types of data are required for minimal functionality:
 
 To create the new tenant, the *name* of the organization and the *username* of the initial user shall be given:
 
-----
 [source,bash]
 ----
 curl -X POST -H "Content-Type: application/json" -d '{"name": "Example Company", "username": "waldo@example.com"}' "http://localhost:8080/tenants"
@@ -22,7 +21,6 @@ curl -X POST -H "Content-Type: application/json" -d '{"name": "Example Company",
 
 The response contains the URN of the new tenant, the first user with the Admin role and the initial password:
 
-----
 [source,json]
 ----
 {
