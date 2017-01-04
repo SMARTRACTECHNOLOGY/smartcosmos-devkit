@@ -117,7 +117,7 @@ function services() {
   start "edge-user-devkit user-details-devkit auth-server" 60
 
   echo -e "\n${ORANGE}→ Starting core services...${DEFAULT_COLOR}"
-  start "ext-relationships ext-metadata ext-things edge-things" 90
+  start "ext-relationships ext-metadata ext-things edge-things edge-bulkimport" 90
 
   echo -e "\n${ORANGE}→ Starting event service...${DEFAULT_COLOR}"
   start "events" 15
