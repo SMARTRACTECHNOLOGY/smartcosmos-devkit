@@ -42,6 +42,11 @@ smartcosmos:
       host: ${smartcosmos.host.address:${smartcosmos.service.auth-server.default}}
       port: 8888
       address: ${smartcosmos.service.config-server.host}:${smartcosmos.service.config-server.port}
+    edge-bulkimport:
+      default: http://edge-bulkimport
+      host: ${smartcosmos.host.address:${smartcosmos.service.edge-bulkimport.default}}
+      port: 50593
+      address: ${smartcosmos.service.edge-bulkimport.host}:${smartcosmos.service.edge-bulkimport.port}
     edge-things:
       default: http://edge-things
       host: ${smartcosmos.host.address:${smartcosmos.service.edge-things.default}}

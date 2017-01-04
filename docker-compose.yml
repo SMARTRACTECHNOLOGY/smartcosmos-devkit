@@ -87,6 +87,15 @@ services:
     networks:
       - platform-services
 
+  edge-bulkimport:
+    image: smartcosmos/edge-bulkimport
+    ports:
+      - "50593:8080"
+    depends_on:
+      - config-server
+    networks:
+      - platform-services
+
   edge-things:
     image: smartcosmos/edge-things
     ports:
