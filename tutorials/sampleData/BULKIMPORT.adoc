@@ -52,8 +52,8 @@ The response contains the OAuth2 token in *access_token*.
 
 The bulk import request is a JSON body composed from two sections:
 
-* "things": a JSON array of things (T) with metadata (M)
-* "relationships": a JSON array of relationships (R) between the things defined above
+* "things": a JSON array of things [T] with metadata [M]
+* "relationships": a JSON array of relationships [R] between the things defined above
 
 === Example
 
@@ -61,13 +61,13 @@ We have a person and a car, where the person owns that car. The person and the c
 
 [source,text]
 ----
-(T) Person -> (M) {"name": "John"}
+[T] Person -> [M] {"name": "John"}
  |
  |
-(R) "owns"
+[R] "owns"
  |
  v
-(T) Vehicle -> (M) {"manufacturer": "Toyota", "model": "pickup truck"}
+[T] Vehicle -> [M] {"manufacturer": "Toyota", "model": "pickup truck"}
 ----
 
 To import this structure into the Devkit, an import JSON will be generated, which contains 2 things with metadata and
@@ -103,4 +103,13 @@ To import this structure into the Devkit, an import JSON will be generated, whic
     }
   ]  
 }
+----
+
+Store the final import data into a JSON file, then post it to the bulk import endpoint. Don't forget to set the correct JWT token, e.g.:
+
+[source,bash]
+----
+token="eyJhbGci..." (it is quite long)
+
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${token}" -d "$(cat bulkimport.json)" "http://localhost:8080/bulkimport/"
 ----
