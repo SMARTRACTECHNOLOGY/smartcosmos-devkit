@@ -1,8 +1,6 @@
 = Installation
 :imagesdir: images
 
-- - -
-
 [[macOS]]
 == macOS
 
@@ -12,27 +10,24 @@ software installations.
 === Install the Tools
 
 ==== http://brew.sh[brew]
-
 [source, bash]
 ----
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ----
 
 ==== https://git-scm.com/[git]
-
 [source, bash]
 ----
 brew install git
 ----
 
 ==== https://docker.com[docker]
-
 [source, bash]
 ----
 brew install docker
 ----
 
-==== check docker RAM settings
+=== Check Docker RAM Settings
 Now we need to make sure that your docker vm has at least 8GB of RAM.
 
 In the menu bar on the top right corner should now be a docker icon. To adjust the
@@ -48,12 +43,38 @@ Here you should increase the Memory with the slider to at least 8GB.
 Please click on `Apply & Restart` to apply the settings. Finally you
 can close the window.
 
-==== Get the DevKit
+=== Get the DevKit
 
 Please follow <<downloadDevKit>>.
 
+[[linux]]
+== GNU/Linux
+
+=== Install The Tools
+
+==== https://git-scm.com/[git]
+Install git with the package manager. E.g. on Ubuntu with:
+[source, bash]
+----
+apt-get install git
+----
+
+==== https://docker.com[docker]
+Please follow
+https://docs.docker.com/engine/installation/linux/[the official installation guide ]
+to install docker on a GNU/Linux system.
+
+Make sure that you can use docker without sudo.
+
+
+=== Get the DevKit
+
+Please follow <<downloadDevKit>>.
+
+
+
 [[downloadDevKit]]
-== Download the DevKit deploy code
+== Download The DevKit Deploy Code
 
 [source,bash]
 ----
@@ -62,7 +83,7 @@ cd smartcosmos-devkit
 ----
 
 [[startDevKit]]
-== Start the DevKit
+== Start The DevKit
 
 To start the DevKit we provide a script which will help you to get the DevKit
 up and running. You may also use `docker-compose` directly

@@ -2,9 +2,10 @@
 
 == Installation
 
-Please choose the platform of you working machine:
+Please choose the matching platform of your working machine:
 
 * link:installation.adoc#macOS[macOS]
+* link:installation.adoc#linux[GNU/Linux]
 
 == Advanced Usage
 
