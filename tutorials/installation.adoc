@@ -28,7 +28,7 @@ brew install docker
 ----
 
 === Check Docker RAM Settings
-Now we need to make sure that your docker vm has at least 8GB of RAM.
+Please make sure that your docker VM has at least 8GB of RAM.
 
 In the menu bar on the top right corner should now be a docker icon. To adjust the
 memory settings you need to click on this icon:
