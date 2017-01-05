@@ -70,5 +70,37 @@ We have a person and a car, where the person owns that car. The person and the c
 (T) Vehicle -> (M) {"manufacturer": "Toyota", "model": "pickup truck"}
 ----
 
+To import this structure into the Devkit, an import JSON will be generated, which contains 2 things with metadata and
+1 relationship. The thing's properties will be merged into the plain thing defined by type and urn to merge in the metadata:
 
-
+[source,json]
+----
+{
+  "things": [
+    {
+      "type":"Person",
+      "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000001",
+      "name":"John"
+    },
+    {
+      "type":"Vehicle",
+      "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000004",
+      "manufacturer": "Toyota",
+      "model": "Pickup Truck"
+    }
+  ],
+  "relationships": [
+    {
+      "source": {
+        "type":"Person",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000001"
+      },
+      "target": {
+        "type":"Vehicle",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000004"
+      },
+      "relationshipType":"owns"
+    }
+  ]  
+}
+----
