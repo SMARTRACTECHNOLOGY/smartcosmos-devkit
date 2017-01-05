@@ -2,10 +2,14 @@
 
 == Installation
 
+=== Prerequisites
+
 Please choose the matching platform of your working machine:
 
-* link:installation.adoc#macOS[macOS]
-* link:installation.adoc#linux[GNU/Linux]
+* link:prerequisites.adoc#macOS[macOS]
+* link:prerequisites.adoc#linux[GNU/Linux]
+
+=== Set Up The DevKit
 
 
 == TODO
