@@ -1,0 +1,51 @@
+= Installation
+:imagesdir: images
+
+- - -
+
+[[macOS]]
+== macOS
+
+On macOS we highly recommend to use http://brew.sh[`brew`] to manage
+software installations.
+
+=== Install the Tools
+
+==== http://brew.sh[brew]
+
+[source, bash]
+----
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+----
+
+==== https://git-scm.com/[git]
+
+[source, bash]
+----
+brew install git
+----
+
+==== https://docker.com[docker]
+
+[source, bash]
+----
+brew install docker
+----
+
+===== check docker RAM settings
+Now we need to make sure that your docker vm has at least 8GB of RAM.
+
+In the menu bar on the top right corner should now be a docker icon. To adjust the
+memory settings you need to click on this icon:
+
+image::docker-icon-macOS.png[docker-icon]
+
+Now click on `Preferences...`. You should see the following window:
+
+image::docker-pref-macOS.png[docker preferences]
+
+Here you should increase the Memory with the slider to at least 8GB.
+Please click on `Apply & Restart` to apply the settings. Finally you
+can close the window.
+
+- - -
