@@ -7,7 +7,7 @@
 On macOS we highly recommend to use http://brew.sh[`brew`] to manage
 software installations.
 
-=== Install the Tools
+=== Install The Tools
 
 ==== http://brew.sh[brew]
 [source, bash]
