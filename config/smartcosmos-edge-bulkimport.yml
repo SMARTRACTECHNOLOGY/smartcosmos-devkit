@@ -1,0 +1,11 @@
+smartcosmos:
+  edge:
+    bulk-import:
+      read-timeout: 2500
+      connect-timeout: 1500
+      thingsAddress: ${smartcosmos.service.edge-things.address}
+      relationshipsAddress: ${smartcosmos.service.ext-relationships.address}
+
+logging:
+  level:
+    ROOT: INFO
