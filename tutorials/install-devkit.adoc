@@ -22,3 +22,8 @@ execute the following:
 ----
 ./start
 ----
+
+== Next Steps
+
+Now that you have a running DevKit you may follow
+link:gettings-started.adoc[other getting started guides].
