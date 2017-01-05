@@ -117,7 +117,7 @@ curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${tok
 == Files in this Tutorial
 
 * *BULKIMPORT.adoc* - this file
-* *createSampleData.sh* - bash script to create a new tenant and populate it with data
-* *addSampleData.sh* - bash script to log in into an existing tenant and add more data
+* *createSampleData* - bash script to create a new tenant and populate it with data
+* *addSampleData* - bash script to log in into an existing tenant and add more data
 * *createTenant.json* - example JSON which defines the new tenant
 * *bulkimport.json* - example JSON which defines new Things, Metadata and Relationships to import
