@@ -1,14 +1,13 @@
 #!/bin/bash
 
 ################################################################################
-# This script initializes the SMART COSMOS Devkit with initial sample data
+# This script adds additional sample data to the SMART COSMOS Devkit
 #
 # To achieve this, following steps will be done:
-# 1. Create a new tenant and first (as defined in *createTenant.json*)
-# 2. Request a new JWT token for the newly created user
-# 3. Import Things, Metadata and Relationships (as defined in *bulkimport.json*)
+# 1. Request a new JWT token for the given user and password
+# 2. Import Things, Metadata and Relationships (as defined in *bulkimport.json*)
 #
-# In addition to the devkit, the script requires python and cURL to work.
+# Usage: ./addSampleData <username> <password>
 ################################################################################
 
 set -e
@@ -37,16 +36,8 @@ devkitHost="http://localhost:8080"
 clientKey="smartcosmosservice"
 clientSecret="9HhnNDhfGEXfNEn6"
 
-# create new tenant, then extract username and password from the response
-respTenant=$(curl -sS -X POST -H "Content-Type: application/json" -d "$(cat createTenant.json)" "${devkitHost}/tenants")
-
-if [[ ${respTenant} == "" ]]; then
-  echo "Error creating new tenant."
-  exit
-fi
-
-tenantUsername=$(jsonGetSubValue ${respTenant} "admin" "username")
-tenantPassword=$(jsonGetSubValue ${respTenant} "admin" "password")
+tenantUsername=$1
+tenantPassword=$2
 
 echo " === User Credentials === "
 echo "Username: ${tenantUsername}"
