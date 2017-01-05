@@ -1,5 +1,15 @@
 #!/bin/bash
+
+################################################################################
+# This script initializes the SMART COSMOS Devkit with initial sample data
 #
+# To achieve this, following steps will be done:
+# 1. Create a new tenant and first (as defined in *createTenant.json*)
+# 2. Request a new JWT token for the newly created user
+# 3. Import Things, Metadata and Relationships (as defined in *bulkimport.json*)
+#
+# In addition to the devkit, the script requires python and cURL to work.
+################################################################################
 
 set -e
 
@@ -20,13 +30,23 @@ function jsonGetSubValue() {
     echo $(echo ${json} | python -c "${pythonScript}")
 }
 
+# define the SMART COSMOS DevKit instance
+devkitHost="http://localhost:8080"
+
+# define the client credentials for OAuth
+clientKey="smartcosmosservice"
+clientSecret="9HhnNDhfGEXfNEn6"
+
 # create new tenant, then extract username and password from the response
-#respTenant=$curl -X POST -H "Content-Type: application/json" -d '{"active": true, "name": "Nervous Terrible Theory", "username": "finger@blood.com"}' "http://localhost:8080/tenants")
-#respTenant=$(curl -sS -X POST -H "Content-Type: application/json" -d "$(cat createTenant.json)" "http://localhost:8080/tenants")
+respTenant=$(curl -sS -X POST -H "Content-Type: application/json" -d "$(cat createTenant.json)" "${devkitHost}/tenants")
 
-respTenant=$(cat respTenant.json)
+if [[ ${respTenant} == "" ]]; then
+  echo "Error creating new tenant."
+  exit
+fi
 
-echo ${respTenant}
+#respTenant=$(cat respTenant.json)
+#echo ${respTenant}
 
 tenantUsername=$(jsonGetSubValue ${respTenant} "admin" "username")
 tenantPassword=$(jsonGetSubValue ${respTenant} "admin" "password")
@@ -36,14 +56,14 @@ echo ${tenantUsername}
 echo ${tenantPassword}
 
 # acquire authentication token
-res=$(curl -sS -X POST -H "Content-Type: application/json" -H "Authorization: Basic c21hcnRjb3Ntb3NzZXJ2aWNlOjlIaG5ORGhmR0VYZk5FbjY=" "http://localhost:8080/oauth/token?grant_type=password&scope=read&username=$tenantUsername&password=$tenantPassword")
-token=$(jsonGetValue ${res} "access_token")
+respToken=$(curl -sS -X POST -H "Content-Type: application/json" --basic -u ${clientKey}:${clientSecret} "${devkitHost}/oauth/token?grant_type=password&scope=read&username=${tenantUsername}&password=${tenantPassword}")
+token=$(jsonGetValue ${respToken} "access_token")
 
 echo " === JWT Token === "
 echo ${token}
 
 # send bulk import
-respImport=$(curl -sS -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $token" -d "$(cat bulkimport.json)" "http://localhost:8080/bulkimport/")
+respImport=$(curl -sS -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${token}" -d "$(cat bulkimport.json)" "${devkitHost}/bulkimport/")
 
 echo " === Import result === "
 echo ${respImport}
