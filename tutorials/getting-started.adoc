@@ -10,3 +10,8 @@ Please choose the matching platform of your working machine:
 
 == TODO
 Further tutorials should be listed here as well.
+
+
+== Next Steps
+Now that you have an understanding on how to operate and use
+the DevKit you may follow link:../README.adoc#nextSteps[the next steps].
