@@ -90,7 +90,7 @@ $ docker-compose up -d mysql zookeeper kafka
 ----
  * SMART COSMOS Support Mechanisms
 ----
-$ docker-compose up -d config-server edge-user-devkit user-details-devkit auth-server events ui
+$ docker-compose up -d config-server edge-user-devkit user-details-devkit auth-server events
 ----
  * SMART COSMOS Core Services
 ----
@@ -131,13 +131,12 @@ smartcosmosdevkit_ext-things_1            ./entrypoint.sh /opt/smart ...   Up   
 smartcosmosdevkit_gateway_1               ./entrypoint.sh /opt/smart ...   Up      0.0.0.0:8080->8080/tcp
 smartcosmosdevkit_kafka_1                 /start.sh                        Up      7203/tcp, 0.0.0.0:9092->9092/tcp
 smartcosmosdevkit_mysql_1                 docker-entrypoint.sh mysqld      Up      3306/tcp
-smartcosmosdevkit_ui_1                    npm start                        Up      0.0.0.0:8081->3001/tcp
 smartcosmosdevkit_user-details-devkit_1   ./entrypoint.sh /opt/smart ...   Up      8080/tcp
 smartcosmosdevkit_zookeeper_1             /opt/zookeeper/bin/zkServe ...   Up      0.0.0.0:2181->2181/tcp, 2888/tcp, 3888/tcp
 
 ----
 
-At this point all of the services are successfully running, and you can begin hitting the REST API over http://localhost:8080 (through https://curl.haxx.se/[curl] or https://www.getpostman.com/[Postman]) and visiting the DevKit UI at http://localhost:8081 with https://www.google.com/chrome/browser/desktop/[Google Chrome] or https://www.mozilla.org/en-US/firefox/new/[Firefox].
+At this point all of the services are successfully running, and you can begin hitting the REST API over http://localhost:8080 (through https://curl.haxx.se/[curl] or https://www.getpostman.com/[Postman]).
 
 === Scaling
 
