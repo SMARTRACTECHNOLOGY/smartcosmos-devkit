@@ -14,6 +14,24 @@ cd smartcosmos-devkit
 [[startDevKit]]
 == Start The DevKit
 
+To enable you to access each service of the DevKit individually and not just
+through the `gateway` service we forward all services to a specific
+port on `127.0.0.1`. Before you start the DevKit make sure that
+you have no other application or service running that is using one of these
+ports:
+
+* 2181
+* 3306
+* 7777
+* 8080 - 8081
+* 8888
+* 9092
+* 9999
+* 45012
+* 45336 - 45037
+* 45369 - 45371
+* 50593 - 50594
+
 To start the DevKit we provide a script which will help you to get the DevKit
 up and running. You may also use `docker-compose` directly
 to start all the services.
