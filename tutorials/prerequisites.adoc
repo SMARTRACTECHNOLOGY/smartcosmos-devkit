@@ -27,8 +27,8 @@ brew install git
 brew install docker
 ----
 
-=== Check Docker RAM Settings
-Please make sure that your docker VM has at least 8GB of RAM.
+=== Check Docker Memory Settings
+Please make sure that your docker VM has at least 8GB of Memory.
 
 In the menu bar on the top right corner should now be a docker icon. To adjust the
 memory settings you need to click on this icon:
