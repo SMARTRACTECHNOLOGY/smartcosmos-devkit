@@ -18,7 +18,7 @@ To start the DevKit we provide a script which will help you to get the DevKit
 up and running. You may also use `docker-compose` directly
 to start all the services.
 
-To keep things simple we will use the start script. All you need to do is
+To keep things simple we will use the start script. All you need to do is to
 execute the following:
 
 [source,bash]
