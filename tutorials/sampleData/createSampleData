@@ -56,8 +56,9 @@ echo "Password: ${tenantPassword}"
 respToken=$(curl -sS -X POST -H "Content-Type: application/json" --basic -u ${clientKey}:${clientSecret} "${devkitHost}/oauth/token?grant_type=password&scope=read&username=${tenantUsername}&password=${tenantPassword}")
 token=$(jsonGetValue ${respToken} "access_token")
 
-echo " === JWT Token === "
-echo ${token}
+# output JWT token (uncomment the next 2 lines to output the JWT token for debugging)
+#echo " === JWT Token === "
+#echo ${token}
 
 # send bulk import
 respImport=$(curl -sS -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${token}" -d "$(cat bulkimport.json)" "${devkitHost}/bulkimport/")
