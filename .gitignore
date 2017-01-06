@@ -1,1 +1,7 @@
 /README.pdf
+
+# IntelliJ IDE
+*.ipr
+*.iml
+.idea
+
