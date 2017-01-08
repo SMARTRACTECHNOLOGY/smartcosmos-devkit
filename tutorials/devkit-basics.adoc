@@ -1,0 +1,49 @@
+:Author: SMART COSMOS Development Team
+:Email: api@smartrac-group.com
+:Date: 6 January 2017
+:Revision: 3.0.1
+:imagesdir: images
+
+= Objects v3 Basics Tutorial
+
+This tutorial helps you get started with the Objects v3 DevKit. We'll describe the pieces of the DevKit and show
+you how to use the APIs with working examples.
+
+== Install the DevKit
+
+To get started with the Objects v3 DevKit refer to the link:getting-started.adoc[Getting Started] guide.
+
+== Running the Postman Objects v3 DevKit Tutorial
+
+We use link:https://www.getpostman.com/[Postman] to do much of the testing and development on our API. Postman is a GUI platform designed to make testing and development of your API easier.  For more information about Postman go to their
+website at link:https://www.getpostman.com[https://www.getpostman.com].
+
+In order to use our public collection link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS Objects v3 DevKit Tutorial]
+you will need to have an link:https://app.getpostman.com/signup?redirect=web[account on Postman] and link:https://www.getpostman.com/apps:[Postman apps] installed. The
+link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS Objects v3 DevKit Tutorial] is a public Postman collection that can be
+used to exercise the DevKit API and familiarize yourself with the API.
+
+== Run the SMART COSMOS Objects v3 DevKit Postman Collection
+
+. Start the DevKit, see link:install-devkit.adoc#start-the-devkit[Getting Started].
+. Sign into link:https://www.getpostman.com/[Postman].
+. Open the link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS Objects v3 DevKit Tutorial].
+. Select the *_Run in Postman_* button. +
+image::run-in-postman.png[Postman webapp]
+. This will download the collection and the corresponding environment template, _SMART COSMOS Objects DevKit Environment_ into the Postman app.
+
+Now you can start running against your locally running DevKit.
+
+=== Running All the Requests
+
+You can begin testing by running all
+
+=== Running Requests Individually
+
+
+= Ready to Go!
+
+By now we hope you have a much deeper understanding of how the Objects v3 DevKit API works.  Be sure to check back frequently or when you have questions.  The Postman
+collection is connected directly to our development team and is updated every time we add new features and capabilities.
+
+For detailed information on our API see our link:https://api.smartcosmos.net/home/index.html[API Documentation] and the link:https://devkit.smartcosmos.net[DevKit website].
