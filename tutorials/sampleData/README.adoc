@@ -124,7 +124,7 @@ Store the final import data into a JSON file, then post it to the bulk import en
 
 [source, bash]
 ----
-$ token="eyJhbGci..." (it is quite long)
+$ token="eyJhbGci..." # (it is quite long)
 
 $ curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${token}" \ 
        -d "$(cat bulkimport.json)" \ 
