@@ -31,13 +31,13 @@ The response contains the URN of the new tenant, the first user with the Admin r
 [source, json]
 ----
 {
-  "urn":"urn:tenant:uuid:ff002e1e-31c7-4153-a322-d024eb991748",
+  "urn": "urn:tenant:uuid:ff002e1e-31c7-4153-a322-d024eb991748",
   "admin": {
-    "urn":"urn:user:uuid:2e094c7c-52fe-4dbb-8954-2625171520f8",
-    "username":"waldo@example.com",
-    "password":"lajNVdjZtCEb",
-    "roles":["Admin"],
-    "tenantUrn":"urn:user:uuid:ff002e1e-31c7-4153-a322-d024eb991748"
+    "urn": "urn:user:uuid:2e094c7c-52fe-4dbb-8954-2625171520f8",
+    "username": "waldo@example.com",
+    "password": "lajNVdjZtCEb",
+    "roles": ["Admin"],
+    "tenantUrn": "urn:user:uuid:ff002e1e-31c7-4153-a322-d024eb991748"
   }
 }
 ----
@@ -92,13 +92,13 @@ To import this structure into the Devkit, an import JSON will be generated, whic
 {
   "things": [
     {
-      "type":"Person",
-      "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000001",
-      "name":"John"
+      "type": "Person",
+      "urn": "urn:thing:uuid:12345678-1234-5678-9abc-000000000001",
+      "name": "John"
     },
     {
-      "type":"Vehicle",
-      "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000004",
+      "type": "Vehicle",
+      "urn": "urn:thing:uuid:12345678-1234-5678-9abc-000000000004",
       "manufacturer": "Toyota",
       "model": "Pickup Truck"
     }
@@ -106,14 +106,14 @@ To import this structure into the Devkit, an import JSON will be generated, whic
   "relationships": [
     {
       "source": {
-        "type":"Person",
-        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000001"
+        "type": "Person",
+        "urn": "urn:thing:uuid:12345678-1234-5678-9abc-000000000001"
       },
       "target": {
-        "type":"Vehicle",
-        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000004"
+        "type": "Vehicle",
+        "urn": "urn:thing:uuid:12345678-1234-5678-9abc-000000000004"
       },
-      "relationshipType":"owns"
+      "relationshipType": "owns"
     }
   ]  
 }
