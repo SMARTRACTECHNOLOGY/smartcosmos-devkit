@@ -92,17 +92,21 @@ tests many of them will fail and your results will look like the following;
 
 image::postman-collection-run-failure.png[title="Postman Collection Run - Failure", alt="Postman Collection Run - Failure"]
 
+
 This is usually because parts of the system are lazily initialized and require an initial attempt to start properly.
 Retry the collection run by clicking the *Retry* button.
 
 image::postman-collection-run-retry.png[title="Postman Collection Run - Retry", alt="Postman Collection Run - Retry"]
 
+
 Subsequent attempts to run the test requests should result in success as shown below.
 
 image::postman-collection-run-success.png[title="Postman Collection Run - Success", alt="Postman Collection Run - Success"]
 
-Wether success or failure the results shown in the Postman Collection Runner can provide you with a
-lot of detailed information about each request.  Including URL, HTTP verb, parameters and response details.
+
+Whether success or failure, the results shown in the Postman Collection Runner
+can provide you with a lot of detailed information about each request.
+Including URL, HTTP verb, parameters and response details.
 
 If you continue to encounter problems refer to link:troubleshooting.adoc:[Troubleshooting^].
 
