@@ -13,7 +13,7 @@ link:prerequisites.adoc[installed all the prerequisites].
 
 To enable you to access each service of the DevKit individually and not just
 through the `gateway` service we forward all services to a specific
-port on `127.0.0.1`. Before you start the DevKit make sure that
+port. Before you start the DevKit make sure that
 you have no other application or service running that is using one of these
 ports:
 
