@@ -1,37 +1,53 @@
 = Prerequisites
 :imagesdir: images
+:experimental:
 
 [[macOS]]
 == macOS
 
-On macOS we highly recommend to use http://brew.sh[`brew`] to manage
+On macOS we highly recommend to use http://brew.sh[`Homebrew`] to manage
 software installations.
 
-=== Install The Tools
+=== Install the Tools
 
-==== http://brew.sh[brew]
-[source, bash]
-----
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-----
+==== http://brew.sh[Homebrew]
+
+ $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+Now you need to enable https://caskroom.github.io/[*Homebrew Cask*] by running:
+
+ $ brew tap caskroom/cask
+
+This enables brew to use the `cask` subcommand which
+allows you to install binary Applications.
 
 ==== https://git-scm.com/[git]
-[source, bash]
-----
-brew install git
-----
+
+ $ brew install git
 
 ==== https://docker.com[docker]
-[source, bash]
-----
-brew install docker
-----
+
+ $ brew cask install docker
+
+=== Start the Docker Engine
+If you installed docker the next step is to start
+the `docker-engine`. To do this hit kbd:[cmd+space] to open
+the Spotlight search, and enter
+`docker`. Start the docker Application by hitting kbd:[Enter] after
+Spotlight found the `docker` Application.
+Now follow the instructions given by the docker start
+dialog.
+
+Docker will now automatically start when you log in. If you
+prefer to start it manually you
+can disable this behavior in the docker preferences. The preferences dialog can be reached
+by clicking on the docker menu bar icon.
 
 === Check Docker Memory Settings
-Please make sure that your docker VM has at least 8GB of Memory.
+Please make sure that your docker VM has at least 5GB of Memory.
 
-In the menu bar on the top right corner should now be a docker icon. To adjust the
-memory settings you need to click on this icon:
+To adjust the
+memory settings you need to click on the docker menu bar icon:
 
 image::docker-icon-macOS.png[docker-icon]
 
@@ -39,34 +55,32 @@ Now click on `Preferences...`. You should see the following window:
 
 image::docker-pref-macOS.png[docker preferences]
 
-Here you should increase the Memory with the slider to at least 8GB.
-Please click on `Apply & Restart` to apply the settings. Finally you
+Here you should increase the Memory with the slider to at least 5GB.
+Please click on the btn:[Apply & Restart] button to
+apply the settings. Finally you
 can close the window.
 
-=== Install The DevKit
+=== Install the DevKit
 
 Please follow link:install-devkit.adoc[the DevKit install instructions].
 
 [[linux]]
 == GNU/Linux
 
-=== Install The Tools
+=== Install the Tools
 
 ==== https://git-scm.com/[git]
 Install git with the package manager. E.g. on Ubuntu with:
-[source, bash]
-----
-apt-get install git
-----
+
+ $ apt-get install git
 
 ==== https://docker.com[docker]
 Please follow
-https://docs.docker.com/engine/installation/linux/[the official installation guide ]
+https://docs.docker.com/engine/installation/linux/[the official installation guide]
 to install docker on a GNU/Linux system.
 
 Make sure that you can use docker without sudo.
 
-
-=== Install The DevKit
+=== Install the DevKit
 
 Please follow link:install-devkit.adoc[the DevKit install instructions].

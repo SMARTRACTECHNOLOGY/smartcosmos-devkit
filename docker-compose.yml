@@ -9,7 +9,7 @@ services:
       CONFIG_SEARCH_LOCATIONS: file:/opt/smartcosmos/config
       ENCRYPT_KEY: 'RD@BIv2AhuFIAmKo'
     ports:
-      - "127.0.0.1:8888:8888"
+      - "8888:8888"
     networks:
       - platform-services
     volumes:
@@ -18,7 +18,7 @@ services:
   gateway:
     image: smartcosmos/gateway
     ports:
-      - "127.0.0.1:8080:8080"
+      - "8080:8080"
     depends_on:
       - config-server
     networks:
@@ -30,7 +30,7 @@ services:
     #environment:
       #SPRING_CONFIG_LOCATION: 'file:/opt/smartcosmos/config/application.yml, file:/opt/smartcosmos/config/smartcosmos-auth-server.yml'
     ports:
-      - "127.0.0.1:9999:8080"
+      - "9999:8080"
     depends_on:
       - config-server
     networks:
@@ -41,7 +41,7 @@ services:
   edge-user-devkit:
     image: smartcosmos/edge-user-devkit
     ports:
-      - "127.0.0.1:45371:8080"
+      - "45371:8080"
     depends_on:
       - config-server
       - mysql
@@ -51,7 +51,7 @@ services:
   user-details-devkit:
     image: smartcosmos/user-details-devkit
     ports:
-      - "127.0.0.1:7777:8080"
+      - "7777:8080"
     depends_on:
       - config-server
       - mysql
@@ -61,7 +61,7 @@ services:
   zookeeper:
     image: jplock/zookeeper:3.4.6
     ports:
-      - "127.0.0.1:2181:2181"
+      - "2181:2181"
     networks:
       - platform-services
 
@@ -80,7 +80,7 @@ services:
   events:
     image: smartcosmos/events
     ports:
-      - "127.0.0.1:45012:8080"
+      - "45012:8080"
     depends_on:
      - config-server
      - kafka
@@ -90,7 +90,7 @@ services:
   edge-bulkimport:
     image: smartcosmos/edge-bulkimport
     ports:
-      - "127.0.0.1:50593:8080"
+      - "50593:8080"
     depends_on:
       - config-server
     networks:
@@ -99,7 +99,7 @@ services:
   edge-things:
     image: smartcosmos/edge-things
     ports:
-      - "127.0.0.1:50594:8080"
+      - "50594:8080"
     depends_on:
       - config-server
     networks:
@@ -108,7 +108,7 @@ services:
   ext-things:
     image: smartcosmos/ext-things
     ports:
-      - "127.0.0.1:45336:8080"
+      - "45336:8080"
     depends_on:
       - config-server
       - mysql
@@ -118,7 +118,7 @@ services:
   ext-metadata:
     image: smartcosmos/ext-metadata
     ports:
-      - "127.0.0.1:45037:8080"
+      - "45037:8080"
     depends_on:
       - config-server
       - mysql
@@ -128,7 +128,7 @@ services:
   ext-relationships:
     image: smartcosmos/ext-relationships
     ports:
-      - "127.0.0.1:45369:8080"
+      - "45369:8080"
     depends_on:
       - config-server
       - mysql
@@ -138,7 +138,7 @@ services:
   mysql:
     image: mariadb:10.1.17
     ports:
-      - "127.0.0.1:3306:3306"
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: devkit
@@ -146,18 +146,6 @@ services:
       MYSQL_PASSWORD: dev
     networks:
        - platform-services
-
-  ui:
-    image: smartcosmos/ui-devkit
-    ports:
-      - "127.0.0.1:8081:3001"
-    environment:
-      SERVER_PORT: 3001
-      GATEWAY_URL: http://gateway:8080
-      AUTH_URL: http://auth-server:8080
-    networks:
-      - devkit-gateway
-      - platform-services
 
 networks:
   devkit-gateway:

@@ -1,0 +1,98 @@
+= DevKit On Single Instance in AWS
+
+This document guides you through the process of getting the SMART COSMOS DevKit
+running on an AWS instance.
+For that purpose you need to go through the following steps:
+
+. write local aws client configuration file
+. use `docker-machine` to start an instance with a docker engine
+
+If you have done these steps you can deploy the DevKit as you would on
+your local system. This is possible because the docker engine is a REST service.
+The `docker` command line client will communicate with the remote engine.
+
+[[awsConfig]]
+== Step 1. Write Local AWS Configuration
+
+
+Create an AWS credentials file at
+`$HOME/.aws/credentials`. It should contain the key_id and access_key
+of the user you want to use to create the EC2 instance. Make sure that
+user is allowed to create instances.
+[source]
+----
+[default]
+aws_access_key_id = AKID1234567890
+aws_secret_access_key = MY-SECRET-KEY
+----
+
+NOTE: This step is optional. You may also enter your AWS credentials on every
+`docker-compose` command you execute. If you want to set your credentials on the
+command line follow the
+https://docs.docker.com/machine/examples/aws/#/step-2-use-machine-to-create-the-instance[official docker documentation].
+
+== Step 2. Start A Remote AWS EC2 Instance
+
+Run `docker-machine` with the `amazonec2` driver.
+
+If you have configured your AWS credentials (as described in <<awsConfig>>) you can
+now run:
+[source, bash]
+----
+$ docker-machine create --driver amazonec2 devkit-on-aws
+----
+
+By default the instance is created in `us-east-1`.
+You can also specify the *region* by using the flag `--amazonec2-region`:
+[source, bash]
+----
+$ docker-machine create --driver amazonec2 --amazonec2-region eu-west-1 devkit-on-aws
+----
+
+There are more options for the `amazonec2` driver. Execute
+`docker-machine --driver amazonec2 --help` to get all the available options.
+
+
+Starting up the instance will take some time. It will:
+
+* create an EC2 instance
+* install Docker on the instance
+* setting up certificates for secure communication with the remote docker engine
+
+If you are getting any error consult the <<troubleshooting>> section.
+
+== Step 3. Connect Docker Command Line Tool To Remote Engine
+
+Now you need to configure that your docker command line client is using the
+newly created remote docker engine on the AWS EC2 instance:
+[source, bash]
+----
+$ eval $(docker-machine env docker-on-aws)
+----
+
+== Step 4. Start the DevKit
+If you successfully followed the previous step
+starting the DevKit does not differ from starting it on your local
+machine. Follow link:../install-devkit.adoc[the DevKit install tutorial].
+
+== Stopping/ Removing The Instance
+
+To stop the instance execute:
+[source, bash]
+----
+$ docker-machine stop devkit-on-aws
+----
+
+To permanently remove the instance run:
+[source, bash]
+----
+$ docker-machine rm devkit-on-aws
+----
+
+
+[[troubleshooting]]
+== Troubleshooting
+
+=== Error validating certificates on `docker-compose create`
+
+TODO: What to do to solve that... 😔
