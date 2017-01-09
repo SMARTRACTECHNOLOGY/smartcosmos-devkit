@@ -10,7 +10,7 @@ These types of data are required for minimal functionality:
 
 | Tenant | A tenant represents an account or organization which holds all data belonging to it
 | User | A user owns credentials which are used to log in to a tenant. The first initial user is created together with the tenant
-| Thing | Things represent physical objects (a car)
+| Thing | Things represent objects or persons (a car)
 | Metadata | Metadata represent properties of these things (the car is blue)
 | Relationship | Relationships represent relations between things (this car belongs to Bob)
 |===
@@ -42,11 +42,12 @@ The response contains the URN of the new tenant, the first user with the Admin r
 }
 ----
 
-The password needs to be stored in a safe location, because it is required for further operations on this tenant and to create additional users.
+The password needs to be stored in a safe location, because it is required for further operations on this tenant, e.g., creating additional users or adding data.
 
 == Acquire an Access Token
 
-With the username and password known, the client requests an OAuth2 token, which is then used for all successive REST API calls.
+The client requests an OAuth 2 access token with the known username/password credentials returned at user (or tenant) creation.
+The access token is then used for all subsequent REST API calls.
 
 [source, bash]
 ----
@@ -85,7 +86,7 @@ We have a person and a car, where the person owns that car. The person and the c
 ----
 
 To import this structure into the Devkit, an import JSON will be generated, which contains 2 things with metadata and
-1 relationship. The thing's properties will be merged into the plain thing defined by type and urn to merge in the metadata:
+1 relationship. The things' properties will be merged into the plain thing defined by type and urn to merge in the metadata:
 
 [source, json]
 ----
