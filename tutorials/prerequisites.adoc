@@ -15,6 +15,15 @@ software installations.
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ----
 
+Now you need to enable https://caskroom.github.io/[*Homebrew Cask*] by running:
+[source, bash]
+----
+brew tap caskroom/cask
+----
+
+This enables brew to use the `cask` subcommand which
+allows you to install binary Applications.
+
 ==== https://git-scm.com/[git]
 [source, bash]
 ----
@@ -24,7 +33,6 @@ brew install git
 ==== https://docker.com[docker]
 [source, bash]
 ----
-brew tap caskroom/cask
 brew cask install docker
 ----
 
