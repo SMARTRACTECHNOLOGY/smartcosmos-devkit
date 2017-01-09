@@ -30,7 +30,7 @@ services:
     #environment:
       #SPRING_CONFIG_LOCATION: 'file:/opt/smartcosmos/config/application.yml, file:/opt/smartcosmos/config/smartcosmos-auth-server.yml'
     ports:
-      - "45300:8080"
+      - "9999:8080"
     depends_on:
       - config-server
     networks:
