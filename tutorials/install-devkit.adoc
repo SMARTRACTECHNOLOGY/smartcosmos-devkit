@@ -17,7 +17,7 @@ port.
 
 CAUTION: Before you start the DevKit ensure that
 no other application or service is listening on a
-port listed in the column *Forwarded Ports* in the xref:service-ports.adoc[List of Ports] table.
+port listed in the column *Forwarded Ports* in the link:service-ports.adoc[List of Ports] table.
 
 To start the DevKit we provide a script which will help you to get the DevKit
 up and running. You may also use `docker-compose` directly
