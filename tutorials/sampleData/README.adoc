@@ -4,24 +4,31 @@ To get started with the SMART COSMOS Devkit, the database needs to be populated 
 
 These types of data are required for minimal functionality:
 
-* Tenant: A tenant represents an account or organization which holds all data belonging to it.
-* User: An user owns credentials which are used to log on into the tenant. The first initial user is created together with the tenant.
-* Things: Things represent physical objects (a car)
-* Metadata: Metadata represent properties of these things (the car is blue)
-* Relationships: Relationships represent relations between things (this car belongs to Bob)
+.Data types
+|===
+| Type | Description
+
+| Tenant | A tenant represents an account or organization which holds all data belonging to it
+| User | A user owns credentials which are used to log in to a tenant. The first initial user is created together with the tenant
+| Thing | Things represent physical objects (a car)
+| Metadata | Metadata represent properties of these things (the car is blue)
+| Relationship | Relationships represent relations between things (this car belongs to Bob)
+|===
 
 == Create a Tenant
 
 To create the new tenant, the *name* of the organization and the *username* of the initial user shall be given:
 
-[source,bash]
+[source, bash]
 ----
-curl -X POST -H "Content-Type: application/json" -d '{"name": "Example Company", "username": "waldo@example.com"}' "http://localhost:8080/tenants"
+curl -X POST -H "Content-Type: application/json" \
+     -d '{"name": "Example Company", "username": "waldo@example.com"}' \
+     "http://localhost:8080/tenants"
 ----
 
 The response contains the URN of the new tenant, the first user with the Admin role and the initial password:
 
-[source,json]
+[source, json]
 ----
 {
   "urn":"urn:tenant:uuid:ff002e1e-31c7-4153-a322-d024eb991748",
@@ -41,25 +48,32 @@ The password needs to be stored in a safe location, because it is required for f
 
 With the username and password known, the client requests an OAuth2 token, which is then used for all successive REST API calls.
 
-[source,bash]
+[source, bash]
 ----
-curl -X POST -H "Content-Type: application/json" --basic -u "smartcosmosservice:9HhnNDhfGEXfNEn6" "http://localhost:8080/oauth/token?grant_type=password&scope=read&username=waldo@example.com&password=lajNVdjZtCEb"
+curl -X POST -H "Content-Type: application/json" \
+     --basic -u "smartcosmosservice:9HhnNDhfGEXfNEn6" \ 
+     "http://localhost:8080/oauth/token?grant_type=password&scope=read&username=waldo@example.com&password=lajNVdjZtCEb"
 ----
 
-The response contains the OAuth2 token in *access_token*.
+The response contains the OAuth2 token in `access_token`.
 
-== Construct the bulk import request
+== Construct the Bulk Import Request
 
 The bulk import request is a JSON body composed from two sections:
 
-* "things": a JSON array of things [T] with metadata [M]
-* "relationships": a JSON array of relationships [R] between the things defined above
+.Bulk Import Components
+|===
+| Name | Description
+
+| `things` | a JSON array of things [T] with metadata [M]
+| `relationships` | a JSON array of relationships [R] between the things defined above
+|===
 
 === Example
 
 We have a person and a car, where the person owns that car. The person and the car both have metadata properties:
 
-[source,text]
+[source, text]
 ----
 [T] Person -> [M] {"name": "John"}
  |
@@ -73,7 +87,7 @@ We have a person and a car, where the person owns that car. The person and the c
 To import this structure into the Devkit, an import JSON will be generated, which contains 2 things with metadata and
 1 relationship. The thing's properties will be merged into the plain thing defined by type and urn to merge in the metadata:
 
-[source,json]
+[source, json]
 ----
 {
   "things": [
@@ -107,20 +121,27 @@ To import this structure into the Devkit, an import JSON will be generated, whic
 
 Store the final import data into a JSON file, then post it to the bulk import endpoint. Don't forget to set the correct JWT token, e.g.:
 
-[source,bash]
+[source, bash]
 ----
 token="eyJhbGci..." (it is quite long)
 
-curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${token}" -d "$(cat bulkimport.json)" "http://localhost:8080/bulkimport/"
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${token}" \ 
+     -d "$(cat bulkimport.json)" \ 
+     "http://localhost:8080/bulkimport/"
 ----
 
 == Files in this Tutorial
 
-* *BULKIMPORT.adoc* - this file
-* *createSampleData* - bash script to create a new tenant and populate it with data
-* *addSampleData* - bash script to log in into an existing tenant and add more data
-* *createTenant.json* - example JSON which defines the new tenant
-* *bulkimport.json* - example JSON which defines new Things, Metadata and Relationships to import
+.Bulk Import Components
+|===
+| File Name | Description
+
+| *README.adoc* | this file
+| *createSampleData* | bash script to create a new tenant and populate it with data
+| *addSampleData* | bash script to log in into an existing tenant and add more data
+| *createTenant.json* | example JSON which defines the new tenant
+| *bulkimport.json* | example JSON which defines new Things, Metadata and Relationships to import
+|===
 
 == Tips and Tricks
 
