@@ -38,7 +38,7 @@ $ brew cask install docker
 
 === Start the Docker Engine
 If you have installed docker the next step is to start
-the docker-engine. To do this hit `cmd+space` to open
+the docker-engine. To do this hit <kbd>cmd+space</kbd> to open
 the Spotlight search, and enter
 `docker`. Start `docker` by hitting enter after
 Spotlight found the `docker` Application on you mac.
