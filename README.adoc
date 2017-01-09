@@ -56,7 +56,7 @@ https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutori
 
 == SMART COSMOS DevKit
 The DevKit is a composition of several standalone services which are
-communicating via REST. Each Services is running in its own container.
+communicating via REST. Each Service is running in its own container.
 To manage these service containers we are using https://docker.com[`docker`].
 
 IMPORTANT: You will need at least a basic understanding of docker for
