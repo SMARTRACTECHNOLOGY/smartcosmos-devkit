@@ -38,7 +38,7 @@ Spotlight found the `docker` Application.
 Now follow the instructions given by the docker start
 dialog.
 
-Docker will now automatically start when youlog in. If you
+Docker will now automatically start when you log in. If you
 prefer to start it manually you
 can disable this behavior in the docker preferences. The preferences dialog can be reached
 by clicking on the docker menu bar icon.
