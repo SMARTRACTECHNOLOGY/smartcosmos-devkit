@@ -7,8 +7,9 @@
 
 = SMART COSMOS Objects v3 Basics Tutorial
 
-This tutorial helps you get started with the Objects v3 DevKit. We'll describe the pieces of the DevKit and show
-you how to use the APIs with working examples.
+This tutorial helps you get started with the SMART COSMOS Objects v3 DevKit. We'll
+describe the pieces of the DevKit and show you how to use the APIs with working
+examples.
 
 :numbered:
 == Prerequisites
