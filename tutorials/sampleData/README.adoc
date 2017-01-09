@@ -21,9 +21,9 @@ To create the new tenant, the *name* of the organization and the *username* of t
 
 [source, bash]
 ----
-curl -X POST -H "Content-Type: application/json" \
-     -d '{"name": "Example Company", "username": "waldo@example.com"}' \
-     "http://localhost:8080/tenants"
+$ curl -X POST -H "Content-Type: application/json" \
+       -d '{"name": "Example Company", "username": "waldo@example.com"}' \
+       "http://localhost:8080/tenants"
 ----
 
 The response contains the URN of the new tenant, the first user with the Admin role and the initial password:
@@ -51,9 +51,9 @@ The access token is then used for all subsequent REST API calls.
 
 [source, bash]
 ----
-curl -X POST -H "Content-Type: application/json" \
-     --basic -u "smartcosmosservice:9HhnNDhfGEXfNEn6" \ 
-     "http://localhost:8080/oauth/token?grant_type=password&scope=read&username=waldo@example.com&password=lajNVdjZtCEb"
+$ curl -X POST -H "Content-Type: application/json" \
+       --basic -u "smartcosmosservice:9HhnNDhfGEXfNEn6" \ 
+       "http://localhost:8080/oauth/token?grant_type=password&scope=read&username=waldo@example.com&password=lajNVdjZtCEb"
 ----
 
 The response contains the OAuth2 token in `access_token`.
@@ -124,11 +124,11 @@ Store the final import data into a JSON file, then post it to the bulk import en
 
 [source, bash]
 ----
-token="eyJhbGci..." (it is quite long)
+$ token="eyJhbGci..." (it is quite long)
 
-curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${token}" \ 
-     -d "$(cat bulkimport.json)" \ 
-     "http://localhost:8080/bulkimport/"
+$ curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${token}" \ 
+       -d "$(cat bulkimport.json)" \ 
+       "http://localhost:8080/bulkimport/"
 ----
 
 == Files in this Tutorial
@@ -149,7 +149,7 @@ curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${tok
 The script *createSampleData* outputs the username and password of the newly created tenant. Store these credentials in a safe location. When the import fails or more data needs to be imported, run following command with the given credentials:
 [source,bash]
 ----
-./addSampleData <username> <password>
+$ ./addSampleData <username> <password>
 ----
 So it is not neccessary to create a new tenant in the case the createSampleData command fails after creating the tenant.
 
