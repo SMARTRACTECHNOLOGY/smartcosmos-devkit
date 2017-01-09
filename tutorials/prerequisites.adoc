@@ -38,7 +38,7 @@ Spotlight found the `docker` Application.
 Now follow the instructions given by the docker start
 dialog.
 
-If you started docker successful it should now automatically start on each reboot. If you
+Docker will now automatically start when youlog in. If you
 prefer to start it manually you
 can disable this behavior in the docker preferences. The preferences dialog can be reached
 by clicking on the docker menu bar icon.
@@ -46,8 +46,8 @@ by clicking on the docker menu bar icon.
 === Check Docker Memory Settings
 Please make sure that your docker VM has at least 5GB of Memory.
 
-In the menu bar on the top right corner should now be a docker icon. To adjust the
-memory settings you need to click on this icon:
+To adjust the
+memory settings you need to click on the docker menu bar icon:
 
 image::docker-icon-macOS.png[docker-icon]
 
