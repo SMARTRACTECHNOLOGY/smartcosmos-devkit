@@ -15,7 +15,7 @@ To enable you to access each service of the DevKit individually and not just
 through the `gateway` service we forward all services to a specific
 port.
 
-IMPORTANT: Before you start the DevKit make sure that
+CAUTION: Before you start the DevKit ensure that
 no other application or service is listening on a
 port listed in the column *Forwarded Ports* in the xref:service-ports.adoc[List of Ports] table.
 

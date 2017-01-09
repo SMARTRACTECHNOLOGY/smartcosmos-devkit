@@ -56,7 +56,8 @@ Now click on `Preferences...`. You should see the following window:
 image::docker-pref-macOS.png[docker preferences]
 
 Here you should increase the Memory with the slider to at least 5GB.
-Please click on `Apply & Restart` to apply the settings. Finally you
+Please click on the btn:[Apply & Restart] button to
+apply the settings. Finally you
 can close the window.
 
 === Install the DevKit
