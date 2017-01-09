@@ -1,49 +1,112 @@
+:title: SMART COSMOS Objects v3 Basics Tutorial
 :Author: SMART COSMOS Development Team
 :Email: api@smartrac-group.com
 :Date: 6 January 2017
 :Revision: 3.0.1
 :imagesdir: images
 
-= Objects v3 Basics Tutorial
+= SMART COSMOS Objects v3 Basics Tutorial
 
 This tutorial helps you get started with the Objects v3 DevKit. We'll describe the pieces of the DevKit and show
 you how to use the APIs with working examples.
 
-== Install the DevKit
+:numbered:
+== Prerequisites
+
+=== Install the DevKit
 
 To get started with the Objects v3 DevKit refer to the link:getting-started.adoc[Getting Started] guide.
 
-== Running the Postman Objects v3 DevKit Tutorial
+=== Install Postman
 
 We use link:https://www.getpostman.com/[Postman] to do much of the testing and development on our API. Postman is a GUI platform designed to make testing and development of your API easier.  For more information about Postman go to their
 website at link:https://www.getpostman.com[https://www.getpostman.com].
 
 In order to use our public collection link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS Objects v3 DevKit Tutorial]
-you will need to have an link:https://app.getpostman.com/signup?redirect=web[account on Postman] and link:https://www.getpostman.com/apps:[Postman apps] installed. The
-link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS Objects v3 DevKit Tutorial] is a public Postman collection that can be
-used to exercise the DevKit API and familiarize yourself with the API.
+you will need to have an link:https://app.getpostman.com/signup?redirect=web[account on Postman] and link:https://www.getpostman.com/apps:[Postman apps] installed.
 
 == Run the SMART COSMOS Objects v3 DevKit Postman Collection
+
+The
+link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS Objects v3 DevKit Tutorial] is a public Postman collection that can be
+used to exercise the DevKit API and familiarize yourself with the API.
 
 . Start the DevKit, see link:install-devkit.adoc#start-the-devkit[Getting Started].
 . Sign into link:https://www.getpostman.com/[Postman].
 . Open the link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS Objects v3 DevKit Tutorial].
-. Select the *_Run in Postman_* button. +
-image::run-in-postman.png[Postman webapp]
+. Select the *_Run in Postman_* button.
++
+image::run-in-postman.png[title="Postman Collection Run Button", alt="Postman webapp"]
+
 . This will download the collection and the corresponding environment template, _SMART COSMOS Objects DevKit Environment_ into the Postman app.
 
 Now you can start running against your locally running DevKit.
 
-=== Running All the Requests
+=== Running All of the Requests Automatically
 
-You can begin testing by running all
+==== What Will Happen
+
+You can begin testing by running all the requests against your running DevKit. Before
+you can begin to use the SMART COSMOS Objects v3 system you will need to have a valid, active
+tenant.  SMART COSMOS Objects is designed to be a multi-tenant system where each
+account operates within its own security realm in order to keep one account’s data separate from another
+account’s data. The security realm is established based on the tenant registration or creation.
+
+Tenant registration is a public endpoint and does not require authentication. All other endpoints require a
+valid authentication.  The _Create Tenant_ API is called first to create the tenant.  This request generates
+random values for the administrator user name and for the tenant name and uses them to create a tenant.
+These values are then saved into the environment and each subsequent request is executed in order.
+
+. Open the collection by clicking the '>' next to the collection name. This will display some documentation about the test collection and a *Run* button will be displayed.
++
+image::postman-run-all-begin.png[title="Open Page to Run All Requests Locally in Postman", alt="Open Page to Run All Requests Against a Local DevKit"]
+
+. Click the *Run* button to begin executing the tests in order.
++
+image::postman-run-all.png[title="Run All Requests Locally in Postman", alt="Run All Requests Against a Local DevKit"]
+
+==== View the Results
 
 === Running Requests Individually
 
+Documentation about each request is available in the Postman collection.  This documentation can be viewed by
+selecting the small triangle next to the request title as shown in the following diagram.
 
-= Ready to Go!
+image::postman-request-documentation.png[title="Request Documentation in Postman", alt="Request Documentation in Postman"]
+
+When running the tests individually you must always make sure you have a current authentication token.  This token can
+be acquired by running the _Acquire Authentication Token_ test.
+
+Inspect the properties of the request you wish to tun including the URL, request type (e.g. POST),
+the headers, body, pre-request script and tests.  Tests are executed on completion of the request
+and are often used to set variables into the environment for other request to use.
+
+==== What Will Happen
+
+Before you can begin to use the SMART COSMOS Objects v3 system you will need to create a tenant.  SMART COSMOS Objects is designed to be
+a multi-tenant system where each account operates within its own security realm in order to keep one account’s data separate from another
+account’s data. The security realm is established based on the tenant registration or creation.
+
+==== Create Tenant
+Tenant registration is a public endpoint and does not require authentication. All other endpoints require a
+valid authentication.  The _Create Tenant_ API is called first to create the tenant.  This request generates a
+random user name for the administrator and the tenant name and uses them to create a tenant.  These values are then saved into
+the environment.
+
+image::postman-environment-after-create-tenant.png[title="Postman Environment Settings After Create Tenant", alt="Postman Environment Settings After Create Tenant"]
+
+==== Acquire Authentication Token
+
+== Ready to Go!
 
 By now we hope you have a much deeper understanding of how the Objects v3 DevKit API works.  Be sure to check back frequently or when you have questions.  The Postman
 collection is connected directly to our development team and is updated every time we add new features and capabilities.
 
 For detailed information on our API see our link:https://api.smartcosmos.net/home/index.html[API Documentation] and the link:https://devkit.smartcosmos.net[DevKit website].
+
+
+// [appendix]
+// Postman Variables
+// -----------------
+//
+// include::postman-variables.adoc[]
