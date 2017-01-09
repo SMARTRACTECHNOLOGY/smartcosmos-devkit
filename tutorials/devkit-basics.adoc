@@ -134,9 +134,3 @@ For detailed information on our API see our link:https://api.smartcosmos.net/hom
 
 For more detailed information on how Postman works please refer to the
 link:https://www.getpostman.com/docs[Postman documentation].
-
-// [appendix]
-// Postman Variables
-// -----------------
-//
-// include::postman-variables.adoc[]
