@@ -12,13 +12,13 @@ software installations.
 ==== http://brew.sh[brew]
 [source, bash]
 ----
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ----
 
 Now you need to enable https://caskroom.github.io/[*Homebrew Cask*] by running:
 [source, bash]
 ----
-brew tap caskroom/cask
+$ brew tap caskroom/cask
 ----
 
 This enables brew to use the `cask` subcommand which
@@ -27,13 +27,13 @@ allows you to install binary Applications.
 ==== https://git-scm.com/[git]
 [source, bash]
 ----
-brew install git
+$ brew install git
 ----
 
 ==== https://docker.com[docker]
 [source, bash]
 ----
-brew cask install docker
+$ brew cask install docker
 ----
 
 === Start the Docker Engine
@@ -74,12 +74,12 @@ Please follow link:install-devkit.adoc[the DevKit install instructions].
 Install git with the package manager. E.g. on Ubuntu with:
 [source, bash]
 ----
-apt-get install git
+$ apt-get install git
 ----
 
 ==== https://docker.com[docker]
 Please follow
-https://docs.docker.com/engine/installation/linux/[the official installation guide ]
+https://docs.docker.com/engine/installation/linux/[the official installation guide]
 to install docker on a GNU/Linux system.
 
 Make sure that you can use docker without sudo.

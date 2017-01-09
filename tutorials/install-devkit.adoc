@@ -7,8 +7,8 @@ link:prerequisites.adoc[installed all the prerequisites].
 
 [source,bash]
 ----
-git clone https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit.git
-cd smartcosmos-devkit
+$ git clone https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit.git
+$ cd smartcosmos-devkit
 ----
 
 [[startDevKit]]
@@ -41,7 +41,7 @@ execute the following:
 
 [source,bash]
 ----
-./start
+$ ./start
 ----
 
 == Next Steps
