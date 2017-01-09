@@ -76,11 +76,12 @@ These values are then saved into the environment and each subsequent request is 
 +
 image::postman-run-all-begin.png[title="Open Page to Run All Requests Locally in Postman", alt="Open Page to Run All Requests Against a Local DevKit"]
 
-. Click the *Run* button to begin executing the tests in order.
+. Click the *Run* button to begin executing the tests in order.  This will open
+the collection in the _Postman Collection Runner_.
 +
 image::postman-run-all.png[title="Run All Requests Locally in Postman", alt="Run All Requests Against a Local DevKit"]
 
-. Click the *Start Run* button in the Collection Runner.
+. Click the *Start Run* button in the _Postman Collection Runner_.
 
 image::postman-collection-runner.png[title="Run All Requests - Collection Runner", alt="Run All Requests - Collection Runner"]
 
