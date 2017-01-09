@@ -35,7 +35,7 @@ smartcosmos:
     auth-server:
       default: http://auth-server
       host: ${smartcosmos.host.address:${smartcosmos.service.auth-server.default}}
-      port: 45100
+      port: 9999
       address: ${smartcosmos.service.auth-server.host}:${smartcosmos.service.auth-server.port}
     config-server:
       default: http://config-server
@@ -55,7 +55,7 @@ smartcosmos:
     edge-user:
       default: http://edge-user
       host: ${smartcosmos.host.address:${smartcosmos.service.edge-user.default}}
-      port: 45101
+      port: 45371
       address: ${smartcosmos.service.edge-user.host}:${smartcosmos.service.edge-user.port}
     events:
       default: http://events
