@@ -1,4 +1,4 @@
-= Install The DevKit
+= Install the DevKit
 
 Before you are able to start the DevKit make sure you have
 link:prerequisites.adoc[installed all the prerequisites].
@@ -12,7 +12,7 @@ cd smartcosmos-devkit
 ----
 
 [[startDevKit]]
-== Start The DevKit
+== Start the DevKit
 
 To enable you to access each service of the DevKit individually and not just
 through the `gateway` service we forward all services to a specific

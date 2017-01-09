@@ -4,10 +4,10 @@
 [[macOS]]
 == macOS
 
-On macOS we highly recommend to use http://brew.sh[`brew`] to manage
+On macOS we highly recommend to use http://brew.sh[`Homebrew`] to manage
 software installations.
 
-=== Install The Tools
+=== Install the Tools
 
 ==== http://brew.sh[brew]
 [source, bash]
@@ -36,7 +36,7 @@ brew install git
 brew cask install docker
 ----
 
-=== Start The Docker Engine
+=== Start the Docker Engine
 If you have installed docker the next step is to start
 the docker-engine. To do this hit `cmd+space` to open
 the Spotlight search, and enter
@@ -61,14 +61,14 @@ Here you should increase the Memory with the slider to at least 8GB.
 Please click on `Apply & Restart` to apply the settings. Finally you
 can close the window.
 
-=== Install The DevKit
+=== Install the DevKit
 
 Please follow link:install-devkit.adoc[the DevKit install instructions].
 
 [[linux]]
 == GNU/Linux
 
-=== Install The Tools
+=== Install the Tools
 
 ==== https://git-scm.com/[git]
 Install git with the package manager. E.g. on Ubuntu with:
@@ -85,6 +85,6 @@ to install docker on a GNU/Linux system.
 Make sure that you can use docker without sudo.
 
 
-=== Install The DevKit
+=== Install the DevKit
 
 Please follow link:install-devkit.adoc[the DevKit install instructions].
