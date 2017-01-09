@@ -51,8 +51,9 @@ Now you can start sending requests to your locally running DevKit.
 
 === Request Documentation
 
-Documentation about each request is available in the Postman collection.  This documentation can be viewed by
-selecting the small triangle next to the request title as shown in the following diagram.
+Documentation about each request is available in the Postman collection.  This
+documentation can be viewed by selecting the request you are interested in and
+changing the small triangle next to the request title as shown in the following diagram.
 
 image::postman-request-documentation.png[title="Request Documentation in Postman", alt="Request Documentation in Postman"]
 
