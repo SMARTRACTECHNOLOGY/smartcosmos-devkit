@@ -38,13 +38,18 @@ $ brew cask install docker
 ----
 
 === Start the Docker Engine
-If you have installed docker the next step is to start
-the docker-engine. To do this hit kbd:[cmd+space] to open
+If you installed docker the next step is to start
+the `docker-engine`. To do this hit kbd:[cmd+space] to open
 the Spotlight search, and enter
-`docker`. Start `docker` by hitting enter after
-Spotlight found the `docker` Application on you mac.
-Follow the instructions given by the docker start
+`docker`. Start the docker Application by hitting kbd:[Enter] after
+Spotlight found the `docker` Application.
+Now follow the instructions given by the docker start
 dialog.
+
+If you started docker successful it should now automatically start on each reboot. If you
+prefer to start it manually you
+can disable this behavior in the docker preferences. The preferences dialog can be reached
+by clicking on the docker menu bar icon.
 
 === Check Docker Memory Settings
 Please make sure that your docker VM has at least 8GB of Memory.
