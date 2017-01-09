@@ -115,7 +115,7 @@ If you continue to encounter problems refer to link:troubleshooting.adoc:[Troubl
 When running the tests individually you must always make sure you have a current authentication token.  This token can
 be acquired by running the _Acquire Authentication Token_ test.
 
-Inspect the properties of the request you wish to tun including the URL, request type (e.g. POST),
+Inspect the properties of the request you wish to run including the URL, request type (e.g. POST),
 the headers, body, pre-request script and tests.  Tests are executed on completion of the request
 and are often used to set variables into the environment for other request to use.
 
