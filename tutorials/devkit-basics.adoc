@@ -4,9 +4,9 @@
 :Date: 6 January 2017
 :Revision: 3.0.1
 :imagesdir: images
-:linkattrs:
 
 = SMART COSMOS Objects v3 Basics Tutorial
+:linkattrs:
 
 This tutorial helps you get started with the SMART COSMOS Objects v3 DevKit. We'll
 describe the pieces of the DevKit and show you how to use the APIs with working
@@ -17,17 +17,20 @@ examples.
 
 === Install the DevKit
 
-To get started with the Objects v3 DevKit refer to the link:getting-started.adoc[Getting Started, window="getting-started"] guide.
+To get started with the Objects v3 DevKit refer to the link:getting-started.adoc[Getting Started^] guide.
 
 === Install Postman
 
-We use link:https://www.getpostman.com/[Postman, window="postman"] to do much of the testing and
+We use link:https://www.getpostman.com/[Postman^] to do much of the testing and
 development on our REST API. Postman is a GUI platform designed to make testing and
 development of your REST API easier.  For more information about Postman go to their
-website at link:https://www.getpostman.com[https://www.getpostman.com, window="postman"].
+website at link:https://www.getpostman.com[https://www.getpostman.com^].
 
-In order to use our public collection link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS Objects v3 DevKit Tutorial^]
-you will need to have an link:https://app.getpostman.com/signup?redirect=web[account on Postman] and link:https://www.getpostman.com/apps:[Postman apps^] installed.
+In order to use our public collection
+link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS Objects v3 DevKit Tutorial^]
+you will need to have an
+link:https://app.getpostman.com/signup?redirect=web[account on Postman^]
+and link:https://www.getpostman.com/apps:[Postman apps^] installed.
 
 == Run the SMART COSMOS Objects v3 DevKit Postman Collection
 
@@ -36,8 +39,8 @@ link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-t
 used to exercise the DevKit API and familiarize yourself with the API.
 
 . Start the DevKit, see link:install-devkit.adoc#start-the-devkit[Getting Started^].
-. Sign into link:https://www.getpostman.com/[Postman].
-. Open the link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS Objects v3 DevKit Tutorial].
+. Sign into link:https://www.getpostman.com/[Postman^].
+. Open the link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS Objects v3 DevKit Tutorial^].
 . Select the *_Run in Postman_* button.
 +
 image::run-in-postman.png[title="Postman Collection Run Button", alt="Postman webapp"]
@@ -99,7 +102,7 @@ image::postman-collection-run-success.png[title="Postman Collection Run - Succes
 Wether success or failure the results shown in the Postman Collection Runner can provide you with a
 lot of detailed information about each request.  Including URL, HTTP verb, parameters and response details.
 
-If you continue to encounter problems refer to link:troubleshooting.adoc:[Troubleshooting].
+If you continue to encounter problems refer to link:troubleshooting.adoc:[Troubleshooting^].
 
 === Running Requests Individually
 
@@ -133,7 +136,7 @@ Note in the above figure how new variables have been added to the environment by
 By now we hope you have a much deeper understanding of how the Objects v3 DevKit API works.  Be sure to check back frequently or when you have questions.  The Postman
 collection is connected directly to our development team and is updated every time we add new features and capabilities.
 
-For detailed information on our API see our link:https://api.smartcosmos.net/home/index.html[API Documentation] and the link:https://devkit.smartcosmos.net[DevKit website].
+For detailed information on our API see our link:https://api.smartcosmos.net/home/index.html[API Documentation^] and the link:https://devkit.smartcosmos.net[DevKit website^].
 
 For more detailed information on how Postman works please refer to the
-link:https://www.getpostman.com/docs[Postman documentation].
+link:https://www.getpostman.com/docs[Postman documentation^].
