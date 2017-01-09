@@ -19,4 +19,5 @@ Requests fail with `Failed to connect to localhost port 8080: Connection refused
   an instance of the `smartcosmos/gateway` is running on port 8080.  The
   information should look similar to the following:
 
-  9fb926fddbd6        smartcosmos/gateway         "./entrypoint.sh /opt"   4 hours ago         Up 7 minutes        0.0.0.0:8080->8080/tcp    smartcosmosdevkit_gateway_1
+  CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                     NAMES
+  9fb926fddbd6        smartcosmos/gateway         "./entrypoint.sh /opt"   5 hours ago         Up 43 minutes       0.0.0.0:8080->8080/tcp    smartcosmosdevkit_gateway_1
