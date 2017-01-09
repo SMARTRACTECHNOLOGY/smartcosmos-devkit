@@ -24,7 +24,7 @@ brew install git
 ==== https://docker.com[docker]
 [source, bash]
 ----
-brew install docker
+brew cask install docker
 ----
 
 === Start The Docker Engine
