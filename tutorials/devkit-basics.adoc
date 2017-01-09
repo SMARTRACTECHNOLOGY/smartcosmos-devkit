@@ -30,7 +30,7 @@ In order to use our public collection
 link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS Objects v3 DevKit Tutorial^]
 you will need to have an
 link:https://app.getpostman.com/signup?redirect=web[account on Postman^]
-and link:https://www.getpostman.com/apps:[Postman apps^] installed.
+and link:https://www.getpostman.com/apps:[Postman app^] installed.
 
 == Run the SMART COSMOS Objects v3 DevKit Postman Collection
 
