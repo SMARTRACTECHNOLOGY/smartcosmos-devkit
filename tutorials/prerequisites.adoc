@@ -9,7 +9,7 @@ software installations.
 
 === Install the Tools
 
-==== http://brew.sh[brew]
+==== http://brew.sh[Homebrew]
 [source, bash]
 ----
 $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
