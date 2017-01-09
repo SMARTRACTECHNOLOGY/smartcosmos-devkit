@@ -44,7 +44,7 @@ can disable this behavior in the docker preferences. The preferences dialog can 
 by clicking on the docker menu bar icon.
 
 === Check Docker Memory Settings
-Please make sure that your docker VM has at least 8GB of Memory.
+Please make sure that your docker VM has at least 5GB of Memory.
 
 In the menu bar on the top right corner should now be a docker icon. To adjust the
 memory settings you need to click on this icon:
@@ -55,7 +55,7 @@ Now click on `Preferences...`. You should see the following window:
 
 image::docker-pref-macOS.png[docker preferences]
 
-Here you should increase the Memory with the slider to at least 8GB.
+Here you should increase the Memory with the slider to at least 5GB.
 Please click on `Apply & Restart` to apply the settings. Finally you
 can close the window.
 
