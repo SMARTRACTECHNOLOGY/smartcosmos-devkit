@@ -120,7 +120,7 @@ To import this structure into the Devkit, an import JSON will be generated, whic
 }
 ----
 
-Store the final import data into a JSON file, then post it to the bulk import endpoint. Don't forget to set the correct JWT token, e.g.:
+Store the final import data into a JSON file, then post it to the bulk import endpoint. Don't forget to set the correct access token, e.g.:
 
 [source, bash]
 ----
