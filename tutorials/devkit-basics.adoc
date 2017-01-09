@@ -47,7 +47,7 @@ image::run-in-postman.png[title="Postman Collection Run Button", alt="Postman we
 
 . This will download the collection and the corresponding environment template, _SMART COSMOS Objects DevKit Environment_ into the Postman app.
 
-Now you can start running against your locally running DevKit.
+Now you can start sending requests to your locally running DevKit.
 
 === Request Documentation
 
