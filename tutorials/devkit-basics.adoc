@@ -119,23 +119,28 @@ Inspect the properties of the request you wish to run including the URL, request
 the headers, body, pre-request script and tests.  Tests are executed on completion of the request
 and are often used to set variables into the environment for other request to use.
 
-==== What Will Happen
-
 Before you can begin to use the SMART COSMOS Objects v3 system you will need to create a tenant.  SMART COSMOS Objects is designed to be
 a multi-tenant system where each account operates within its own security realm in order to keep one account’s data separate from another
 account’s data. The security realm is established based on the tenant registration or creation.
 
-==== Create Tenant
+==== Create Tenant Request
 Tenant registration is a public endpoint and does not require authentication. All other endpoints require a
 valid authentication.  The _Create Tenant_ API is called first to create the tenant.  This request generates a
-random user name for the administrator and the tenant name and uses them to create a tenant.  These values are then saved into
+random value for the administrator user name and for the tenant name and uses them to create a tenant.  These values are then saved into
 the environment.
 
 image::postman-environment-after-create-tenant.png[title="Postman Environment Settings After Create Tenant", alt="Postman Environment Settings After Create Tenant"]
 
+
 Note in the above figure how new variables have been added to the environment by running the _Create Tenant_ request.
 
 ==== Acquire Authentication Token
+
+Running the _Acquire Authentication Token_ will use the `admin-username` and
+the `admin-password` store in the Postman environment to request an OAUTH2 access token.
+This access token and it's associated refresh token will be stored in the
+Postman environment to be used by other requests.  As long as this token is valid
+and stored in the Postman environment requests will succeed.
 
 == Ready to Go!
 
