@@ -4,6 +4,7 @@
 :Date: 6 January 2017
 :Revision: 3.0.1
 :imagesdir: images
+:linkattrs:
 
 = SMART COSMOS Objects v3 Basics Tutorial
 
@@ -16,23 +17,25 @@ examples.
 
 === Install the DevKit
 
-To get started with the Objects v3 DevKit refer to the link:getting-started.adoc[Getting Started] guide.
+To get started with the Objects v3 DevKit refer to the link:getting-started.adoc[Getting Started, window="getting-started"] guide.
 
 === Install Postman
 
-We use link:https://www.getpostman.com/[Postman] to do much of the testing and development on our API. Postman is a GUI platform designed to make testing and development of your API easier.  For more information about Postman go to their
-website at link:https://www.getpostman.com[https://www.getpostman.com].
+We use link:https://www.getpostman.com/[Postman, window="postman"] to do much of the testing and
+development on our REST API. Postman is a GUI platform designed to make testing and
+development of your REST API easier.  For more information about Postman go to their
+website at link:https://www.getpostman.com[https://www.getpostman.com, window="postman"].
 
-In order to use our public collection link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS Objects v3 DevKit Tutorial]
-you will need to have an link:https://app.getpostman.com/signup?redirect=web[account on Postman] and link:https://www.getpostman.com/apps:[Postman apps] installed.
+In order to use our public collection link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS Objects v3 DevKit Tutorial^]
+you will need to have an link:https://app.getpostman.com/signup?redirect=web[account on Postman] and link:https://www.getpostman.com/apps:[Postman apps^] installed.
 
 == Run the SMART COSMOS Objects v3 DevKit Postman Collection
 
 The
-link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS Objects v3 DevKit Tutorial] is a public Postman collection that can be
+link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS Objects v3 DevKit Tutorial^] is a public Postman collection that can be
 used to exercise the DevKit API and familiarize yourself with the API.
 
-. Start the DevKit, see link:install-devkit.adoc#start-the-devkit[Getting Started].
+. Start the DevKit, see link:install-devkit.adoc#start-the-devkit[Getting Started^].
 . Sign into link:https://www.getpostman.com/[Postman].
 . Open the link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS Objects v3 DevKit Tutorial].
 . Select the *_Run in Postman_* button.
