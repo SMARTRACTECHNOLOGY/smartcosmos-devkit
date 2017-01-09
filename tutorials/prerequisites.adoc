@@ -24,6 +24,7 @@ brew install git
 ==== https://docker.com[docker]
 [source, bash]
 ----
+brew tap caskroom/cask
 brew cask install docker
 ----
 
