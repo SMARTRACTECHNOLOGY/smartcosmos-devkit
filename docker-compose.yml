@@ -135,6 +135,15 @@ services:
     networks:
       - platform-services
 
+  random:
+    image: smartcosmos/random
+    ports:
+      - "45678:8080"
+    depends_on:
+      - config-server
+    networks:
+      - platform-services
+
   mysql:
     image: mariadb:10.1.17
     ports:

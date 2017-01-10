@@ -82,6 +82,11 @@ smartcosmos:
       host: ${smartcosmos.host.address:${smartcosmos.service.user-details.default}}
       port: 7777
       address: ${smartcosmos.service.user-details.host}:${smartcosmos.service.user-details.port}
+    random:
+      default: http://random
+      host: ${smartcosmos.host.address:${smartcosmos.service.random.default}}
+      port: 45678
+      address: ${smartcosmos.service.random.host}:${smartcosmos.service.random.port}
 
   datasource:
     default-host: 172.17.0.1
