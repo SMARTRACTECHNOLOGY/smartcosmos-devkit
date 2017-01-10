@@ -1,3 +1,4 @@
+
 = SMART COSMOS Getting Started Guide
 SMARTRAC Technology Fletcher Inc <api@smartrac-group.com>
 
@@ -10,7 +11,7 @@ SMART COSMOS is the only platform that is purely focused on providing a fast
 track for both enterprises and developers to Monetize the IoT.
 
 SMART COSMOS is an ecosystem. It consists of a robust partner network where
-hardware manufacturers, system integrators, software developers, and enterprises
+hardware manufacturers, system integrators, software developers and enterprises
 come together to create the IoT. It is comprised of both SaaS and PaaS offerings
 that help you EMBED, ENABLE, and UTILIZE IoT driven data.
 
@@ -31,14 +32,8 @@ feedback, feature requests, or just want to meet for some drinks and talk
 software design patterns, contact us either at the developer portal or via
 email: mailto:api@smartrac-group.com[api@smartrac-group.com]
 
-
-== SMART COSMOS Objects License
-You must review and accept the
-https://licensing.smartcosmos.net/objects/[SMART COSMOS Objects EULA] before
-working with this developer kit.
-
 == Open Source Framework
-SMART COSMOS includes a number of open source frameworks available under the
+SMART COSMOS includes a number of open sourced frameworks available under the
 Apache License, Version 2. You can clone and freely use these frameworks in your
 projects, submit pull requests, and access the latest documentation at GitHub:
 
@@ -51,55 +46,64 @@ IMPORTANT: The core of the Objects server itself is presently proprietary and mu
 be properly licensed when deployed in a production environment.
 
 In addition to the open source development framework, the entirety of the
-SMART COSMOS REST Web Service APIs are fully documented at our API web site:
+SMART COSMOS REST Web Service APIs are fully documented at our API web site,
 https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy (temporary location until we update our normal location -- https://api.smartcosmos.net)
 
+
+
+[width="100%",options="header,footer"]
+|==================== 
+|Servicename|Description
+
+|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/application.yml[application.yml]  |  
+|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-auth-server.yml[smartcosmos-auth-server.yml]  |  
+|https://github.çim/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-bulkimport.yml[smartcosmos-edge-bulkimport.yml]  | Supports the mass import of datasets
+|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-things.yml[smartcosmos-edge-things.yml]  |  
+|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-user-devkit.yml[smartcosmos-edge-user-devkit.yml]  |  
+|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-event-listener.yml[smartcosmos-event-listener.yml] |  
+|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-events.yml[smartcosmos-events.yml] |  
+|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-ext-metadata.yml[smartcosmos-ext-metadata.yml]  |  
+|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-ext-relationships.yml[smartcosmos-ext-relationships.yml]  |  
+|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-ext-things.yml[smartcosmos-ext-things.yml]  |  
+| https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-gateway.yml[smartcosmos-gateway.yml] |  
+|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-user-details-devkit.yml[smartcosmos-user-details-devkit.yml]  |  
+|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-user-details-service.yml[smartcosmos-user-details-service.yml] |  
+|====================
+
 == SMART COSMOS DevKit
-The DevKit is a composition of several standalone services which
-communicate via REST. Each service runs in its own container.
-To manage these service containers we use https://docker.com[`Docker`].
 
-IMPORTANT: You will need at least a basic understanding of Docker for
-confident and efficient usage of the DevKit.
-If you are not familiar with Docker you will find detailed
-information in the
-https://docs.docker.com/engine/understanding-docker/[official docker documentation].
+The SMART COSMOS DevKit is a cluster of microservices, as the vital essence of our core platform and available to enable everybody that already has or maybe will have business with us. Thereby each Service is running in its own container. To manage these service containers we are using https://docker.com/[``docker``].
 
-To orchestrate the DevKit services
-we use `docker-compose`. If you want more details, e.g., about the
-different command line options for `docker-compose`, consult the
-https://docs.docker.com/compose/overview/[official docker-compose documentation].
+=== What is in the DevKit
+With the DevKit it is possible to run a PaaS solution that supports a collection of best practices to engage any data processing relevant for your business.
+Aside the composition of several standalone services you will get this:
 
-=== Getting Started
+* A full adaptable cloud-based PaaS
+* A mircoservice architecture centric cluster
+* The TRIM metapher - as best answer to handle IoT
+* A server and databse agnostioc design (polyglot)
+* A containerized operating environment (Docker)
+* An extension based platform concept
+* A future save and mdoern REST API
+* A secured mircoservice communication (JWT)
 
-To jump right into operating the DevKit, follow our
-link:tutorials/getting-started.adoc[getting started tutorials].
+=== Getting started
+To jump right into operating the DevKit follow our https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/tutorials/getting-started.adoc[getting started tutorials].
 
-[[nextSteps]]
 == Next Steps
 
-SMART COSMOS Objects is considered an 80% solution, meaning we offer various
-tools and support libraries on the platform to help you get started.
-However, the true capability of the platform is its flexibility with allowing
-you to run your own software. Numerous aspects of the DevKit are open sourced,
-including many of the services that comprise the docker-compose script outlined
-here. Depending on what aspect of the platform you need to extend, these services
-can act as starting points or examples:
+Depending on what aspect of the platform you need to extend, these services can act as starting points or samples:
 
  https://github.com/SMARTRACTECHNOLOGY/smartcosmos-event-listener[Event Listening]::
- This repository contains sample code that merely waits to see one of the many
- events in SMART COSMOS, and gets called to output the event to the log.
+ This repository contains true sample code, that merely waits to see one of the many events on SMART COSMOS and gets called to output the event to the log.
 
  https://github.com/SMARTRACTECHNOLOGY/smartcosmos-edge-things[Complex Things]::
- SMART COSMOS Objects provides a "catch-all" things service that handles unknown
- things by default.  Ideally, you want to eventually optimize a particular thing,
- and this repository can provide a reference to either calling the generic thing
- service and the generic metadata service, or can merely be a guiding example for
- how to implement the necessary REST API.
+ SMART COSMOS Objects provides a "catch-all" things service that handles unknown things by default.  Ideally, you want to eventually optimize a particular thing, and this repository can provide a reference to either calling the generic thing service and the generic metadata service, or can merely be a guiding sample for how to implement the necessary REST API.
 
  https://github.com/SMARTRACTECHNOLOGY/smartcosmos-user-details-devkit[User Details]::
- In the DevKit user accounts are maintained inside a MariaDB database
- (the same database that holds the other data). In a production environment
- you would most likely want to use another database, or an external authentication
- provider such as https://stormpath.com/[Stormpath], Active Directory,
- https://developers.google.com/identity/[Google], http://openid.net/[OpenID], etc.
+ In the Devkit user accounts are maintained inside a MariaDB database (the same database that holds the other data), in a production environment you would most likely want to use another database, or an external authentication provider like https://stormpath.com/[Stormpath], Active Directory, https://developers.google.com/identity/[Google], http://openid.net/[OpenID], etc.
+
+== SMART COSMOS Objects License
+You must review and accept the
+https://licensing.smartcosmos.net/objects/[SMART COSMOS Objects EULA] before
+working with this developer kit.
