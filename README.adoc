@@ -2,8 +2,6 @@
 SMARTRAC Technology Fletcher Inc <api@smartrac-group.com>
 
 == Welcome to SMART COSMOS
-Welcome to SMART COSMOS!
-
 Are you ready to become part of creating something really big? With SMART COSMOS
 you can connect a universe of everyday things to the digital world. In fact,
 SMART COSMOS is the only platform that is purely focused on providing a fast
@@ -31,6 +29,43 @@ feedback, feature requests, or just want to meet for some drinks and talk
 software design patterns, contact us either at the developer portal or via
 email: mailto:api@smartrac-group.com[api@smartrac-group.com]
 
+== SMART COSMOS DevKit
+The DevKit is a composition of several standalone services which
+communicate via REST. Each service runs in its own container.
+To manage these service containers we use https://docker.com[`Docker`].
+
+With the DevKit it is possible to run a PaaS solution that supports a collection of best practices to engage any data processing relevant for your business.
+
+* A full adaptable cloud-based PaaS
+* A microservice architecture centric cluster
+* The TRIM metapher - as best answer to handle IoT
+* A server and database agnostic design (polyglot)
+* A containerized operating environment (Docker)
+* An extension based platform concept
+* A future save and modern REST API
+* A secured microservice communication with https://jwt.io/[JWT]
+
+IMPORTANT: You will need at least a basic understanding of Docker for confident and efficient usage of the DevKit.
+If you are not familiar with Docker you will find detailed
+information in the
+https://docs.docker.com/engine/understanding-docker/[official docker documentation].
+
+To orchestrate the DevKit services
+we use `docker-compose`. If you want more details, e.g., about the
+different command line options for `docker-compose`, consult the
+https://docs.docker.com/compose/overview/[official docker-compose documentation].
+
+=== Getting Started
+IMPORTANT: SMART COSMOS DevKit is designed for learning, testing, and evaluation
+of the SMART COSMOS platform. It is not intended for production use, and it is
+inherently insecure due to its reliance on a JKS key pair for which the https://github.com/SMARTRACTECHNOLOGY/smartcosmos-auth-server/blob/master/src/main/resources/smartcosmos.jks[secret key]
+is publicly available and cannot be replaced, and its use of the primary Objects
+database as a store for user and account data. To establish a secure, production-ready
+SMART COSMOS environment, consult your SMARTRAC Technology Inc. sales representative.
+
+To jump right into operating the DevKit, follow our
+link:guides/getting-started.adoc[getting started tutorials].
+
 == Open Source Framework
 SMART COSMOS includes a number of open source frameworks available under the
 Apache License, Version 2. You can clone and freely use these frameworks in your
@@ -50,16 +85,14 @@ SMART COSMOS Objects REST Web Service APIs are fully documented at our https://a
 [width="100%",options="header,footer"]
 |===
 |Service|API links|Configuration|Description
-|Authentication Server|https://api.smartcosmos.net/microservices/smartcosmos-auth-server/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-auth-server.yml[smartcosmos-auth-server.yml]|
-|User Management DevKit|https://api.smartcosmos.net/microservices/smartcosmos-edge-user-devkit/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-user-devkit.yml[smartcosmos-edge-user-devkit.yml]|
-|Things|https://api.smartcosmos.net/microservices/smartcosmos-edge-things/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-things.yml[smartcosmos-edge-things.yml]|
-|Relationships|https://api.smartcosmos.net/microservices/smartcosmos-edge-relationships/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-ext-relationships.yml[smartcosmos-ext-relationships.yml]|
-|Metadata|https://api.smartcosmos.net/microservices/smartcosmos-edge-metadata/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-metadata.yml[smartcosmos-edge-metadata.yml]]|
-|Bulk Import|https://api.smartcosmos.net/microservices/smartcosmos-edge-bulkimport/index.html[API]|https://github.çim/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-bulkimport.yml[smartcosmos-edge-bulkimport.yml]|
-Supports the mass import of datasets
-|Gateway||https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-gateway.yml[smartcosmos-gateway.yml]|
-Routing
-|Events||https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-events.yml[smartcosmos-events.yml]|
+|Authentication Server|https://api.smartcosmos.net/microservices/smartcosmos-auth-server/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-auth-server.yml[smartcosmos-auth-server.yml]| An authorization server to fit a flexible architecture for entirely different form of authentication
+|User Management DevKit|https://api.smartcosmos.net/microservices/smartcosmos-edge-user-devkit/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-user-devkit.yml[smartcosmos-edge-user-devkit.yml]| Basic management functionality for tenants, user and roles
+|Things|https://api.smartcosmos.net/microservices/smartcosmos-edge-things/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-things.yml[smartcosmos-edge-things.yml]| Creates a "Thing" with metadata with one API call
+|Relationships|https://api.smartcosmos.net/microservices/smartcosmos-edge-relationships/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-ext-relationships.yml[smartcosmos-ext-relationships.yml]| Creates a "Relationship" with metadata with one API call
+|Metadata|https://api.smartcosmos.net/microservices/smartcosmos-edge-metadata/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-metadata.yml[smartcosmos-edge-metadata.yml]]| Creates a set of "Metadata" with metadata with one API call
+|Bulk Import|https://api.smartcosmos.net/microservices/smartcosmos-edge-bulkimport/index.html[API]|https://github.çim/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-bulkimport.yml[smartcosmos-edge-bulkimport.yml]| Supports the mass import of datasets
+|Gateway||https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-gateway.yml[smartcosmos-gateway.yml]| Based on https://github.com/Netflix/zuul/wiki[Netflix Zuul] to enable dynamic routing, monitoring, resiliency and security
+|Events||https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-events.yml[smartcosmos-events.yml]| Entry point for services to publish messages into a message bus
 |===
 
 Additional services and configuration files:
@@ -67,50 +100,7 @@ Additional services and configuration files:
 * Base configuration for all services: https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/application.yml[application.yml]
 * Event listener https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-event-listener.yml[smartcosmos-event-listener.yml]
 
-== SMART COSMOS DevKit
-The DevKit is a composition of several standalone services which
-communicate via REST. Each service runs in its own container.
-To manage these service containers we use https://docker.com[`Docker`].
-
-With the DevKit it is possible to run a PaaS solution that supports a collection of best practices to engage any data processing relevant for your business.
-Aside the composition of several standalone services you will get this:
-
-* A full adaptable cloud-based PaaS
-* A mircoservice architecture centric cluster
-* The TRIM metapher - as best answer to handle IoT
-* A server and databse agnostioc design (polyglot)
-* A containerized operating environment (Docker)
-* An extension based platform concept
-* A future save and mdoern REST API
-* A secured mircoservice communication (JWT)
-
-IMPORTANT: You will need at least a basic understanding of Docker for
-confident and efficient usage of the DevKit.
-If you are not familiar with Docker you will find detailed
-information in the
-https://docs.docker.com/engine/understanding-docker/[official docker documentation].
-
-To orchestrate the DevKit services
-we use `docker-compose`. If you want more details, e.g., about the
-different command line options for `docker-compose`, consult the
-https://docs.docker.com/compose/overview/[official docker-compose documentation].
-
-=== Getting Started
-
-IMPORTANT: SMART COSMOS DevKit is designed for learning, testing, and evaluation
-of the SMART COSMOS platform. It is not intended for production use, and it is
-inherently insecure due to its reliance on a JKS key pair for which the
-https://github.com/SMARTRACTECHNOLOGY/smartcosmos-auth-server/blob/master/src/main/resources/smartcosmos.jks[secret key]
-is publicly available and cannot be replaced, and its use of the primary Objects
-database as a store for user and account data. To establish a secure, production-ready
-SMART COSMOS environment, consult your SMARTRAC Technology Inc. sales representative.
-
-To jump right into operating the DevKit, follow our
-link:guides/getting-started.adoc[getting started tutorials].
-
-[[nextSteps]]
 == Next Steps
-
 Depending on what aspect of the platform you need to extend, these services
 can act as starting points or examples:
 
