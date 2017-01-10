@@ -1,0 +1,154 @@
+{
+  "things": [
+    {
+      "type":"Person",
+      "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000001",
+      "active":true,
+      "name":"John",
+      "gender":"male",
+      "birthdate":"1/1/1970",
+      "profession":"truck driver"
+    },
+    {
+      "type":"Person",
+      "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000002",
+      "active":true,
+      "name":"Anne",
+      "gender":"female",
+      "birthdate":"1/1/1972",
+      "profession":"nurse"
+    },
+    {
+      "type":"Building",
+      "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000003",
+      "active":true,
+      "name":"John's Appartment",
+      "size":"800sqft"
+    },
+    {
+      "type":"Vehicle",
+      "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000004",
+      "active":true,
+      "name":"John's Truck",
+      "manufacturer": "Toyota",
+      "model": "Pickup Truck",
+      "color": "white"
+    },
+    {
+      "type":"Vehicle",
+      "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000005",
+      "active":true,
+      "name":"John's Sports Car",
+      "manufacturer": "Ford",
+      "model": "Mustang GT",
+      "color": "red"
+    },
+    {
+      "type":"Bankaccount",
+      "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000006",
+      "active":true,
+      "institute":"Wells Fargo",
+      "iban":"US99 9988 7766 5544 3322 11",
+      "cashLimit":5000.00,
+      "deposit":20000
+    },
+    {
+      "type":"Person",
+      "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000007",
+      "active":true,
+      "name":"Adam",
+      "gender":"male",
+      "birthdate":"1/1/1968",
+      "profession":"Bank Manager"
+    }],
+  "relationships": [
+    {
+      "source": {
+        "type":"Person",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000001"
+      },
+      "target": {
+        "type":"Person",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000002"
+      },
+      "relationshipType":"is married to"
+    },
+    {
+      "source": {
+        "type":"Person",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000001"
+      },
+      "target": {
+        "type":"Building",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000003"
+      },
+      "relationshipType":"lives in"
+    },
+    {
+      "source": {
+        "type":"Person",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000002"
+      },
+      "target": {
+        "type":"Building",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000003"
+      },
+      "relationshipType":"lives in"
+    },
+    {
+      "source": {
+        "type":"Person",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000001"
+      },
+      "target": {
+        "type":"Vehicle",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000004"
+      },
+      "relationshipType":"owns"
+    },
+    {
+      "source": {
+        "type":"Person",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000001"
+      },
+      "target": {
+        "type":"Vehicle",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000005"
+      },
+      "relationshipType":"owns"
+    },
+    {
+      "source": {
+        "type":"Person",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000001"
+      },
+      "target": {
+        "type":"Bankaccount",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000006"
+      },
+      "relationshipType":"has"
+    },
+    {
+      "source": {
+        "type":"Person",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000007"
+      },
+      "target": {
+        "type":"Vehicle",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000006"
+      },
+      "relationshipType":"manages"
+    },
+    {
+      "source": {
+        "type":"Person",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000007"
+      },
+      "target": {
+        "type":"Person",
+        "urn":"urn:thing:uuid:12345678-1234-5678-9abc-000000000002"
+      },
+      "relationshipType":"is brother of"
+    }
+  ]
+}
