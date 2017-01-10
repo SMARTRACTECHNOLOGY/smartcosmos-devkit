@@ -55,164 +55,51 @@ SMART COSMOS REST Web Service APIs are fully documented at our API web site,
 https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy (temporary location until we update our normal location -- https://api.smartcosmos.net)
 
 == SMART COSMOS DevKit
-This README only contains very basic usage instructions. You can have a much more detailed overview at the docker documentation:
+The DevKit is a composition of several standalone services which are
+communicating via REST. Each Service is running in its own container.
+To manage these service containers we are using https://docker.com[`docker`].
 
-* https://docs.docker.com/engine/understanding-docker/[docker]
-* https://docs.docker.com/compose/overview/[docker-compose]
-* https://docs.docker.com/machine/overview/[docker-machine]
+IMPORTANT: You will need at least a basic understanding of docker for
+confident and efficient usage of the DevKit.
+If you are not familiar with docker you will find detailed
+information in the
+https://docs.docker.com/engine/understanding-docker/[official docker documentation].
 
-== Usage
+To orchestrate the DevKit services
+we are using `docker-compose`. If you seek for more details, e.g. about the
+different command line options for `docker-compose`, consult the
+https://docs.docker.com/compose/overview/[official docker-compose documentation].
 
-If you want to start the services in the background (detached mode) use `-d`.
+=== Getting Started
 
-----
-$ docker-compose up -d
-----
+To jump right into operating the DevKit follow our
+link:tutorials/getting-started.adoc[getting started tutorials].
 
-
-If you only want to start specific services run e.g.:
-----
-$ docker-compose up -d config-server
-----
-
-You can start multiple services:
-
-----
-$ docker-compose up -d edge-things gateway
-----
-
-=== Recommended Startup
-Recommend startup involves starting the following:
-
- * Third party support services
-----
-$ docker-compose up -d mysql zookeeper kafka
-----
- * SMART COSMOS Support Mechanisms
-----
-$ docker-compose up -d config-server edge-user-devkit user-details-devkit auth-server events ui
-----
- * SMART COSMOS Core Services
-----
-$ docker-compose up -d ext-relationships ext-metadata ext-things edge-things
-----
- * SMART COSMOS Gateway
-----
-$ docker-compose up -d gateway
-----
-
-=== All At Once
-To start the whole Objects DevKit run:
-----
-$ docker-compose up
-----
-
-WARNING: You will need a high end system to run every service at once!  It's recommended to start the services in groups to avoid potential problems and mimic a real production deployment.
-
-=== Success
-
-You can use `docker-compose` to see when all of the services have successfully started:
-----
-$ docker-compose ps
-----
-The output should look something like this:
-----
-Name                                Command               State                     Ports
------------------------------------------------------------------------------------------------------------------------------
-smartcosmosdevkit_auth-server_1           ./entrypoint.sh /opt/smart ...   Up      0.0.0.0:9999->8080/tcp
-smartcosmosdevkit_config-server_1         java -Xmx256m -jar /opt/sm ...   Up      0.0.0.0:8888->8888/tcp
-smartcosmosdevkit_edge-things_1           ./entrypoint.sh /opt/smart ...   Up      8080/tcp
-smartcosmosdevkit_edge-user-devkit_1      ./entrypoint.sh /opt/smart ...   Up      8080/tcp
-smartcosmosdevkit_event-listener_1        ./entrypoint.sh /opt/smart ...   Up      8080/tcp
-smartcosmosdevkit_events_1                ./entrypoint.sh /opt/smart ...   Up      0.0.0.0:45012->8080/tcp
-smartcosmosdevkit_ext-metadata_1          ./entrypoint.sh /opt/smart ...   Up      8080/tcp
-smartcosmosdevkit_ext-relationships_1     ./entrypoint.sh /opt/smart ...   Up      8080/tcp
-smartcosmosdevkit_ext-things_1            ./entrypoint.sh /opt/smart ...   Up      8080/tcp
-smartcosmosdevkit_gateway_1               ./entrypoint.sh /opt/smart ...   Up      0.0.0.0:8080->8080/tcp
-smartcosmosdevkit_kafka_1                 /start.sh                        Up      7203/tcp, 0.0.0.0:9092->9092/tcp
-smartcosmosdevkit_mysql_1                 docker-entrypoint.sh mysqld      Up      3306/tcp
-smartcosmosdevkit_ui_1                    npm start                        Up      0.0.0.0:8081->3001/tcp
-smartcosmosdevkit_user-details-devkit_1   ./entrypoint.sh /opt/smart ...   Up      8080/tcp
-smartcosmosdevkit_zookeeper_1             /opt/zookeeper/bin/zkServe ...   Up      0.0.0.0:2181->2181/tcp, 2888/tcp, 3888/tcp
-
-----
-
-At this point all of the services are successfully running, and you can begin hitting the REST API over http://localhost:8080 (through https://curl.haxx.se/[curl] or https://www.getpostman.com/[Postman]) and visiting the DevKit UI at http://localhost:8081 with https://www.google.com/chrome/browser/desktop/[Google Chrome] or https://www.mozilla.org/en-US/firefox/new/[Firefox].
-
-=== Scaling
-
-If you want to scale the number of running intances of a service just run (.e.g. to scale to 5 running `ext-things` services):
-
-----
-$ docker-compose scale ext-things=5
-----
-
-To *scale down* use the same command and set a lower number.
-
-=== Updating
-
-New builds of the various services are pushed live to Docker Hub as soon as they are updated on GitHub.  You can always check to see if you have the latest version of each container by using the following command:
-
-----
-$ docker-compose pull
-----
-
-=== Starting Over
-
-You can easily erase your DevKit database by removing just the mysql container, you can also destroy the entire environment with `rm`:
-
-----
-$ docker-compose rm
-----
-
-== Troubleshooting Tips
-
-=== Initial Startup for Slower Systems
-
-When you run the cluster for the first time it will automatically conduct a database setup and migration on the mariadb container that runs the database.  This can rarely cause concurrency problems, since services are all accessing the database at once.  In rare instances this might cause the database to crash on slower systems (in particular ones without a SSD).  In those cases you might need to bring up the services one at a time instead of running `docker-compose up`
-
-=== Services that Exit
-
-Some of the services are dependent on other services running to start properly.  We attempt to add an easing mechanism at startup which requires a certain port to be open until the next service starts.  Sometimes, even though the service is accepting connections on the port it's still not fully ready, which will cause some services to fail and exit.  If you see the following when conducting a `docker-compose ps`:
-----
-smartcosmosdevkit_ext-things_1            ./entrypoint.sh /opt/smart ...   Exit 0
-----
-Then a service is no longer properly running, and will need to be started separately.
-*NOTE*: The services will start dependent services as well. So `docker-compose up edge-things`
-will start `config-server`, `ext-things`, `ext-metadata` and the `auth-server`
-(including all of their dependent services).
-
-== Start the Devkit in AWS
-
-First you have to configure your credentials to AWS.
-Then you can use `docker-machine` to create an instance in AWS which can than be provisioned with `docker-compose`.
-
-----
-$ docker-machine create --driver amazonec2 myTest
-----
-
-To get more detailed instruction on how to start machines in AWS read the official documentation: https://docs.docker.com/machine/drivers/aws/.
-
-
-To stop your machine run:
-----
-$ docker-machine stop myTest
-----
-
-To remove it run:
-----
-$ docker-machine rm myTest
-----
-
+[[nextSteps]]
 == Next Steps
 
-SMART COSMOS Objects is considered an 80% solution, meaning we offer various tools and support libraries on the platform to help you get started.  However, the true capabilities of the platform are its flexibility with allowing you to run your own software.  Numerous aspects of the Devkit are open sourced, including many of the services that comprise the docker-compose script outlined here.  Depending on what aspect of the platform you need to extend, these services can act as starting points or samples:
+SMART COSMOS Objects is considered an 80% solution, meaning we offer various
+tools and support libraries on the platform to help you get started.
+However, the true capabilities of the platform are its flexibility with allowing
+you to run your own software. Numerous aspects of the DevKit are open sourced,
+including many of the services that comprise the docker-compose script outlined
+here. Depending on what aspect of the platform you need to extend, these services
+can act as starting points or samples:
 
  https://github.com/SMARTRACTECHNOLOGY/smartcosmos-event-listener[Event Listening]::
- This repository contains true sample code, that merely waits to see one of the many events on SMART COSMOS and gets called to output the event to the log.
+ This repository contains true sample code, that merely waits to see one of the many
+ events on SMART COSMOS and gets called to output the event to the log.
 
  https://github.com/SMARTRACTECHNOLOGY/smartcosmos-edge-things[Complex Things]::
- SMART COSMOS Objects provides a "catch-all" things service that handles unknown things by default.  Ideally, you want to eventually optimize a particular thing, and this repository can provide a reference to either calling the generic thing service and the generic metadata service, or can merely be a guiding sample for how to implement the necessary REST API.
+ SMART COSMOS Objects provides a "catch-all" things service that handles unknown
+ things by default.  Ideally, you want to eventually optimize a particular thing,
+ and this repository can provide a reference to either calling the generic thing
+ service and the generic metadata service, or can merely be a guiding sample for
+ how to implement the necessary REST API.
 
  https://github.com/SMARTRACTECHNOLOGY/smartcosmos-user-details-devkit[User Details]::
- In the Devkit user accounts are maintained inside a MariaDB database (the same database that holds the other data), in a production environment you would most likely want to use another database, or an external authentication provider like https://stormpath.com/[Stormpath], Active Directory, https://developers.google.com/identity/[Google], http://openid.net/[OpenID], etc.
+ In the DevKit user accounts are maintained inside a MariaDB database
+ (the same database that holds the other data), in a production environment
+ you would most likely want to use another database, or an external authentication
+ provider like https://stormpath.com/[Stormpath], Active Directory,
+ https://developers.google.com/identity/[Google], http://openid.net/[OpenID], etc.

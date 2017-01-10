@@ -1,0 +1,27 @@
+= List of Ports
+
+[.lead]
+This document visualizes the ports used by the DevKit services. Each service
+listens on a port in its container for incoming requests. For your convenience
+all the services ports are getting forwarded to `0.0.0.0`.
+
+.Service Ports
+[cols="3", options="header"]
+|===
+| Service | Container Port | Forwarded Port
+
+| config-server | 8888 | 8888
+| gateway | 8080 | 8080
+| auth-server | 8080 | 9999
+| edge-user-devkit | 8080 |45371
+| user-details-devkit | 8080 | 7777
+| events | 8080 | 45012
+| edge-bulkimport | 8080 | 50593
+| edge-things | 8080 | 50594
+| ext-things | 8080 | 45336
+| ext-metadata | 8080 | 45037
+| ext-relationships | 8080 | 45369
+
+| zookeeper | 2181 | 2181
+| kafka | 9092 | 9092
+| mysql | 3306 | 3306

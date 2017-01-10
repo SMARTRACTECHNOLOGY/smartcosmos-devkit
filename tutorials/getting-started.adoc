@@ -1,0 +1,24 @@
+= Getting Started
+
+== Installation
+
+=== Prerequisites
+
+Please choose the matching platform of your working machine:
+
+* link:prerequisites.adoc#macOS[macOS]
+* link:prerequisites.adoc#linux[GNU/Linux]
+
+=== Set up the DevKit
+
+To start the DevKit follow the
+link:install-devkit.adoc[DevKit Set Up Guide].
+
+
+== TODO
+Further tutorials should be listed here as well.
+
+
+== Next Steps
+Now that you have an understanding on how to operate and use
+the DevKit you may follow link:../README.adoc#nextSteps[the next steps].
