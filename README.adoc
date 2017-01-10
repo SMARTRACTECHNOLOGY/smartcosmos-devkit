@@ -72,6 +72,14 @@ https://docs.docker.com/compose/overview/[official docker-compose documentation]
 
 === Getting Started
 
+IMPORTANT: SMART COSMOS DevKit is designed for learning, testing, and evaluation
+of the SMART COSMOS platform. It is not intended for production use, and it is
+inherently insecure due to its reliance on a JKS key pair for which the
+https://github.com/SMARTRACTECHNOLOGY/smartcosmos-auth-server/blob/master/src/main/resources/smartcosmos.jks[secret key]
+is publicly available and cannot be replaced, and its use of the primary Objects
+database as a store for user and account data. To establish a secure, production-ready
+SMART COSMOS environment, consult your SMARTRAC Technology Inc. sales representative.
+
 To jump right into operating the DevKit, follow our
 link:tutorials/getting-started.adoc[getting started tutorials].
 
