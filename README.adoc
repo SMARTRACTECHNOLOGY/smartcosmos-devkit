@@ -46,29 +46,27 @@ IMPORTANT: The core of the Objects server itself is presently proprietary and mu
 be properly licensed when deployed in a production environment.
 
 In addition to the open source development framework, the entirety of the
-SMART COSMOS REST Web Service APIs are fully documented at our API web site,
-https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy (temporary location until we update our normal location -- https://api.smartcosmos.net)
-
+SMART COSMOS Objects REST Web Service APIs are fully documented at our https://api.smartcosmos.net[API Documentation web page] and the https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-api-tutorial/2JvFAy[SMART COSMOS Objects DevKit API Tutorial].
 
 
 [width="100%",options="header,footer"]
 |==================== 
-|Servicename|Description
-
-|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/application.yml[application.yml]  |  
-|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-auth-server.yml[smartcosmos-auth-server.yml]  |  
-|https://github.çim/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-bulkimport.yml[smartcosmos-edge-bulkimport.yml]  | Supports the mass import of datasets
-|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-things.yml[smartcosmos-edge-things.yml]  |  
-|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-user-devkit.yml[smartcosmos-edge-user-devkit.yml]  |  
-|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-event-listener.yml[smartcosmos-event-listener.yml] |  
-|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-events.yml[smartcosmos-events.yml] |  
-|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-ext-metadata.yml[smartcosmos-ext-metadata.yml]  |  
-|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-ext-relationships.yml[smartcosmos-ext-relationships.yml]  |  
-|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-ext-things.yml[smartcosmos-ext-things.yml]  |  
-| https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-gateway.yml[smartcosmos-gateway.yml] |  
-|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-user-details-devkit.yml[smartcosmos-user-details-devkit.yml]  |  
-|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-user-details-service.yml[smartcosmos-user-details-service.yml] |  
+|Service|API links|Configuration|Description
+|Authentication Server|https://api.smartcosmos.net/microservices/smartcosmos-auth-server/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-auth-server.yml[smartcosmos-auth-server.yml]|
+|User Management DevKit|https://api.smartcosmos.net/microservices/smartcosmos-edge-user-devkit/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-user-devkit.yml[smartcosmos-edge-user-devkit.yml]|
+|Things|https://api.smartcosmos.net/microservices/smartcosmos-edge-things/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-things.yml[smartcosmos-edge-things.yml]|
+|Relationships|https://api.smartcosmos.net/microservices/smartcosmos-edge-relationships/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-ext-relationships.yml[smartcosmos-ext-relationships.yml]|
+|Metadata|https://api.smartcosmos.net/microservices/smartcosmos-edge-metadata/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-metadata.yml[smartcosmos-edge-metadata.yml]]|
+|Bulk Import|https://api.smartcosmos.net/microservices/smartcosmos-edge-bulkimport/index.html[API]|https://github.çim/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-bulkimport.yml[smartcosmos-edge-bulkimport.yml]|
+Supports the mass import of datasets
 |====================
+
+Additional configuration files:
+
+* Base configuration for all services: https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/application.yml[application.yml]
+* Gateway https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-gateway.yml[smartcosmos-gateway.yml]
+* Events https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-events.yml[smartcosmos-events.yml]
+* Event listener https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-event-listener.yml[smartcosmos-event-listener.yml]
 
 == SMART COSMOS DevKit
 
