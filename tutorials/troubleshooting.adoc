@@ -1,0 +1,23 @@
+:title: SMART COSMOS Objects v3 Troubleshooting
+:Author: SMART COSMOS Development Team
+:Email: api@smartrac-group.com
+:Date: 9 January 2017
+:Revision: 3.0.1
+:imagesdir: images
+
+= Troubleshooting SMART COSMOS Objects v3
+
+This document describes the most common problems and causes encountered when
+working with SMART COSMOS Objects v3.  If you have encountered a problem not
+described here and you are not able to resolve it on your own
+ please contact us at {email}.
+
+[qanda]
+Requests fail with `Failed to connect to localhost port 8080: Connection refused`::
+  The most common cause of this problem is the Gateway not running or the
+  gateway is not running on port 8080.  Run the command `docker ps` and verify
+  an instance of the `smartcosmos/gateway` is running on port 8080.  The
+  information should look similar to the following:
+
+  CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                     NAMES
+  9fb926fddbd6        smartcosmos/gateway         "./entrypoint.sh /opt"   5 hours ago         Up 43 minutes       0.0.0.0:8080->8080/tcp    smartcosmosdevkit_gateway_1
