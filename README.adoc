@@ -43,18 +43,13 @@ of best practices to support any data processing relevant for your business.
 * A server- and database-agnostic design (polyglot)
 * A containerized operating environment (Docker)
 * An extension-based platform concept
-* A future-safe and modern REST API
+* A future-proof and modern REST API
 * Secure microservice communication with https://jwt.io/[JWT]
 
 IMPORTANT: You will need at least a basic understanding of Docker for confident
 and efficient usage of the DevKit.
 If you are not familiar with Docker you will find detailed information in the
 https://docs.docker.com/engine/understanding-docker/[official docker documentation].
-
-To orchestrate the DevKit services
-we use `docker-compose`. If you want more details, e.g., about the
-different command line options for `docker-compose`, consult the
-https://docs.docker.com/compose/overview/[official docker-compose documentation].
 
 === Getting Started
 IMPORTANT: SMART COSMOS DevKit is designed for learning, testing, and evaluation
