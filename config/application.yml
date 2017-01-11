@@ -12,7 +12,18 @@ eureka:
   client:
     enabled: false
 
-#smartcosmos:
+smartcosmos:
+# Uncomment the two lines below if you need to set a different
+# host address (usually your local IP address) and do not
+# want to use the Docker DNS.
+#
+# This is usually required if you want to run a service outside
+# the Docker Engine, e.g., from within your IDE. On platforms that
+# run Docker inside a virtual machine (i.e., macOS and Windows),
+# this needs to be your local IP address. On some Linux distributions 
+# that natively support docker, it is also possible to use Docker's
+# default interface http://172.17.0.1.
+#
 #  host:
 #    address: http://172.17.0.1
 
