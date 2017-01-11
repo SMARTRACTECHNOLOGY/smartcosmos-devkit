@@ -20,7 +20,7 @@ smartcosmos:
 # This is usually required if you want to run a service outside
 # the Docker Engine, e.g., from within your IDE. On platforms that
 # run Docker inside a virtual machine (i.e., macOS and Windows),
-# this needs to be your local IP address. On some Linux distributions 
+# this needs to be your local IP address. On some Linux distributions
 # that natively support docker, it is also possible to use Docker's
 # default interface http://172.17.0.1.
 #
@@ -64,7 +64,7 @@ smartcosmos:
       port: 50594
       address: ${smartcosmos.service.edge-things.host}:${smartcosmos.service.edge-things.port}
     edge-user:
-      default: http://edge-user
+      default: http://edge-user-devkit
       host: ${smartcosmos.host.address:${smartcosmos.service.edge-user.default}}
       port: 45371
       address: ${smartcosmos.service.edge-user.host}:${smartcosmos.service.edge-user.port}
@@ -89,7 +89,7 @@ smartcosmos:
       port: 45369
       address: ${smartcosmos.service.ext-relationships.host}:${smartcosmos.service.ext-relationships.port}
     user-details:
-      default: http://user-details
+      default: http://user-details-devkit
       host: ${smartcosmos.host.address:${smartcosmos.service.user-details.default}}
       port: 7777
       address: ${smartcosmos.service.user-details.host}:${smartcosmos.service.user-details.port}
@@ -150,11 +150,3 @@ logging:
     org.apache.kafka.clients:
       producer: WARN
       consumer: WARN
----
-
-spring:
-    profiles: docker
-server:
-  port: 8080
-management:
-  port: 8081

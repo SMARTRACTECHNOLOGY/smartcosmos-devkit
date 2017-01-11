@@ -1,4 +1,8 @@
+server:
+  port: ${smartcosmos.service.edge-bulkimport.port}
+
 smartcosmos:
+
   edge:
     bulk-import:
       read-timeout: 2500
