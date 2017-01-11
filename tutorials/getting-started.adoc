@@ -2,6 +2,18 @@
 
 == Installation
 
+=== System Requirements
+
+The system requirements for the SMART COSMOS DevKit are as follows:
+
+minimum::
+* 2 CPUs (CPU cores)
+* 5 GB Memory
+
+recommended::
+* 4 or more CPUs (CPU cores)
+* 16 GB Memory
+
 === Prerequisites
 
 Please choose the matching platform of your working machine:
