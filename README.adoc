@@ -7,7 +7,7 @@ you can connect a universe of everyday things to the digital world. In fact,
 SMART COSMOS is the only platform that is purely focused on providing a fast
 track for both enterprises and developers to Monetize the IoT.
 
-SMART COSMOS is an ecosystem. It consists of a robust partner network where
+SMART COSMOS is an ecosystem. It is a robust partner network where
 hardware manufacturers, system integrators, software developers, and enterprises
 come together to create the IoT. It is comprised of both SaaS and PaaS offerings
 that help you EMBED, ENABLE, and UTILIZE IoT driven data.
@@ -21,7 +21,7 @@ to obtain new value from four key areas:
 * Process
 
 The IoT is nothing more than combining a creative mixture of low-cost sensing
-hardware, auto-identification technologies like RFID, and the Cloud! Now, we
+hardware, auto-identification technologies like RFID, and the Cloud. Now we
 invite you to take the next steps and learn how to use our IoT blueprint.
 
 Platforms are living designs that are always evolving. If you have
@@ -34,7 +34,8 @@ The DevKit is a composition of several standalone services which
 communicate via REST. Each service runs in its own container.
 To manage these service containers we use https://docker.com[`Docker`].
 
-With the DevKit it is possible to run a PaaS solution that supports a collection of best practices to engage any data processing relevant for your business.
+With the DevKit it is possible to run a PaaS solution that embodies a collection
+of best practices to support any data processing relevant for your business.
 
 * A full adaptable cloud-based PaaS
 * A microservice architecture centric cluster
@@ -45,9 +46,9 @@ With the DevKit it is possible to run a PaaS solution that supports a collection
 * A future save and modern REST API
 * A secured microservice communication with https://jwt.io/[JWT]
 
-IMPORTANT: You will need at least a basic understanding of Docker for confident and efficient usage of the DevKit.
-If you are not familiar with Docker you will find detailed
-information in the
+IMPORTANT: You will need at least a basic understanding of Docker for confident
+and efficient usage of the DevKit.
+If you are not familiar with Docker you will find detailed information in the
 https://docs.docker.com/engine/understanding-docker/[official docker documentation].
 
 To orchestrate the DevKit services
@@ -59,7 +60,7 @@ https://docs.docker.com/compose/overview/[official docker-compose documentation]
 IMPORTANT: SMART COSMOS DevKit is designed for learning, testing, and evaluation
 of the SMART COSMOS platform. It is not intended for production use, and it is
 inherently insecure due to its reliance on a JKS key pair for which the https://github.com/SMARTRACTECHNOLOGY/smartcosmos-auth-server/blob/master/src/main/resources/smartcosmos.jks[secret key]
-is publicly available and cannot be replaced, and its use of the primary Objects
+is publicly available and cannot be replaced, and its use of the primary Devkit
 database as a store for user and account data. To establish a secure, production-ready
 SMART COSMOS environment, consult your SMARTRAC Technology Inc. sales representative.
 
@@ -85,7 +86,7 @@ SMART COSMOS Objects REST Web Service APIs are fully documented at our https://a
 [width="100%",options="header,footer"]
 |===
 |Service|API links|Configuration|Description
-|Authentication Server|https://api.smartcosmos.net/microservices/smartcosmos-auth-server/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-auth-server.yml[smartcosmos-auth-server.yml]| An authorization server to fit a flexible architecture for entirely different form of authentication
+|Auth Server|https://api.smartcosmos.net/microservices/smartcosmos-auth-server/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-auth-server.yml[smartcosmos-auth-server.yml]| An authorization and authentication server to fit a flexible architecture for different forms of authorization and authentication
 |User Management DevKit|https://api.smartcosmos.net/microservices/smartcosmos-edge-user-devkit/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-user-devkit.yml[smartcosmos-edge-user-devkit.yml]| Basic management functionality for tenants, user and roles
 |Things|https://api.smartcosmos.net/microservices/smartcosmos-edge-things/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-edge-things.yml[smartcosmos-edge-things.yml]| Creates a "Thing" with metadata with one API call
 |Relationships|https://api.smartcosmos.net/microservices/smartcosmos-edge-relationships/index.html[API]|https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-ext-relationships.yml[smartcosmos-ext-relationships.yml]| Creates a "Relationship" with metadata with one API call
@@ -100,6 +101,7 @@ Additional services and configuration files:
 * Base configuration for all services: https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/application.yml[application.yml]
 * Event listener https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-event-listener.yml[smartcosmos-event-listener.yml]
 
+[[nextSteps]]
 == Next Steps
 Depending on what aspect of the platform you need to extend, these services
 can act as starting points or examples:
