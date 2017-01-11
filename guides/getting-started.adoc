@@ -12,8 +12,10 @@ Please choose the matching platform of your working machine:
 === Set up the DevKit
 
 To start the DevKit follow the
-link:install-devkit.adoc[DevKit Set Up Guide].
+link:install-devkit.adoc[DevKit Setup Guide].
 
+
+[guides]
 == Guides
 
 link:devkit-basics.adoc[DevKit Basics]::
