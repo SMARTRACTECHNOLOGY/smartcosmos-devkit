@@ -1,5 +1,6 @@
 = Tutorial for Importing Sample Data
 
+
 This guide helps you initially populate your database by importing
 sample data into the SMART COSMOS DevKit, using the **Bulk Import**
 service.
@@ -140,7 +141,7 @@ $ export token="eyJhbGci..."
 $ curl -X POST "http://localhost:8080/bulkimport/" \
        -H "Content-Type: application/json" \
        -H "Authorization: Bearer ${token}" \
-       -d "$(cat bulkimport.json)"
+       -d @bulkimport.json
 ----
 
 == Files in this Tutorial
