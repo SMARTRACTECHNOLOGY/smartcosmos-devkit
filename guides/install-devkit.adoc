@@ -31,4 +31,4 @@ execute the following:
 == Next Steps
 
 Now that you have a running DevKit you may follow
-link:gettings-started.adoc[other getting started guides].
+link:getting-started.adoc[other getting started guides].
