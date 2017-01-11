@@ -88,8 +88,9 @@ To start the SMART COSMOS DevKit on the EC2 instance you will need to run:
 
  $ docker-compose --file docker-commpose-aws.yml up -d
 
-Note that we are specifying `docker-compose-aws.yml` as our compose file. As a default
-`docker-compose` would use `docker-compose.yml` instead.
+Note that we specify `docker-compose-aws.yml` as the compose file with the `--file` flag. If you
+do not specify a compose file it will
+use `docker-compose.yml` instead.
 
 == Other useful Docker Machine Options
 
