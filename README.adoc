@@ -70,7 +70,6 @@ projects, submit pull requests, and access the latest documentation at GitHub:
  * https://github.com/SMARTRACTECHNOLOGY/smartcosmos-framework
 
  * https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit
-(where this document was downloaded from)
 
 IMPORTANT: The core of the Objects server itself is presently proprietary and must
 be properly licensed when deployed in a production environment.
