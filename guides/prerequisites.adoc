@@ -5,12 +5,12 @@
 [[macOS]]
 == macOS
 
-On macOS we highly recommend to use http://brew.sh[`Homebrew`] to manage
+On macOS we highly recommend using http://brew.sh[`Homebrew`] to manage
 software installations.
 
 === Install the Tools
 
-==== http://brew.sh[Homebrew]
+==== http://brew.sh[brew]
 
  $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -19,7 +19,7 @@ Now you need to enable https://caskroom.github.io/[*Homebrew Cask*] by running:
  $ brew tap caskroom/cask
 
 This enables brew to use the `cask` subcommand which
-allows you to install binary Applications.
+allows you to install binary applications.
 
 ==== https://git-scm.com/[git]
 
