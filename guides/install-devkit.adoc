@@ -1,6 +1,6 @@
 = Install the DevKit
 
-Before you are able to start the DevKit make sure you have
+Before you attempt to start the DevKit make sure you have
 link:prerequisites.adoc[installed all the prerequisites].
 
 == Get the Deploy Code
