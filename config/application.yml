@@ -12,9 +12,9 @@ eureka:
   client:
     enabled: false
 
-smartcosmos:
-  host:
-    address: http://172.17.0.1
+#smartcosmos:
+#  host:
+#    address: http://172.17.0.1
 
   service:
     kafka:
