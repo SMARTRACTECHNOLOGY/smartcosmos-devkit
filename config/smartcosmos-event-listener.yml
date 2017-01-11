@@ -1,5 +1,0 @@
-server:
-  port: 0
-
-smartcosmos:
-  event-listener.topic: "thing.read"
