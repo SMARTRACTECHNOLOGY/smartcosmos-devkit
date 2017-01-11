@@ -76,10 +76,7 @@ link:guides/getting-started.adoc[getting started tutorials].
 |Events||https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-events.yml[smartcosmos-events.yml]| Entry point for services to publish messages into a message bus
 |===
 
-Additional services and configuration files:
-
-* Base configuration for all services: https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/application.yml[application.yml]
-* Event listener https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-event-listener.yml[smartcosmos-event-listener.yml]
+Base configuration for all services: https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/application.yml[application.yml]
 
 == Open Source Framework
 SMART COSMOS includes a number of open source frameworks available under the
