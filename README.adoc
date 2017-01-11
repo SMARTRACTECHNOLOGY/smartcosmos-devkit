@@ -39,8 +39,8 @@ of best practices to support any data processing relevant for your business.
 
 * A fully adaptable cloud-based PaaS
 * A microservice architecture-centric cluster
-* The TRIM metaphor - as best answer to handle IoT
-* A server- and database-agnostic design (polyglot)
+* The TRIM metaphor - as the best answer to handle IoT
+* A server-agnostic and database-agnostic design (polyglot)
 * A containerized operating environment (Docker)
 * An extension-based platform concept
 * A future-proof and modern REST API
