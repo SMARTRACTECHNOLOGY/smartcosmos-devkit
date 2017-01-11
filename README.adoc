@@ -62,21 +62,7 @@ SMART COSMOS environment, consult your SMARTRAC Technology, Inc. customer repres
 To jump right into operating the DevKit, follow our
 link:guides/getting-started.adoc[getting started tutorials].
 
-== Open Source Framework
-SMART COSMOS includes a number of open source frameworks available under the
-Apache License, Version 2. You can clone and freely use these frameworks in your
-projects, submit pull requests, and access the latest documentation at GitHub:
-
- * https://github.com/SMARTRACTECHNOLOGY/smartcosmos-framework
-
- * https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit
-
-IMPORTANT: The core of the Objects server itself is presently proprietary and must
-be properly licensed when deployed in a production environment.
-
-In addition to the open source development framework, the entirety of the
-SMART COSMOS Objects REST Web Service APIs are fully documented at our https://api.smartcosmos.net[API Documentation web page] and the https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-api-tutorial/2JvFAy[SMART COSMOS Objects DevKit API Tutorial].
-
+=== Services
 [width="100%",options="header,footer"]
 |===
 |Service|API links|Configuration|Description
@@ -94,6 +80,19 @@ Additional services and configuration files:
 
 * Base configuration for all services: https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/application.yml[application.yml]
 * Event listener https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/smartcosmos-event-listener.yml[smartcosmos-event-listener.yml]
+
+== Open Source Framework
+SMART COSMOS includes a number of open source frameworks available under the
+Apache License, Version 2. You can clone and freely use these frameworks in your
+projects, submit pull requests, and access the latest documentation at GitHub:
+
+ * https://github.com/SMARTRACTECHNOLOGY/smartcosmos-framework
+
+IMPORTANT: The core of the Objects server itself is presently proprietary and must
+be properly licensed when deployed in a production environment.
+
+In addition to the open source development framework, the entirety of the
+SMART COSMOS REST Web Service APIs are fully documented at our https://api.smartcosmos.net[API Documentation web page] and the https://documenter.getpostman.com/view/437937/smart-cosmos-devkit-api-tutorial/2JvFAy[SMART COSMOS DevKit API Tutorial].
 
 [[nextSteps]]
 == Next Steps
