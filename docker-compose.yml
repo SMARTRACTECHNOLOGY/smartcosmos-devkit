@@ -27,10 +27,8 @@ services:
 
   auth-server:
     image: smartcosmos/auth-server
-    #environment:
-      #SPRING_CONFIG_LOCATION: 'file:/opt/smartcosmos/config/application.yml, file:/opt/smartcosmos/config/smartcosmos-auth-server.yml'
     ports:
-      - "9999:8080"
+      - "9999:9999"
     depends_on:
       - config-server
     networks:
@@ -41,7 +39,7 @@ services:
   edge-user-devkit:
     image: smartcosmos/edge-user-devkit
     ports:
-      - "45371:8080"
+      - "45371:45371"
     depends_on:
       - config-server
       - mysql
@@ -51,7 +49,7 @@ services:
   user-details-devkit:
     image: smartcosmos/user-details-devkit
     ports:
-      - "7777:8080"
+      - "7777:7777"
     depends_on:
       - config-server
       - mysql
@@ -80,7 +78,7 @@ services:
   events:
     image: smartcosmos/events
     ports:
-      - "45012:8080"
+      - "45012:45012"
     depends_on:
      - config-server
      - kafka
@@ -90,7 +88,7 @@ services:
   edge-bulkimport:
     image: smartcosmos/edge-bulkimport
     ports:
-      - "50593:8080"
+      - "50593:50593"
     depends_on:
       - config-server
     networks:
@@ -99,7 +97,7 @@ services:
   edge-things:
     image: smartcosmos/edge-things
     ports:
-      - "50594:8080"
+      - "50594:50594"
     depends_on:
       - config-server
     networks:
@@ -108,7 +106,7 @@ services:
   ext-things:
     image: smartcosmos/ext-things
     ports:
-      - "45336:8080"
+      - "45336:45336"
     depends_on:
       - config-server
       - mysql
@@ -118,7 +116,7 @@ services:
   ext-metadata:
     image: smartcosmos/ext-metadata
     ports:
-      - "45037:8080"
+      - "45037:45037"
     depends_on:
       - config-server
       - mysql
@@ -128,7 +126,7 @@ services:
   ext-relationships:
     image: smartcosmos/ext-relationships
     ports:
-      - "45369:8080"
+      - "45369:45369"
     depends_on:
       - config-server
       - mysql
