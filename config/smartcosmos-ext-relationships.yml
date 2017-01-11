@@ -1,7 +1,7 @@
 # Relationships RDAO Configuration
 
-# server:
-#   port: ${smartcosmos.service.ext-relationships.port}
+server:
+  port: ${smartcosmos.service.ext-relationships.port}
 
 flyway:
   enabled: true

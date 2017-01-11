@@ -1,5 +1,5 @@
-# server:
-#   port: ${smartcosmos.service.ext-metadata.port}
+server:
+  port: ${smartcosmos.service.ext-metadata.port}
 
 flyway:
   enabled: true
