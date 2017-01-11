@@ -36,7 +36,7 @@ The
 link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS DevKit Tutorial^] is a public Postman collection that can be
 used to exercise the DevKit API and familiarize yourself with the API.
 
-. Start the DevKit, see link:install-devkit.adoc#start-the-devkit[Getting Started^].
+. To start the DevKit see link:install-devkit.adoc#start-the-devkit[Getting Started^].
 . Sign into link:https://www.getpostman.com/[Postman^].
 . Open the link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS DevKit Tutorial^].
 . Select the *_Run in Postman_* button.
