@@ -1,4 +1,4 @@
-:title: SMART COSMOS DevKit Basics Tutorial
+:title: SMART COSMOS DevKit Basics Guide
 :Author: SMART COSMOS Development Team
 :Email: api@smartrac-group.com
 :imagesdir: images
@@ -6,7 +6,7 @@
 = {title}
 :linkattrs:
 
-This tutorial helps you get started with the SMART COSMOS DevKit. We'll
+This guide helps you get started with the SMART COSMOS DevKit. We'll
 describe the pieces of the DevKit and show you how to use the APIs with working
 examples.
 
