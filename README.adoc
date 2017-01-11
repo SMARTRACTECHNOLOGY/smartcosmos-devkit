@@ -37,14 +37,14 @@ To manage these service containers we use https://docker.com[`Docker`].
 With the DevKit it is possible to run a PaaS solution that embodies a collection
 of best practices to support any data processing relevant for your business.
 
-* A full adaptable cloud-based PaaS
-* A microservice architecture centric cluster
-* The TRIM metapher - as best answer to handle IoT
-* A server and database agnostic design (polyglot)
+* A fully adaptable cloud-based PaaS
+* A microservice architecture-centric cluster
+* The TRIM metaphor - as best answer to handle IoT
+* A server- and database-agnostic design (polyglot)
 * A containerized operating environment (Docker)
-* An extension based platform concept
-* A future save and modern REST API
-* A secured microservice communication with https://jwt.io/[JWT]
+* An extension-based platform concept
+* A future-safe and modern REST API
+* Secure microservice communication with https://jwt.io/[JWT]
 
 IMPORTANT: You will need at least a basic understanding of Docker for confident
 and efficient usage of the DevKit.
@@ -124,7 +124,7 @@ can act as starting points or examples:
  provider such as https://stormpath.com/[Stormpath], Active Directory,
  https://developers.google.com/identity/[Google], http://openid.net/[OpenID], etc.
 
-== SMART COSMOS Objects License
-You must review and accept the
+== License
+The DevKit is licensed under the SMART COSMOS Objects EULA. You must review and accept the
 https://licensing.smartcosmos.net/objects/[SMART COSMOS Objects EULA] before
 working with this developer kit.
