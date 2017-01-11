@@ -114,14 +114,15 @@ If you continue to encounter problems refer to link:troubleshooting.adoc:[Troubl
 When running the tests individually you must always make sure you have a current authentication token.  This token can
 be acquired by running the _Acquire Authentication Token_ endpoint test.
 
-Inspect the properties of the request you wish to run including the URL, request type (e.g. POST),
+Inspect the properties of the request you wish to run including the URL, HTTP method (e.g., `POST`),
 the headers, body, pre-request script and tests.  Tests are executed on completion of the request
 and are often used to set variables into the environment for other request to use.
 
 ==== Create Tenant Request
-Tenant registration is a public endpoint and does not require authentication. All other endpoints require a
+Tenant registration is a public endpoint and does not require authentication. All other endpoints require
 valid authentication.  The _Create Tenant_ API is called first to create the tenant.  This request generates a
-random value for the administrator user name and for the tenant name and uses them to create a tenant.  These values are then saved into
+random value for the administrator user name and for the tenant name, and uses them to create
+a tenant.  These values are then saved into
 the environment.
 
 image::postman-environment-after-create-tenant.png[title="Postman Environment Settings After Create Tenant", alt="Postman Environment Settings After Create Tenant"]
@@ -132,17 +133,20 @@ Note in the above figure how new variables have been added to the environment by
 ==== Acquire Authentication Token
 
 Running the _Acquire Authentication Token_ will use the `admin-username` and
-the `admin-password` store in the Postman environment to request an OAUTH2 access token.
-This access token and its associated refresh token is stored in the
+the `admin-password` stored in the Postman environment to request an OAuth 2.0 access token.
+This access token and its associated refresh token are stored in the
 Postman environment to be used by other requests.  As long as this token is valid
-and stored in the Postman environment requests will succeed.
+and stored in the Postman environment, requests will succeed.
 
 == Ready to Go!
 
-By now we hope you have a much deeper understanding of how the DevKit API works.  Be sure to check back frequently or when you have questions.  The Postman
+By now we hope you have a much deeper understanding of how the DevKit
+API works.  Be sure to check back frequently or when you have questions.  The Postman
 collection is connected directly to our development team and is updated every time we add new features and capabilities.
 
-For detailed information on our API see our link:https://api.smartcosmos.net/home/index.html[API Documentation^] and the link:https://devkit.smartcosmos.net[DevKit website^].
+For detailed information on our API see our
+link:https://api.smartcosmos.net/home/index.html[API Documentation^]
+and the link:https://devkit.smartcosmos.net[DevKit website^].
 
 For more detailed information on how Postman works please refer to the
 link:https://www.getpostman.com/docs[Postman documentation^].
