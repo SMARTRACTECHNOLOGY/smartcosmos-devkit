@@ -46,17 +46,13 @@ Run `docker-machine` with the `amazonec2` driver.
 
 If you have configured your AWS credentials (as described in <<awsConfig>>) you can
 now run:
-[source, bash]
-----
-$ docker-machine create --driver amazonec2 devkit-on-aws
-----
+
+ $ docker-machine create --driver amazonec2 --amazonec2-instance-type t2.large devkit-on-aws
 
 By default the instance is created in `us-east-1`.
 You can also specify the *region* by using the flag `--amazonec2-region`:
-[source, bash]
-----
-$ docker-machine create --driver amazonec2 --amazonec2-region eu-west-1 devkit-on-aws
-----
+
+ $ docker-machine create --driver amazonec2 --amazonec2-region eu-central-1 --amazonec2-instance-type t2.large  devkit-on-aws
 
 There are more options for the `amazonec2` driver. Execute
 `docker-machine --driver amazonec2 --help` to get all the available options,
