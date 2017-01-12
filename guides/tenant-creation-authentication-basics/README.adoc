@@ -15,17 +15,19 @@ account operates within its own security realm in order to keep one account’s
 data separate from another account’s data. The security realm is established
 based on tenant creation.
 
+[[createTenant]]
 == Create a Tenant
 
 NOTE: Tenant creation is a public endpoint and does not require authentication.
 All other endpoints require a valid authentication.
 
-Tenant creation also adds an initial user that has administrator privileges in
+Tenant creation also adds an initial user who is assigned
+administrator privileges in
 this security realm.
 To create a new tenant and the initial user, you need to provide these fields:
 
 `name`::
-This is the tenant name or name of your security realm, e.g., organization.
+This is the tenant name, often the name of an organization.
 
 `username`::
 This is the login name of your initial admin user.
@@ -40,7 +42,7 @@ $ curl -X POST "http://localhost:8080/tenants" \
 The response contains the URN of the new tenant, which will be used in any
 reference to the tenant.
 It also returns the user name and a randomly generated password
-of the initial user, who automatically has the Admin role.
+of the initial user, who automatically has the `Admin` role.
 
 [source, json]
 ----
@@ -51,7 +53,7 @@ of the initial user, who automatically has the Admin role.
     "username": "waldo@example.com",
     "password": "lajNVdjZtCEb",
     "roles": ["Admin"],
-    "tenantUrn": "urn:user:uuid:ff002e1e-31c7-4153-a322-d024eb991748"
+    "tenantUrn": "urn:tenant:uuid:ff002e1e-31c7-4153-a322-d024eb991748"
   }
 }
 ----
@@ -62,7 +64,7 @@ additional users, or adding data.
 
 == Authentication
 
-In order to make authenticated requests to endpoints in the SMART COSMOS DevKit,
+In order to make authenticated requests to services in the SMART COSMOS DevKit,
 you first need to acquire an access token and use it for all subsequent REST API
 calls to secured endpoints.
 
@@ -87,13 +89,19 @@ The response contains the OAuth 2.0 token in the `access_token` JSON field.
 [source, json]
 ----
 {
-  TODO: Add token response
+  "access_token": "eyJhbGci...",
+  "token_type": "bearer",
+  "refresh_token": "eyJhbGci...",
+  "expires_in": 43199,
+  "scope": "read",
+  "jti": "d9b21007-cff9-491a-b8bd-75465fd9583c"
 }
 ----
 
 === Use the Access Token
 
-After you acquired the OAuth 2.0 access token, you need to add it to the
+After you have acquired the OAuth 2.0 access token,
+you need to add it to the
 `Authorization` header of any HTTP request.
 
 The following example illustrates using the access token to change your user
@@ -104,10 +112,16 @@ Note that the user URN is required to change your password:
 ----
 $ export token="eyJhbGci..."
 $ export user_urn="urn:user:uuid:2e094c7c-52fe-4dbb-8954-2625171520f8"
-$ curl -X POST "http://localhost:8080/users/${user_urn}" \
+$ curl -X PUT "http://localhost:8080/users/${user_urn}" \
+       -w "%{http_code}\n" \
        -H "Content-Type: application/json" \
        -H "Authorization: Bearer ${token}" \
        -d '{ "password": "xyz1234567" }'
 ----
 
-If you receive a *204 No Content*, the password change was successful.
+If you receive a *204* response, the password change was successful.
+
+== Next Steps
+
+To explore the DevKit further, follow our
+xref:../README.adoc#guides[getting started guides].

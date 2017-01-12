@@ -59,8 +59,10 @@ is publicly available and cannot be replaced, and its use of the primary Devkit
 database as a store for user and account data. To establish a secure, production-ready
 SMART COSMOS environment, consult your SMARTRAC Technology, Inc. customer representative.
 
-To jump right into operating the DevKit, follow our
-link:guides/README.adoc[getting started guides].
+Follow our
+link:guides/README.adoc[getting started guides]
+to jump right into operating the DevKit.
+
 
 === Services
 [width="100%",options="header,footer"]
