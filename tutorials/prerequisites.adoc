@@ -29,6 +29,14 @@ allows you to install binary Applications.
 
  $ brew cask install docker
 
+==== https://docs.docker.com/machine/overview/[Docker Machine]
+
+[source, bash]
+----
+$ curl -L https://github.com/docker/machine/releases/download/v0.9.0-rc2/docker-machine-$(uname -s)-$(uname -m) >/usr/local/bin/docker-machine && \
+chmod +x /usr/local/bin/docker-machine
+----
+
 === Start the Docker Engine
 If you installed docker the next step is to start
 the `docker-engine`. To do this hit kbd:[cmd+space] to open

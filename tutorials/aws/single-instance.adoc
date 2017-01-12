@@ -1,0 +1,123 @@
+:Email: api@smartrac-group.com
+:imagesdir: images
+:experimental:
+:numbered:
+
+= DevKit on an AWS EC2 Instance
+
+This document guides you through the process of getting the SMART COSMOS DevKit
+running on an AWS instance.
+For that purpose you need to go through the following steps:
+
+. write local aws client configuration file
+. use `docker-machine` to start an instance with a docker engine
+
+If you have done these steps you can deploy the DevKit as you would on
+your local system. This is possible because the docker engine is a REST service.
+The `docker` command line client will communicate with the remote engine.
+
+[[awsConfig]]
+== Write local AWS Configuration
+
+NOTE: Credentials are required to create instances on AWS. While
+it is not required we recommend setting your user credentials in a local
+configuration file. Otherwise you would need to enter them on every
+`docker-compose` command you execute, see the
+https://docs.docker.com/machine/examples/aws/#/step-2-use-machine-to-create-the-instance[official docker documentation]
+for further reference.
+
+Create an AWS credentials file at
+`$HOME/.aws/credentials`. It should contain the `key_id` and `access_key`
+of the user you want to use to create the EC2 instance. Make sure that
+user is allowed to create instances.
+[source]
+----
+[default]
+aws_access_key_id = AKID1234567890
+aws_secret_access_key = MY-SECRET-KEY
+----
+
+== Start an AWS EC2 Instance with docker-machine
+
+Make sure you have installed the
+link:../prerequisites.adoc[prerequisites].
+
+Run `docker-machine` with the `amazonec2` driver.
+
+If you have configured your AWS credentials (as described in <<awsConfig>>) you can
+now run:
+
+ $ docker-machine create --driver amazonec2 \
+     --amazonec2-instance-type t2.large \
+     --amazonec2-open-port 8080 \
+     devkit-on-aws
+
+By default the instance is created in `us-east-1`.
+You can also specify the *region* by using the flag `--amazonec2-region`:
+
+ $ docker-machine create --driver amazonec2 \
+     --amazonec2-region eu-central-1 \
+     --amazonec2-instance-type t2.large  \
+     --amazonec2-open-port 8080 \
+     devkit-on-aws
+
+There are more options for the `amazonec2` driver. Execute
+`docker-machine --driver amazonec2 --help` to get all the available options,
+or go to the https://docs.docker.com/machine/drivers/aws/[Docker Amazon Web Services documentation].
+
+
+Starting up the instance will take some time. It will:
+
+* create an EC2 instance
+* install Docker on the instance
+* set up certificates for secure communication with the remote docker engine
+
+If you are getting any error consult the <<troubleshooting>> section.
+
+== Connect Docker to the Remote Engine
+
+Now you need to configure that your docker command line client is using the
+newly created remote docker engine on the AWS EC2 instance:
+
+ $ eval $(docker-machine env docker-on-aws)
+
+== Start the DevKit
+If you successfully followed the previous step
+starting the DevKit does not differ from starting it on your local
+machine. For you convenience we created a `docker-compose` file for aws deployments.
+In the AWS setup we are not using the microservice configuration located in
+this repository. We are using the master branch of the
+https://github.com/SMARTRACTECHNOLOGY/smartcosmos-cluster-config[smartcosmos-cluster-config]
+repository instead.
+
+To start the SMART COSMOS DevKit on the EC2 instance you will need to run:
+
+ $ docker-compose --file docker-commpose-aws.yml up -d
+
+Note that we specify `docker-compose-aws.yml` as the compose file with the `--file` flag. If you
+do not specify a compose file it will
+use `docker-compose.yml` instead. The flag
+`--file docker-commpose-aws.yml`
+has to be provided to each `docker-compose` call.
+
+== Other useful Docker Machine Options
+
+Get a **list of all docker-machines**:
+
+ $ docker-machine ls
+
+Get a **help page** with all available commands:
+
+ $ docker-machine help
+
+To **stop** the EC2 instance run:
+
+ $ docker-machine stop devkit-on-aws
+
+You can **start** the stopped EC2 instance again:
+
+ $ docker-machine start devkit-on-aws
+
+To permanently **remove** the EC instance run:
+
+ $ docker-machine rm devkit-on-aws
