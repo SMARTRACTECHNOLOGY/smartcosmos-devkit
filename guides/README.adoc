@@ -28,7 +28,7 @@ link:install-devkit.adoc[DevKit Setup Guide].
 [guides]
 == Guides
 
-link:devkit-basics.adoc[DevKit Basics]::
+link:devkit-basics/README.adoc[DevKit Basics]::
 This guide helps you get started with the SMART COSMOS DevKit. We'll
 describe the pieces of the DevKit and show you how to use the APIs with working
 examples.
