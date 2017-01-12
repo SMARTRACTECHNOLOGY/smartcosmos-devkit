@@ -173,4 +173,5 @@ by already existing urns in a different tenant.
 
 == Next Steps
 
-xref:../README.adoc[guides]
+To jump right into operating the DevKit, follow our
+link:../README.adoc[getting started guides].
