@@ -103,23 +103,23 @@ The response contains the OAuth 2.0 token in the `access_token` JSON field.
 After you have acquired the OAuth 2.0 access token,
 you need to add it to the
 `Authorization` header of any HTTP request.
-
-The following example illustrates using the access token to change your user
-password (remember to set the correct token).
-Note that the user URN is required to change your password:
-
-[source, bash]
-----
-$ export token="eyJhbGci..."
-$ export user_urn="urn:user:uuid:2e094c7c-52fe-4dbb-8954-2625171520f8"
-$ curl -X PUT "http://localhost:8080/users/${user_urn}" \
-       -w "%{http_code}\n" \
-       -H "Content-Type: application/json" \
-       -H "Authorization: Bearer ${token}" \
-       -d '{ "password": "xyz1234567" }'
-----
-
-If you receive a *204* response, the password change was successful.
+//
+// The following example illustrates using the access token to change your user
+// password (remember to set the correct token).
+// Note that the user URN is required to change your password:
+//
+// [source, bash]
+// ----
+// $ export token="eyJhbGci..."
+// $ export user_urn="urn:user:uuid:2e094c7c-52fe-4dbb-8954-2625171520f8"
+// $ curl -X PUT "http://localhost:8080/users/${user_urn}" \
+//        -w "%{http_code}\n" \
+//        -H "Content-Type: application/json" \
+//        -H "Authorization: Bearer ${token}" \
+//        -d '{ "password": "xyz1234567" }'
+// ----
+//
+// If you receive a *204* response, the password change was successful.
 
 == Next Steps
 
