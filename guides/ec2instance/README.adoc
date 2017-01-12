@@ -3,26 +3,28 @@
 :experimental:
 :numbered:
 
-= DevKit on an AWS EC2 Instance
+= SMART COSMOS DevKit AWS EC2 Instance Setup Guide
 
-This document guides you through the process of getting the SMART COSMOS DevKit
-running on an AWS instance.
-For that purpose you need to go through the following steps:
+This guide leads you through the process of getting the SMART COSMOS DevKit
+running on an AWS EC2 instance.
 
-. write local aws client configuration file
-. use `docker-machine` to start an instance with a docker engine
-
-If you have done these steps you can deploy the DevKit as you would on
-your local system. This is possible because the docker engine is a REST service.
-The `docker` command line client will communicate with the remote engine.
+// For that purpose you need to go through the following steps:
+//
+// . write local aws client configuration file
+// . use `docker-machine` to start an instance with a docker engine
+// . start the SMART COSMOS DevKit with `docker-compose`
+//
+// If you have done these steps you can deploy the DevKit as you would on
+// your local system. This is possible because the docker engine is a REST service.
+// The `docker` command line client will communicate with the remote engine.
 
 [[awsConfig]]
 == Write local AWS Configuration
 
 NOTE: Credentials are required to create instances on AWS. While
-it is not required we recommend setting your user credentials in a local
+it is not required, we recommend storing your user credentials in a local
 configuration file. Otherwise you would need to enter them on every
-`docker-compose` command you execute, see the
+`docker-compose` command you execute. See the
 https://docs.docker.com/machine/examples/aws/#/step-2-use-machine-to-create-the-instance[official docker documentation]
 for further reference.
 
@@ -61,54 +63,57 @@ You can also specify the *region* by using the flag `--amazonec2-region`:
      --amazonec2-open-port 8080 \
      devkit-on-aws
 
-There are more options for the `amazonec2` driver. Execute
-`docker-machine --driver amazonec2 --help` to get all the available options,
-or go to the https://docs.docker.com/machine/drivers/aws/[Docker Amazon Web Services documentation].
+There are more options for the `amazonec2` driver, go to the
+https://docs.docker.com/machine/drivers/aws/[Docker Amazon Web Services documentation]
+for a full list.
 
-
-Starting up the instance will take some time. It will:
+Starting up the instance takes a few minutes.
+It will:
 
 * create an EC2 instance
 * install Docker on the instance
 * set up certificates for secure communication with the remote docker engine
 
-If you are getting any error consult the <<troubleshooting>> section.
-
 == Connect Docker to the Remote Engine
 
-Now you need to configure that your docker command line client is using the
-newly created remote docker engine on the AWS EC2 instance:
+Now you need to configure your Docker command
+line client using the
+newly created remote Docker Engine on
+the AWS EC2 instance:
 
  $ eval $(docker-machine env docker-on-aws)
 
 == Start the DevKit
-If you successfully followed the previous step
-starting the DevKit does not differ from starting it on your local
-machine. For you convenience we created a `docker-compose` file for aws deployments.
-In the AWS setup we are not using the microservice configuration located in
-this repository. We are using the master branch of the
+If you successfully followed the previous steps,
+starting the DevKit on the remote EC2 instance
+does not differ from
+starting it on your local
+machine. For your convenience we created a
+`docker-compose` file for AWS deployments.
+In the AWS setup we are not using the
+microservice configuration located in
+this repository. Instead, we are
+using the `devkit` branch
+of the
 https://github.com/SMARTRACTECHNOLOGY/smartcosmos-cluster-config[smartcosmos-cluster-config]
-repository instead.
+repository.
 
 To start the SMART COSMOS DevKit on the EC2 instance you will need to run:
 
  $ docker-compose --file docker-commpose-aws.yml up -d
 
 Note that we specify `docker-compose-aws.yml` as the compose file with the `--file` flag. If you
-do not specify a compose file it will
+do not specify a compose file, it will
 use `docker-compose.yml` instead. The flag
 `--file docker-commpose-aws.yml`
-has to be provided to each `docker-compose` call.
+has to be provided in each `docker-compose` call.
 
 == Other useful Docker Machine Options
 
-Get a **list of all docker-machines**:
+Get a **list of all Docker machines**:
 
  $ docker-machine ls
 
-Get a **help page** with all available commands:
-
- $ docker-machine help
 
 To **stop** the EC2 instance run:
 
@@ -118,6 +123,10 @@ You can **start** the stopped EC2 instance again:
 
  $ docker-machine start devkit-on-aws
 
-To permanently **remove** the EC instance run:
+To permanently **remove** the EC2 instance run:
 
  $ docker-machine rm devkit-on-aws
+
+Get a **help page** with all available commands:
+
+ $ docker-machine help

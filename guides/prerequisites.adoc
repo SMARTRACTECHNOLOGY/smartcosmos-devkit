@@ -28,7 +28,7 @@ Now you need to enable https://caskroom.github.io/[*Homebrew Cask*] by running:
 
  $ brew tap caskroom/cask
 
-This enables brew to use the `cask` subcommand which
+This enables brew to use the `cask` subcommand, which
 allows you to install binary applications.
 
 ==== https://git-scm.com/[git]
@@ -39,7 +39,7 @@ allows you to install binary applications.
 
  $ brew cask install docker
 
-==== https://docs.docker.com/machine/overview/[Docker Machine]
+==== https://docs.docker.com/machine/overview/[docker-machine]
 
 [source, bash]
 ----
