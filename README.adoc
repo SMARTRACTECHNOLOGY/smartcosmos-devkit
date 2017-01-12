@@ -46,13 +46,13 @@ of best practices to support any data processing relevant for your business.
 * A future-proof and modern REST API
 * Secure microservice communication with https://jwt.io/[JWT]
 
-IMPORTANT: You will need at least a basic understanding of Docker for confident
+NOTE: You will need at least a basic understanding of Docker for confident
 and efficient usage of the DevKit.
 If you are not familiar with Docker you will find detailed information in the
 https://docs.docker.com/engine/understanding-docker/[official docker documentation].
 
 === Getting Started
-IMPORTANT: SMART COSMOS DevKit is designed for learning, testing, and evaluation
+NOTE: SMART COSMOS DevKit is designed for learning, testing, and evaluation
 of the SMART COSMOS platform. It is not intended for production use, and it is
 inherently insecure due to its reliance on a JKS key pair for which the https://github.com/SMARTRACTECHNOLOGY/smartcosmos-auth-server/blob/master/src/main/resources/smartcosmos.jks[secret key]
 is publicly available and cannot be replaced, and its use of the primary Devkit
