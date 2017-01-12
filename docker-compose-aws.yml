@@ -6,7 +6,7 @@ services:
     image: smartcosmos/config-server
     environment:
       CONFIG_FILE_URI: "https://github.com/SMARTRACTECHNOLOGY/smartcosmos-cluster-config"
-      CONFIG_SERVER_LABEL: master
+      CONFIG_SERVER_LABEL: devkit
       ENCRYPT_KEY: "RD@BIv2AhuFIAmKo"
     ports:
       - "8888:8888"
@@ -43,6 +43,7 @@ services:
       - mysql
     networks:
       - platform-services
+    restart: on-failure
 
   user-details-devkit:
     image: smartcosmos/user-details-devkit
@@ -53,6 +54,7 @@ services:
       - mysql
     networks:
       - platform-services
+    restart: on-failure
 
   zookeeper:
     image: jplock/zookeeper:3.4.6
