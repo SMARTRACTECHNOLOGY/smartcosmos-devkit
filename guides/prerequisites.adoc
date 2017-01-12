@@ -3,6 +3,15 @@
 :experimental:
 :numbered:
 
+This guide walks you through the installation of tools required for working with
+the SMART COSMOS DevKit for our main supported platforms, macOS and GNU/Linux.
+
+NOTE: SMART COSMOS DevKit uses Docker container technology and therefore is
+platform-independent. Although Docker is available on Windows platforms, we do
+not develop or test on Windows.
+The SMART COSMOS DevKit should run without problems on
+https://docs.docker.com/docker-for-windows/[Docker for Windows].
+
 [[macOS]]
 == macOS
 
@@ -63,7 +72,7 @@ can close the window.
 
 === Install the DevKit
 
-Please follow link:install-devkit.adoc[the DevKit install instructions].
+Please follow the link:install-devkit.adoc[DevKit install instructions].
 
 [[linux]]
 == GNU/Linux
@@ -71,17 +80,18 @@ Please follow link:install-devkit.adoc[the DevKit install instructions].
 
 === Install the Tools
 
-https://git-scm.com/[git]::
+==== https://git-scm.com/[git]
 Install git with the package manager, e.g., on Ubuntu with:
 
  $ apt-get install git
 
-https://docker.com[docker]::
+==== https://docker.com[docker]
 Please follow the
 https://docs.docker.com/engine/installation/linux/[official installation guide]
 to install docker on a GNU/Linux system.
-Make sure that you can use docker **without** `sudo`.
+
+Make sure that you can use docker without sudo.
 
 === Install the DevKit
 
-Please follow link:install-devkit.adoc[the DevKit install instructions].
+Please follow the link:install-devkit.adoc[DevKit install instructions].
