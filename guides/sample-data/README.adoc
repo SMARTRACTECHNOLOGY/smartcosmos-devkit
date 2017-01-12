@@ -1,0 +1,136 @@
+:title: Sample Data Import Guide
+:Author: SMART COSMOS Development Team
+:Email: api@smartrac-group.com
+:numbered:
+
+= {title}
+
+This guide helps you initially populate your database by importing
+sample data into the SMART COSMOS DevKit, using the **Bulk Import**
+service.
+
+In the first part of this document ("Construct a Bulk Import Request"),
+we explain how bulk import requests work, and guide you through a minimal example.
+The second part of this document ("Add Provided Sample Data") describes how to
+use some provided scripts and data files to create some sample data in your
+instance. The data added in the first part is also added (or updated,
+if it's already there) in the second part, so if you wish you can just read
+through the first part and execute the provided scripts as described in the
+second part.
+
+This data is required for minimum functionality:
+
+.Data types
+|===
+| Type | Description
+
+| Tenant | A tenant represents an account or organization which holds all data
+           belonging to it. **Creation of tenants is described in
+           xref:tenant-creation-authentication-basics/README.adoc[Create Tenant Guide]**.
+| User | A user is associated with credentials which are used to log in to a
+          tenant. The initial user is created automatically when the tenant
+          is created.
+| Thing | Things represent core entities (a car, a person, an RFID tag, ...).
+| Metadata | Metadata represents properties of these Things (the car is blue).
+| Relationship | Relationships represent relations between Things (this car belongs to Bob)
+|===
+
+== Create a Tenant
+The  xref:tenant-creation-authentication-ba
+sics/README.adoc[Create Tenant Guide]
+is a prerequisite for this guide, as you will need
+the username, password, and access token you created in that guide to execute the
+steps in this one.
+
+== Construct a Bulk Import Request
+
+A bulk import request contains a JSON body composed of two sections:
+
+.Bulk Import Components
+|===
+| Name | Description
+
+| `things` | JSON array containing Things with associated Metadata
+| `relationships` | JSON array containing Relationships between the
+                    Things defined above
+|===
+
+
+=== Tutorial Example
+
+We have a person and a car, where the person owns that car. The person and the car both have metadata properties:
+
+[source, text]
+----
+[Thing] Person -> [Metadata] {"name": "John"}
+ |
+ |
+[Relationship] "owns"
+ |
+ v
+[Thing] Vehicle -> [Metadata] {"manufacturer": "Toyota", "model": "pickup truck"}
+----
+
+To import this sample data structure, create a
+JSON import file that looks like the JSON below,
+and name it `example.json`.
+
+[source, json]
+----
+{
+  "things": [
+    {
+      "type": "Person",
+      "urn": "urn:thing:uuid:12345678-1234-5678-9abc-000000000001",
+      "name": "John"
+    },
+    {
+      "type": "Vehicle",
+      "urn": "urn:thing:uuid:12345678-1234-5678-9abc-000000000004",
+      "manufacturer": "Toyota",
+      "model": "Pickup Truck"
+    }
+  ],
+  "relationships": [
+    {
+      "source": {
+        "type": "Person",
+        "urn": "urn:thing:uuid:12345678-1234-5678-9abc-000000000001"
+      },
+      "target": {
+        "type": "Vehicle",
+        "urn": "urn:thing:uuid:12345678-1234-5678-9abc-000000000004"
+      },
+      "relationshipType": "owns"
+    }
+  ]
+}
+----
+
+Use the `curl` command to import the data into the DevKit, using the JWT token
+you obtained from 'Create Tenant Guide':
+
+[source, bash]
+----
+$ export token="eyJhbGci..."
+$ curl -X POST "http://localhost:8080/bulkimport/" \
+       -H "Content-Type: application/json" \
+       -H "Authorization: Bearer ${token}" \
+       -d @example.json
+----
+
+== Add Provided Sample Data
+
+The script `addSampleData` takes the username and password from
+xref:tenant-creation-authentication-basics/README.adoc[Create Tenant Guide]
+and imports the data in the file `bulkimport.json`. Read through the script, and
+take a cursory glance at the contents of `bulkimport.json.`
+
+To run the script:
+
+ $ ./addSampleData USERNAME PASSWORD
+
+== Next Steps
+
+To explore the DevKit further, follow our
+xref:../README.adoc#guides[getting started guides].

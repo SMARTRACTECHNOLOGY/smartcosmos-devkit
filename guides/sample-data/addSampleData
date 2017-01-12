@@ -52,9 +52,7 @@ token=$(jsonGetValue ${respToken} "access_token")
 #echo ${token}
 
 # send bulk import
-respImport=$(curl -sS -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${token}" -d "$(cat bulkimport.json)" "${devkitHost}/bulkimport/")
+respImport=$(curl -sS -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${token}" -d @bulkimport.json "${devkitHost}/bulkimport/")
 
 echo " === Import result === "
 echo ${respImport}
-
-

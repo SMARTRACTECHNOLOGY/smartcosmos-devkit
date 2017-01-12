@@ -1,5 +1,5 @@
-# server:
-#   port: ${smartcosmos.service.ext-things.port}
+server:
+  port: ${smartcosmos.service.ext-things.port}
 
 flyway:
   enabled: true

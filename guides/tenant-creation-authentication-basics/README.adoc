@@ -1,0 +1,127 @@
+:title: Tenant Creation and Authentication Basics Guide
+:Author: SMART COSMOS Development Team
+:Email: api@smartrac-group.com
+:numbered:
+:linkattrs:
+
+= {title}
+
+This guide explains how you create your initial tenant and user, and how to
+use OAuth 2.0 authentication for further requests to SMART COSMOS services.
+
+Before you can begin to use the SMART COSMOS system you will need to have a valid,
+active tenant. SMART COSMOS is designed to be a multi-tenant system where each
+account operates within its own security realm in order to keep one account’s
+data separate from another account’s data. The security realm is established
+based on tenant creation.
+
+[[createTenant]]
+== Create a Tenant
+
+NOTE: Tenant creation is a public endpoint and does not require authentication.
+All other endpoints require a valid authentication.
+
+Tenant creation also adds an initial user who is assigned
+administrator privileges in
+this security realm.
+To create a new tenant and the initial user, you need to provide these fields:
+
+`name`::
+This is the tenant name, often the name of an organization.
+
+`username`::
+This is the login name of your initial admin user.
+
+[source, bash]
+----
+$ curl -X POST "http://localhost:8080/tenants" \
+       -H "Content-Type: application/json" \
+       -d '{"name": "Example Company", "username": "waldo@example.com"}'
+----
+
+The response contains the URN of the new tenant, which will be used in any
+reference to the tenant.
+It also returns the user name and a randomly generated password
+of the initial user, who automatically has the `Admin` role.
+
+[source, json]
+----
+{
+  "urn": "urn:tenant:uuid:ff002e1e-31c7-4153-a322-d024eb991748",
+  "admin": {
+    "urn": "urn:user:uuid:2e094c7c-52fe-4dbb-8954-2625171520f8",
+    "username": "waldo@example.com",
+    "password": "lajNVdjZtCEb",
+    "roles": ["Admin"],
+    "tenantUrn": "urn:tenant:uuid:ff002e1e-31c7-4153-a322-d024eb991748"
+  }
+}
+----
+
+NOTE: The password value needs to be stored in a safe location, because it
+is required for further operations on this tenant, e.g., creating
+additional users, or adding data.
+
+== Authentication
+
+In order to make authenticated requests to services in the SMART COSMOS DevKit,
+you first need to acquire an access token and use it for all subsequent REST API
+calls to secured endpoints.
+
+=== Acquire an Access Token
+
+You can request your OAuth 2.0 access token with the known `username`/`password`
+credentials returned at tenant (or user) creation.
+
+Execute the following to acquire a token for your newly created user
+(remember to set the correct password):
+
+[source, bash]
+----
+$ export password='lajNVdjZtCEb'
+$ curl -X POST "http://localhost:8080/oauth/token?grant_type=password&scope=read&username=waldo@example.com&password=${password}" \
+       -H "Content-Type: application/json" \
+       --basic -u "smartcosmosservice:9HhnNDhfGEXfNEn6"
+----
+
+The response contains the OAuth 2.0 token in the `access_token` JSON field.
+
+[source, json]
+----
+{
+  "access_token": "eyJhbGci...",
+  "token_type": "bearer",
+  "refresh_token": "eyJhbGci...",
+  "expires_in": 43199,
+  "scope": "read",
+  "jti": "d9b21007-cff9-491a-b8bd-75465fd9583c"
+}
+----
+
+=== Use the Access Token
+
+After you have acquired the OAuth 2.0 access token,
+you need to add it to the
+`Authorization` header of any HTTP request.
+//
+// The following example illustrates using the access token to change your user
+// password (remember to set the correct token).
+// Note that the user URN is required to change your password:
+//
+// [source, bash]
+// ----
+// $ export token="eyJhbGci..."
+// $ export user_urn="urn:user:uuid:2e094c7c-52fe-4dbb-8954-2625171520f8"
+// $ curl -X PUT "http://localhost:8080/users/${user_urn}" \
+//        -w "%{http_code}\n" \
+//        -H "Content-Type: application/json" \
+//        -H "Authorization: Bearer ${token}" \
+//        -d '{ "password": "xyz1234567" }'
+// ----
+//
+// If you receive a *204* response, the password change was successful.
+
+== Next Steps
+
+To explore the DevKit further, follow our
+xref:../README.adoc#guides[getting started guides].

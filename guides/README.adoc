@@ -1,0 +1,52 @@
+:title: Getting Started
+:Author: SMART COSMOS Development Team
+:Email: api@smartrac-group.com
+:numbered:
+:linkattrs:
+
+= Getting Started
+
+Getting Started provides you with an overview of basics steps to familiarize you
+with the SMART COSMOS DevKit.
+
+The guide informs you about recommended system requirements and guides you through the
+process of setting up the SMART COSMOS DevKit and how to proceed from there.
+
+== Prerequisites
+
+Please choose the matching platform of your working machine:
+
+* link:prerequisites.adoc#macOS[macOS]
+* link:prerequisites.adoc#linux[GNU/Linux]
+
+== Set up the DevKit
+
+To start the DevKit follow the
+link:install-devkit.adoc[DevKit Setup Guide].
+
+
+[guides]
+== Guides
+
+link:devkit-basics/README.adoc[DevKit Basics]::
+This guide helps you get started with the SMART COSMOS DevKit. We'll
+describe the pieces of the DevKit and show you how to use the APIs with working
+examples.
+
+link:tenant-creation-authentication-basics/README.adoc[Tenant Creation and Authentication Basics]::
+This guide explains how you create your initial tenant and user, and how to
+use OAuth 2.0 authentication for further requests to SMART COSMOS services.
+
+link:sample-data/README.adoc[Sample Data Import]::
+This guide helps you initially populate your database by importing
+sample data into the SMART COSMOS DevKit, using the **Bulk Import**
+service.
+
+link:ec2instance/README.adoc[AWS EC2 Instance Setup]::
+This guide leads you through the process of getting the SMART COSMOS DevKit
+running on an AWS EC2 Instance.
+
+
+== Next Steps
+Now that you have an understanding on how to operate and use
+the DevKit you may follow link:../README.adoc#nextSteps[the next steps].

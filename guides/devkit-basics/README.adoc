@@ -1,27 +1,28 @@
-:title: SMART COSMOS DevKit Basics Tutorial
+:title: SMART COSMOS DevKit Basics Guide
 :Author: SMART COSMOS Development Team
 :Email: api@smartrac-group.com
 :imagesdir: images
+:experimental:
+:linkattrs:
+:numbered:
 
 = {title}
-:linkattrs:
 
-This tutorial helps you get started with the SMART COSMOS DevKit. We'll
+This guide helps you get started with the SMART COSMOS DevKit. We'll
 describe the pieces of the DevKit and show you how to use the APIs with working
 examples.
 
-:numbered:
 == Prerequisites
 
 === Install the DevKit
 
-To get started with the DevKit refer to the link:getting-started.adoc[Getting Started^] guide.
+To get started with the DevKit refer to the link:README.adoc[Getting Started^] guide.
 
 === Install Postman
 
 We use link:https://www.getpostman.com/[Postman^] to do much of the testing and
 development on our REST API. Postman is a GUI platform designed to make testing and
-development of your REST API easier.  For more information about Postman go to their
+development of your REST API easier. For more information about Postman go to their
 website at link:https://www.getpostman.com[https://www.getpostman.com^].
 
 In order to use our public collection
@@ -36,10 +37,10 @@ The
 link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS DevKit Tutorial^] is a public Postman collection that can be
 used to exercise the DevKit API and familiarize yourself with the API.
 
-. Start the DevKit, see link:install-devkit.adoc#start-the-devkit[Getting Started^].
+. To start the DevKit see link:install-devkit.adoc#start-the-devkit[Getting Started^].
 . Sign into link:https://www.getpostman.com/[Postman^].
 . Open the link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS DevKit Tutorial^].
-. Select the *_Run in Postman_* button.
+. Select the btn:[Run in Postman] button.
 +
 image::run-in-postman.png[title="Postman Collection Run Button", alt="Postman webapp"]
 
@@ -51,48 +52,48 @@ Now you can start sending requests to your locally running DevKit.
 
 You can begin testing by running all the requests against your running DevKit. Before
 you can begin to use the SMART COSMOS system you will need to have a valid, active
-tenant.  SMART COSMOS is designed to be a multi-tenant system where each
+tenant. SMART COSMOS is designed to be a multi-tenant system where each
 account operates within its own security realm in order to keep one account’s data separate from another
-account’s data. The security realm is established based on the tenant registration or creation.
+account’s data. The security realm is established based on tenant creation.
 
-Tenant registration is a public endpoint and does not require authentication. All other endpoints require a
-valid authentication.  The _Create Tenant_ API is called first to create the tenant.  This request generates
-random values for the administrator user name and for the tenant name and uses them to create a tenant.
+Tenant creation is a public endpoint and does not require authentication. All other endpoints require a
+valid authentication. The _Create Tenant_ API is called first to create the tenant. This request generates
+random values for the administrator user name and for the tenant name, and uses them to create a tenant.
 These values are then saved into the environment and each subsequent request is executed in order.
 
 === Request Documentation
 
-Documentation about each request is available in the Postman collection.  This
+Documentation about each request is available in the Postman collection. This
 documentation can be viewed by selecting the request you are interested in and
-changing the small triangle next to the request title as shown in the following diagram.
+clicking the small triangle next to the request title as shown in the following diagram.
 
 image::postman-request-documentation.png[title="Request Documentation in Postman", alt="Request Documentation in Postman"]
 
 === Running All of the Requests Automatically
 
-. Open the collection by clicking the '>' next to the collection name. This will display some documentation about the test collection and a *Run* button will be displayed.
+. Open the collection by clicking the btn:[>] next to the collection name. This will display some documentation about the test collection and a btn:[Run] button.
 +
 image::postman-run-all-begin.png[title="Open Page to Run All Requests Locally in Postman", alt="Open Page to Run All Requests Against a Local DevKit"]
 
-. Click the *Run* button to begin executing the tests in order.  This will open
+. Click the btn:[Run] button to begin executing the tests in order. This will open
 the collection in the _Postman Collection Runner_.
 +
 image::postman-run-all.png[title="Run All Requests Locally in Postman", alt="Run All Requests Against a Local DevKit"]
 
-. Click the *Start Run* button in the _Postman Collection Runner_.
+. Click the btn:[Start Run] button in the _Postman Collection Runner_.
 
 image::postman-collection-runner.png[title="Run All Requests - Collection Runner", alt="Run All Requests - Collection Runner"]
 
 ==== View the Results
 
-The results of the run will show automatically.  The first time you run the
+The results of the run will show automatically. The first time you run the
 tests many of them will fail and your results will look like the following;
 
 image::postman-collection-run-failure.png[title="Postman Collection Run - Failure", alt="Postman Collection Run - Failure"]
 
 
 This is usually because parts of the system are lazily initialized and require an initial attempt to start properly.
-Retry the collection run by clicking the *Retry* button.
+Retry the collection run by clicking the btn:[Retry] button.
 
 image::postman-collection-run-retry.png[title="Postman Collection Run - Retry", alt="Postman Collection Run - Retry"]
 
@@ -104,23 +105,24 @@ image::postman-collection-run-success.png[title="Postman Collection Run - Succes
 
 Whether success or failure, the results shown in the Postman Collection Runner
 can provide you with a lot of detailed information about each request.
-Including URL, HTTP verb, parameters and response details.
+Including URL, HTTP method, parameters and response details.
 
 If you continue to encounter problems refer to link:troubleshooting.adoc:[Troubleshooting^].
 
 === Running Requests Individually
 
-When running the tests individually you must always make sure you have a current authentication token.  This token can
+When running the tests individually you must always make sure you have a current authentication token. This token can
 be acquired by running the _Acquire Authentication Token_ endpoint test.
 
-Inspect the properties of the request you wish to run including the URL, request type (e.g. POST),
-the headers, body, pre-request script and tests.  Tests are executed on completion of the request
+Inspect the properties of the request you wish to run including the URL, HTTP method (e.g., `POST`),
+the headers, body, pre-request script and tests. Tests are executed on completion of the request
 and are often used to set variables into the environment for other request to use.
 
 ==== Create Tenant Request
-Tenant registration is a public endpoint and does not require authentication. All other endpoints require a
-valid authentication.  The _Create Tenant_ API is called first to create the tenant.  This request generates a
-random value for the administrator user name and for the tenant name and uses them to create a tenant.  These values are then saved into
+Tenant registration is a public endpoint and does not require authentication. All other endpoints require
+valid authentication. The _Create Tenant_ API is called first to create the tenant. This request generates a
+random value for the administrator user name and for the tenant name, and uses them to create
+a tenant. These values are then saved into
 the environment.
 
 image::postman-environment-after-create-tenant.png[title="Postman Environment Settings After Create Tenant", alt="Postman Environment Settings After Create Tenant"]
@@ -131,17 +133,19 @@ Note in the above figure how new variables have been added to the environment by
 ==== Acquire Authentication Token
 
 Running the _Acquire Authentication Token_ will use the `admin-username` and
-the `admin-password` store in the Postman environment to request an OAUTH2 access token.
-This access token and its associated refresh token is stored in the
-Postman environment to be used by other requests.  As long as this token is valid
-and stored in the Postman environment requests will succeed.
+the `admin-password` stored in the Postman environment to request an OAuth 2.0 access token.
+This access token and its associated refresh token are stored in the
+Postman environment to be used by other requests. As long as this token is valid
+and stored in the Postman environment, requests will succeed.
 
 == Ready to Go!
 
-By now we hope you have a much deeper understanding of how the DevKit API works.  Be sure to check back frequently or when you have questions.  The Postman
+By now we hope you have a much deeper understanding of how the DevKit
+API works. Be sure to check back frequently or when you have questions. The Postman
 collection is connected directly to our development team and is updated every time we add new features and capabilities.
 
-For detailed information on our API see our link:https://api.smartcosmos.net/home/index.html[API Documentation^] and the link:https://devkit.smartcosmos.net[DevKit website^].
+For detailed information on our API see our
+link:https://api.smartcosmos.net/home/index.html[API Documentation^].
 
 For more detailed information on how Postman works please refer to the
 link:https://www.getpostman.com/docs[Postman documentation^].
