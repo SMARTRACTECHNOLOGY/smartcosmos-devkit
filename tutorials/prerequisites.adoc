@@ -31,7 +31,11 @@ allows you to install binary Applications.
 
 ==== https://docs.docker.com/machine/overview/[Docker Machine]
 
- $ brew install docker-machine
+[source, bash]
+----
+$ curl -L https://github.com/docker/machine/releases/download/v0.9.0-rc2/docker-machine-$(uname -s)-$(uname -m) >/usr/local/bin/docker-machine && \
+chmod +x /usr/local/bin/docker-machine
+----
 
 === Start the Docker Engine
 If you installed docker the next step is to start
