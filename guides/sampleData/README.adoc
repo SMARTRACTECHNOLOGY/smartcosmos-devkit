@@ -58,9 +58,13 @@ The user requests an OAuth 2.0 access token with the known `username`/`password`
 credentials returned at user (or tenant) creation.
 The access token is then used for all subsequent REST API calls.
 
+Execute the following to acquire a token for your newly created user
+(remember to set the correct password):
+
 [source, bash]
 ----
-$ curl -X POST "http://localhost:8080/oauth/token?grant_type=password&scope=read&username=waldo@example.com&password=lajNVdjZtCEb" \
+$ export password='lajNVdjZtCEb'
+$ curl -X POST "http://localhost:8080/oauth/token?grant_type=password&scope=read&username=waldo@example.com&password=${password}" \
        -H "Content-Type: application/json" \
        --basic -u "smartcosmosservice:9HhnNDhfGEXfNEn6"
 ----
