@@ -1,14 +1,12 @@
-:title: SMART COSMOS Objects v3 Troubleshooting
+:title: SMART COSMOS DevKit Troubleshooting
 :Author: SMART COSMOS Development Team
 :Email: api@smartrac-group.com
-:Date: 9 January 2017
-:Revision: 3.0.1
 :imagesdir: images
 
-= Troubleshooting SMART COSMOS Objects v3
+= {title}
 
 This document describes the most common problems and causes encountered when
-working with SMART COSMOS Objects v3.  If you have encountered a problem not
+working with the SMART COSMOS DevKit.  If you have encountered a problem not
 described here and you are not able to resolve it on your own
  please contact us at {email}.
 
