@@ -173,4 +173,4 @@ by already existing urns in a different tenant.
 
 == Next Steps
 
-xref:../getting-started.adoc[guides]
+xref:../README.adoc[guides]

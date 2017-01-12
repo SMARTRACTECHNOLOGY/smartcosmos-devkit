@@ -16,7 +16,7 @@ examples.
 
 === Install the DevKit
 
-To get started with the DevKit refer to the link:getting-started.adoc[Getting Started^] guide.
+To get started with the DevKit refer to the link:README.adoc[Getting Started^] guide.
 
 === Install Postman
 

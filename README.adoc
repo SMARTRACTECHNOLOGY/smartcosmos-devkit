@@ -60,7 +60,7 @@ database as a store for user and account data. To establish a secure, production
 SMART COSMOS environment, consult your SMARTRAC Technology, Inc. customer representative.
 
 To jump right into operating the DevKit, follow our
-link:guides/getting-started.adoc[getting started guides].
+link:guides/README.adoc[getting started guides].
 
 === Services
 [width="100%",options="header,footer"]
