@@ -1,5 +1,9 @@
-= Tutorial for Importing Sample Data
+:title: Sample Data Import Guide
+:Author: SMART COSMOS Development Team
+:Email: api@smartrac-group.com
+:numbered:
 
+= {title}
 
 This guide helps you initially populate your database by importing
 sample data into the SMART COSMOS DevKit, using the **Bulk Import**
@@ -20,7 +24,6 @@ This data is required for minimum functionality:
 | Relationship | Relationships represent relations between Things (this car belongs to Bob)
 |===
 
-:numbered:
 == Create a Tenant
 
 To create the new tenant, the *name* of the organization and the *username* of the initial user shall be given:

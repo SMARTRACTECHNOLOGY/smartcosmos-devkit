@@ -33,6 +33,12 @@ This guide helps you get started with the SMART COSMOS DevKit. We'll
 describe the pieces of the DevKit and show you how to use the APIs with working
 examples.
 
+link:sample-data/README.adoc[Sample Data Import]::
+This guide helps you initially populate your database by importing
+sample data into the SMART COSMOS DevKit, using the **Bulk Import**
+service.
+
+
 == Next Steps
 Now that you have an understanding on how to operate and use
 the DevKit you may follow link:../README.adoc#nextSteps[the next steps].
