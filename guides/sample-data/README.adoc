@@ -9,36 +9,52 @@ This guide helps you initially populate your database by importing
 sample data into the SMART COSMOS DevKit, using the **Bulk Import**
 service.
 
+NOTE: In the first part of this document ("Construct a Bulk Import Request"),
+we explain how bulk import requests work, and guide you through a minimal example.
+The second part of this document ("Add Provided Sample Data") describes how to
+use some provided scripts and data files to create some sample data in your
+instance. The data added in the first part is also added (or updated,
+if it's already there) in the second part, so if you wish you can just read
+through the first part and execute the provided scripts as described in the
+second part.
+
+NOTE: The 'Create Tenant Guide' is a prerequisite for this guide, as you will need
+the username, password, and JWT token you create in that guide to execute the
+steps in this one.
+
 This data is required for minimum functionality:
 
 .Data types
 |===
 | Type | Description
 
-| Tenant | A tenant represents an account or organization which holds all data belonging to it
+| Tenant | A tenant represents an account or organization which holds all data
+           belonging to it. Creation of tenants is described in
+           'Create Tenant Guide'.
 | User | A user is associated with credentials which are used to log in to a
           tenant. The initial user is created automatically when the tenant
-          is created.
+          is created. Creation of users is described in
+          'Create Tenant Guide'.
 | Thing | Things represent core entities (a car, a person, an RFID tag, ...).
 | Metadata | Metadata represents properties of these Things (the car is blue).
 | Relationship | Relationships represent relations between Things (this car belongs to Bob)
 |===
 
-== Construct the Bulk Import Request
+== Construct a Bulk Import Request
 
-The bulk import request contains a JSON body composed of two sections:
+A bulk import request contains a JSON body composed of two sections:
 
 .Bulk Import Components
 |===
 | Name | Description
 
-| `things` | JSON array containing Things with Metadata
+| `things` | JSON array containing Things with associated Metadata
 | `relationships` | JSON array containing Relationships between the
                     Things defined above
 |===
 
 
-=== Example
+=== Tutorial Example
 
 We have a person and a car, where the person owns that car. The person and the car both have metadata properties:
 
@@ -89,8 +105,8 @@ and name it `bulkimport.json`.
 }
 ----
 
-Use the `curl` command to import the data into the DevKit
-(remember to set the correct access token):
+Use the `curl` command to import the data into the DevKit, using the JWT token
+you obtained from 'Create Tenant Guide':
 
 [source, bash]
 ----
@@ -101,24 +117,18 @@ $ curl -X POST "http://localhost:8080/bulkimport/" \
        -d @bulkimport.json
 ----
 
-== Add more Sample Data
+== Add Provided Sample Data
 
-TODO:: rewrite this section
+The script *addSampleData* takes the username and password from 'Create Tenant Guide'
+and imports the data in the file bulkimport.json. Read through the script, and
+take a cursory glance at the contents of bulkimport.json.
 
-The script *createSampleData* outputs the username and
-password of the newly created tenant. Store these credentials
-in a safe location. When the import fails or more data
-needs to be imported, run following command with the given
-credentials:
+To run the script:
 
  $ ./addSampleData USERNAME PASSWORD
 
-So it is not necessary to create a new tenant in the case
-the createSampleData command fails after creating the tenant.
-
-For the bulk import the Thing urns need to be generated as
-unique values. When the import fails, this might be caused
-by already existing urns in a different tenant.
+Bear in mind that Thing URNs must be unique across all Tenants in an instance.
+If you run this script for multiple tenants, you will experience a failure.
 
 == Next Steps
 
