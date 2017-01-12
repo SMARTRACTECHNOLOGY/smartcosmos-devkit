@@ -20,6 +20,7 @@ This data is required for minimum functionality:
 | Relationship | Relationships represent relations between Things (this car belongs to Bob)
 |===
 
+:numbered:
 == Create a Tenant
 
 To create the new tenant, the *name* of the organization and the *username* of the initial user shall be given:

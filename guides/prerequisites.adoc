@@ -1,6 +1,7 @@
 = Prerequisites
 :imagesdir: images
 :experimental:
+:numbered:
 
 [[macOS]]
 == macOS
@@ -67,10 +68,11 @@ Please follow link:install-devkit.adoc[the DevKit install instructions].
 [[linux]]
 == GNU/Linux
 
+
 === Install the Tools
 
 ==== https://git-scm.com/[git]
-Install git with the package manager. E.g. on Ubuntu with:
+Install git with the package manager, e.g., on Ubuntu with:
 
  $ apt-get install git
 

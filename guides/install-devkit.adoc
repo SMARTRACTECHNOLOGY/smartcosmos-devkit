@@ -3,6 +3,7 @@
 Before you attempt to start the DevKit make sure you have
 link:prerequisites.adoc[installed all the prerequisites].
 
+:numbered:
 == Get the Deploy Code
 
  $ git clone https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit.git
@@ -15,7 +16,7 @@ To enable you to access each service of the DevKit individually and not just
 through the `gateway` service we forward all services to a specific
 port.
 
-CAUTION: Before you start the DevKit ensure that
+WARNING: Before you start the DevKit ensure that
 no other application or service is listening on a
 port listed in the column *Forwarded Ports* in the link:service-ports.adoc[List of Ports] table.
 
