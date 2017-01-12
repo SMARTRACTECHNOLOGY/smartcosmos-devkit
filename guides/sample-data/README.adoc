@@ -24,57 +24,6 @@ This data is required for minimum functionality:
 | Relationship | Relationships represent relations between Things (this car belongs to Bob)
 |===
 
-== Create a Tenant
-
-To create the new tenant, the *name* of the organization and the *username* of the initial user shall be given:
-
-[source, bash]
-----
-$ curl -X POST "http://localhost:8080/tenants" \
-       -H "Content-Type: application/json" \
-       -d '{"name": "Example Company", "username": "waldo@example.com"}'
-----
-
-The response contains the URN of the new tenant, and the user name and password
-of the initial user, who automatically has the Admin role.
-
-[source, json]
-----
-{
-  "urn": "urn:tenant:uuid:ff002e1e-31c7-4153-a322-d024eb991748",
-  "admin": {
-    "urn": "urn:user:uuid:2e094c7c-52fe-4dbb-8954-2625171520f8",
-    "username": "waldo@example.com",
-    "password": "lajNVdjZtCEb",
-    "roles": ["Admin"],
-    "tenantUrn": "urn:user:uuid:ff002e1e-31c7-4153-a322-d024eb991748"
-  }
-}
-----
-
-The password needs to be stored in a safe location, because it
-is required for further operations on this tenant, e.g., creating
-additional users, or adding data.
-
-== Acquire an Access Token
-
-The user requests an OAuth 2.0 access token with the known `username`/`password`
-credentials returned at user (or tenant) creation.
-The access token is then used for all subsequent REST API calls.
-
-Execute the following to acquire a token for your newly created user
-(remember to set the correct password):
-
-[source, bash]
-----
-$ export password='lajNVdjZtCEb'
-$ curl -X POST "http://localhost:8080/oauth/token?grant_type=password&scope=read&username=waldo@example.com&password=${password}" \
-       -H "Content-Type: application/json" \
-       --basic -u "smartcosmosservice:9HhnNDhfGEXfNEn6"
-----
-
-The response contains the OAuth 2.0 token in `access_token`.
-
 == Construct the Bulk Import Request
 
 The bulk import request contains a JSON body composed of two sections:
