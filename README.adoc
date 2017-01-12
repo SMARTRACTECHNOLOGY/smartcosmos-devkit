@@ -79,6 +79,8 @@ link:guides/README.adoc[getting started guides].
 
 Base configuration for all services: https://github.com/SMARTRACTECHNOLOGY/smartcosmos-devkit/blob/master/config/application.yml[application.yml]
 
+Overviews: tutorials/images/service-construction.jpeg[Service Construction], tutorials/images/service-interaction-chart.jpeg[Service Interaction Chart]
+
 == Open Source Framework
 SMART COSMOS includes a number of open source frameworks available under the
 Apache License, Version 2. You can clone and freely use these frameworks in your
