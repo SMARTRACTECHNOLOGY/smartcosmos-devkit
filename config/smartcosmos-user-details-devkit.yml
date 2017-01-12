@@ -5,7 +5,7 @@ server:
 
 flyway:
   enabled: true
-  baselineOnMigrate: true
+  baselineOnMigrate: false
 
 spring:
   datasource:

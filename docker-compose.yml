@@ -55,6 +55,7 @@ services:
       - mysql
     networks:
       - platform-services
+    restart: always
 
   zookeeper:
     image: jplock/zookeeper:3.4.6
