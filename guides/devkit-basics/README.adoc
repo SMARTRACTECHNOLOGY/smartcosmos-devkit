@@ -16,7 +16,7 @@ examples.
 
 === Install the DevKit
 
-To get started with the DevKit refer to the link:README.adoc[Getting Started^] guide.
+To get started with the DevKit refer to the link:../README.adoc[Getting Started^] guide.
 
 === Install Postman
 
@@ -37,7 +37,7 @@ The
 link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS DevKit Tutorial^] is a public Postman collection that can be
 used to exercise the DevKit API and familiarize yourself with the API.
 
-. To start the DevKit see link:install-devkit.adoc#start-the-devkit[Getting Started^].
+. To start the DevKit see link:../install-devkit.adoc#start-the-devkit[Getting Started^].
 . Sign into link:https://www.getpostman.com/[Postman^].
 . Open the link:https://documenter.getpostman.com/view/437937/smart-cosmos-objects-devkit-tutorial/2JvFAy[Postman SMART COSMOS DevKit Tutorial^].
 . Select the btn:[Run in Postman] button.
@@ -107,7 +107,7 @@ Whether success or failure, the results shown in the Postman Collection Runner
 can provide you with a lot of detailed information about each request.
 Including URL, HTTP method, parameters and response details.
 
-If you continue to encounter problems refer to link:troubleshooting.adoc:[Troubleshooting^].
+If you continue to encounter problems refer to link:../troubleshooting.adoc:[Troubleshooting^].
 
 === Running Requests Individually
 
