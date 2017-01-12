@@ -145,8 +145,7 @@ API works. Be sure to check back frequently or when you have questions. The Post
 collection is connected directly to our development team and is updated every time we add new features and capabilities.
 
 For detailed information on our API see our
-link:https://api.smartcosmos.net/home/index.html[API Documentation^]
-and the link:https://devkit.smartcosmos.net[DevKit website^].
+link:https://api.smartcosmos.net/home/index.html[API Documentation^].
 
 For more detailed information on how Postman works please refer to the
 link:https://www.getpostman.com/docs[Postman documentation^].
