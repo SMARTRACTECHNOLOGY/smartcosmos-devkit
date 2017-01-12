@@ -107,7 +107,7 @@ Whether success or failure, the results shown in the Postman Collection Runner
 can provide you with a lot of detailed information about each request.
 Including URL, HTTP method, parameters and response details.
 
-If you continue to encounter problems refer to link:../troubleshooting.adoc:[Troubleshooting^].
+If you continue to encounter problems refer to link:../troubleshooting.adoc[Troubleshooting^].
 
 === Running Requests Individually
 
