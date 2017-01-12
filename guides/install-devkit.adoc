@@ -32,4 +32,4 @@ execute the following:
 == Next Steps
 
 Now that you have a running DevKit you may follow
-link:getting-started.adoc#guides[other getting started guides].
+link:README.adoc#guides[other getting started guides].
