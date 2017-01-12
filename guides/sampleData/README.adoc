@@ -149,26 +149,25 @@ $ curl -X POST "http://localhost:8080/bulkimport/" \
        -d @bulkimport.json
 ----
 
-== Files in this Tutorial
+== Add more Sample Data
 
-.Bulk Import Components
-|===
-| File Name | Description
+TODO:: rewrite this section
 
-| `*`README.adoc`*` | this file
-| `*`createSampleData`*` | bash script to create a new tenant and populate it with data
-| `*`addSampleData`*` | bash script to log in into an existing tenant and add more data
-| `*`createTenant.json`*` | example JSON which defines the new tenant
-| `*`bulkimport.json`*` | example JSON which defines new Things, Metadata and Relationships to import
-|===
+The script *createSampleData* outputs the username and
+password of the newly created tenant. Store these credentials
+in a safe location. When the import fails or more data
+needs to be imported, run following command with the given
+credentials:
 
-== Tips and Tricks
+ $ ./addSampleData USERNAME PASSWORD
 
-The script *createSampleData* outputs the username and password of the newly created tenant. Store these credentials in a safe location. When the import fails or more data needs to be imported, run following command with the given credentials:
-[source,bash]
-----
-$ ./addSampleData <username> <password>
-----
-So it is not neccessary to create a new tenant in the case the createSampleData command fails after creating the tenant.
+So it is not necessary to create a new tenant in the case
+the createSampleData command fails after creating the tenant.
 
-For the bulk import the Thing urns need to be generated as unique values. When the import fails, this might be caused by already existing urns in a different tenant.
+For the bulk import the Thing urns need to be generated as
+unique values. When the import fails, this might be caused
+by already existing urns in a different tenant.
+
+== Next Steps
+
+xref:../getting-started.adoc[guides]
