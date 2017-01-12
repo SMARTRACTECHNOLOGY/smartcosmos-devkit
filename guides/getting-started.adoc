@@ -1,15 +1,25 @@
+:title: Getting Started
+:Author: SMART COSMOS Development Team
+:Email: api@smartrac-group.com
+:numbered:
+:linkattrs:
+
 = Getting Started
 
-== Installation
+Getting Started provides you with an overview of basics steps to familiarize you
+with the SMART COSMOS DevKit.
 
-=== Prerequisites
+The guide informs you about recommended system requirements and guides you through the
+process of setting up the SMART COSMOS DevKit and how to proceed from there.
+
+== Prerequisites
 
 Please choose the matching platform of your working machine:
 
 * link:prerequisites.adoc#macOS[macOS]
 * link:prerequisites.adoc#linux[GNU/Linux]
 
-=== Set up the DevKit
+== Set up the DevKit
 
 To start the DevKit follow the
 link:install-devkit.adoc[DevKit Setup Guide].
