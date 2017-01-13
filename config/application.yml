@@ -12,7 +12,7 @@ smartcosmos:
 #
 #  host:
 #    ip: 172.17.0.1
-#    address: http://${ip}
+#    address: http://${smartcosmos.host.ip}
 
   service:
     kafka:
