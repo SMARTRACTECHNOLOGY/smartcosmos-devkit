@@ -11,7 +11,8 @@ smartcosmos:
 # default interface http://172.17.0.1.
 #
 #  host:
-#    address: http://172.17.0.1
+#    ip: 172.17.0.1
+#    address: http://${ip}
 
   service:
     kafka:
@@ -81,7 +82,7 @@ smartcosmos:
       address: ${smartcosmos.service.user-details.host}:${smartcosmos.service.user-details.port}
 
   datasource:
-    default-host: 172.17.0.1
+    default-host: ${smartcosmos.host.ip:mysql}
     default-username: cosmos
     default-password: dev
     default-db: devkit
