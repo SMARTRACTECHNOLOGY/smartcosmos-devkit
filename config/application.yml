@@ -1,17 +1,3 @@
-# server:
-# Debug option: prevent timeout
-#  session:
-#    timeout: 60000
-
-management:
-  port: 0
-  # security:
-  #   enabled: false
-
-eureka:
-  client:
-    enabled: false
-
 smartcosmos:
 # Uncomment the two lines below if you need to set a different
 # host address (usually your local IP address) and do not
@@ -25,7 +11,8 @@ smartcosmos:
 # default interface http://172.17.0.1.
 #
 #  host:
-#    address: http://172.17.0.1
+#    ip: 172.17.0.1
+#    address: http://${smartcosmos.host.ip}
 
   service:
     kafka:
@@ -95,7 +82,7 @@ smartcosmos:
       address: ${smartcosmos.service.user-details.host}:${smartcosmos.service.user-details.port}
 
   datasource:
-    default-host: 172.17.0.1
+    default-host: ${smartcosmos.host.ip:mysql}
     default-username: cosmos
     default-password: dev
     default-db: devkit
@@ -104,15 +91,10 @@ info:
   description: SMART COSMOS Cluster Services
   url: https://www.smart-cosmos.com/
 
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          strategy: THREAD
-          thread:
-            timeoutInMilliseconds: 10000
-
+management:
+  port: 0
+  # security:
+  #   enabled: false
 
 security:
   oauth2:
@@ -144,9 +126,6 @@ spring:
 logging:
   level:
     ROOT: INFO
-    com.netflix:
-      eureka.registry: WARN
-      discovery.shared.resolver.aws.ConfigClusterResolver: WARN
     org.apache.kafka.clients:
       producer: WARN
       consumer: WARN
