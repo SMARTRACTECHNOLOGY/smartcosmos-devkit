@@ -81,7 +81,7 @@ the collection in the _Postman Collection Runner_.
 image::postman-run-all.png[title="Run All Requests Locally in Postman", alt="Run All Requests Against a Local DevKit"]
 
 . Click the btn:[Start Run] button in the _Postman Collection Runner_.
-
++
 image::postman-collection-runner.png[title="Run All Requests - Collection Runner", alt="Run All Requests - Collection Runner"]
 
 ==== View the Results
