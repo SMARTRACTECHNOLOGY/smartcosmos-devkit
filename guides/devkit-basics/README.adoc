@@ -1,7 +1,7 @@
 :title: SMART COSMOS DevKit Basics Guide
 :Author: SMART COSMOS Development Team
 :Email: api@smartrac-group.com
-:imagesdir: images
+:imagesdir: https://devkit.smartcosmos.net/images/guides/devkit-basics
 :experimental:
 :linkattrs:
 :numbered:
