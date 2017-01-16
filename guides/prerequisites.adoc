@@ -1,5 +1,5 @@
 = Prerequisites
-:imagesdir: images
+:imagesdir: https://devkit.smartcosmos.net/images/guides
 :experimental:
 :numbered:
 
