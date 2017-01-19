@@ -82,10 +82,11 @@ smartcosmos:
       address: ${smartcosmos.service.user-details.host}:${smartcosmos.service.user-details.port}
 
   datasource:
-    default-host: ${smartcosmos.host.ip:mysql}
-    default-username: cosmos
-    default-password: dev
-    default-db: devkit
+    default:
+      host: ${smartcosmos.host.ip:mysql}
+      username: cosmos
+      password: dev
+      db: devkit
 
 info:
   description: SMART COSMOS Cluster Services
