@@ -6,6 +6,7 @@ server:
 flyway:
   enabled: true
   baselineOnMigrate: false
+  locations: classpath:db/migration/common, classpath:db/migration/mysql
 
 spring:
   datasource:
