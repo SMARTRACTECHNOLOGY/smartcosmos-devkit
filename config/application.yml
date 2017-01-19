@@ -100,8 +100,8 @@ management:
 security:
   oauth2:
     client:
-      accessTokenUri: ${smartcosmos.authorization-server}/oauth/token
-      user-authorization-uri: ${smartcosmos.authorization-server}/oauth/authorize
+      accessTokenUri: ${smartcosmos.service.auth-server.address}/oauth/token
+      user-authorization-uri: ${smartcosmos.service.auth-server.address}/oauth/authorize
       client-id: 'smartcosmosservice'
       client-secret: '9HhnNDhfGEXfNEn6'
     resource:
