@@ -20,7 +20,7 @@ Requests fail with `Failed to connect to localhost port 8080: Connection refused
   CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                     NAMES
   9fb926fddbd6        smartcosmos/gateway         "./entrypoint.sh /opt"   5 hours ago         Up 43 minutes       0.0.0.0:8080->8080/tcp    smartcosmosdevkit_gateway_1
 
-Every time the Docker engine is started, also some of the DevKit containers automatically attempt to start::
+Every time the Docker engine is started some of the DevKit containers attempt to start automatically.::
  This is most likely because you did not run `docker-compose down` to stop and delete the DevKit containers,
  and there are containers using the restart policy _always_. By default, this parameter is used by `user-details-devkit`,
  as you can see in `docker-compose.yml`. Make sure to use `docker rm` to remove all instances of these services,
