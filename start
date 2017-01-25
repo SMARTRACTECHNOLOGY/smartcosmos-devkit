@@ -80,7 +80,7 @@ function prerequisites() {
   docker-compose pull
 
   echo -e "\n${ORANGE}→ Starting database and message queue services...${DEFAULT_COLOR}"
-  docker-compose up -d mysql zookeeper kafka
+  docker-compose up -d mysql zookeeper kafka landing-page
 }
 
 function configserver() {
