@@ -80,6 +80,11 @@ smartcosmos:
       host: ${smartcosmos.host.address:${smartcosmos.service.user-details.default}}
       port: 7777
       address: ${smartcosmos.service.user-details.host}:${smartcosmos.service.user-details.port}
+    landing-page:
+      default: http://landing-page
+      host: ${smartcosmos.host.address:${smartcosmos.service.user-details.default}}
+      port: 8081
+      address: ${smartcosmos.service.landing-page.host}:${smartcosmos.service.landing-page.port}
 
   datasource:
     default:
@@ -123,6 +128,9 @@ spring:
   jackson:
     deserialization:
       ACCEPT_SINGLE_VALUE_AS_ARRAY: true
+  mvc:
+    favicon:
+      enabled: false
 
 logging:
   level:
