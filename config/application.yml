@@ -10,9 +10,9 @@ smartcosmos:
 # that natively support docker, it is also possible to use Docker's
 # default interface http://172.17.0.1.
 #
-  host:
-    ip: 172.16.42.4
-    address: http://${smartcosmos.host.ip}
+#  host:
+#    ip: 172.17.0.1
+#    address: http://${smartcosmos.host.ip}
 
   service:
     kafka:
