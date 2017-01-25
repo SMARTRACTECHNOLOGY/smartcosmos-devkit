@@ -123,7 +123,7 @@ function services() {
   start "events" 15
 
   echo -e "\n${ORANGE}→ Starting gateway...${DEFAULT_COLOR}"
-  start "gateway" 15
+  start "gateway landing-page" 15
 }
 
 function main() {

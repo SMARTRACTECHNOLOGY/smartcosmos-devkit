@@ -146,6 +146,15 @@ services:
     networks:
        - platform-services
 
+  landing-page:
+    image: nginx:alpine
+    ports:
+      - "8081:80"
+    networks:
+      - platform-services
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+
 networks:
   devkit-gateway:
     driver: bridge

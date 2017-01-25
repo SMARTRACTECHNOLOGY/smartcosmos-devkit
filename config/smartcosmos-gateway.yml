@@ -38,6 +38,10 @@ zuul:
       path: /oauth/**
       stripPrefix: false
       url: ${smartcosmos.service.auth-server.address}
+    landing-page:
+      path: /**
+      stripPrefix: false
+      url: ${smartcosmos.service.landing-page.address}
 
 smartcosmos:
   gateway:
