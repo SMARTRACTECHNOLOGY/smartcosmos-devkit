@@ -27,6 +27,8 @@ services:
 
   auth-server:
     image: smartcosmos/auth-server
+    environment:
+      SERVER_PORT: 9999
     ports:
       - "9999:9999"
     depends_on:
@@ -38,6 +40,8 @@ services:
 
   edge-user-devkit:
     image: smartcosmos/edge-user-devkit
+    environment:
+      SERVER_PORT: 45371
     ports:
       - "45371:45371"
     depends_on:
@@ -48,6 +52,8 @@ services:
 
   user-details-devkit:
     image: smartcosmos/user-details-devkit
+    environment:
+      SERVER_PORT: 7777
     ports:
       - "7777:7777"
     depends_on:
@@ -78,6 +84,8 @@ services:
 
   events:
     image: smartcosmos/events
+    environment:
+      SERVER_PORT: 45012
     ports:
       - "45012:45012"
     depends_on:
@@ -88,6 +96,8 @@ services:
 
   edge-bulkimport:
     image: smartcosmos/edge-bulkimport
+    environment:
+      SERVER_PORT: 50593
     ports:
       - "50593:50593"
     depends_on:
@@ -97,6 +107,8 @@ services:
 
   edge-things:
     image: smartcosmos/edge-things
+    environment:
+      SERVER_PORT: 50594
     ports:
       - "50594:50594"
     depends_on:
@@ -106,6 +118,8 @@ services:
 
   ext-things:
     image: smartcosmos/ext-things
+    environment:
+      SERVER_PORT: 45336
     ports:
       - "45336:45336"
     depends_on:
@@ -116,6 +130,8 @@ services:
 
   ext-metadata:
     image: smartcosmos/ext-metadata
+    environment:
+      SERVER_PORT: 45037
     ports:
       - "45037:45037"
     depends_on:
@@ -126,6 +142,8 @@ services:
 
   ext-relationships:
     image: smartcosmos/ext-relationships
+    environment:
+      SERVER_PORT: 45369
     ports:
       - "45369:45369"
     depends_on:
