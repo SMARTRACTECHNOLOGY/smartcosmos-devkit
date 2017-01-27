@@ -1,0 +1,59 @@
+:title: Frequently Asked Questions about Using the Archetype
+:Author: SMART COSMOS Development Team
+:Email: api@smartrac-group.com
+
+= {title}
+
+This document describes the most common problems and causes encountered when
+working with the SMART COSMOS DevKit Simple Service Example archetype.  If you have encountered a problem not
+described here and you are not able to resolve it on your own please contact us at {email}.
+
+[qanda]
+How do I find the correct archetype, there are so many?::
+ You can filter the list of archetypes to select from by using a filter.  The syntax is
+ `mvn archetype:generate -Dfilter=net.smartcosmos:`  This will return a list of all archetypes that are in the
+ `net.smartcosmos` group.  For more information see the
+ https://maven.apache.org/archetype/maven-archetype-plugin/generate-mojo.html#filter[Maven Archtype documentation]
+
+The archetype does not show up in my list, even when I filter the list.  How do I get the archetype?::
+ For information on how to get the archetype so you can use it to create services please refer to
+ the link:archetype-getting-started.adoc[Getting Started] guide.
+
+What does `[ERROR] Failed to execute goal pl.project13.maven:git-commit-id-plugin:2.1.15:revision (default) on project example-service: .git directory could not be found! Please specify a valid [dotGitDirectory] in your pom.xml -> [Help 1]' mean?::
+ We use the `pl.project13.maven:git-commit-id-plugin` by default in all of our projects.  If you do not use Git or do not want to use this plugin
+ add the following to your `pom.xml` file to disable the git commit plugin.
+----
+<build>
+  <plugin>
+    <groupId>pl.project13.maven</groupId>
+    <artifactId>git-commit-id-plugin</artifactId>
+    <configuration>
+      <skip>true</skip>
+    </configuration>
+  </plugin>
+</build>
+----
+
+Why is there no `.gitignore` file, you have everything else in here?::
+ There is a known bug documented in https://issues.apache.org/jira/browse/ARCHETYPE-474[the Maven Apache Issues].
+ The resolution is to add update your generated `pom.xml` to lok like the following:
+
+----
+<build>
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                <artifactId>maven-archetype-plugin</artifactId>
+                <version>2.4</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <addDefaultExcludes>false</addDefaultExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+</build>
+----

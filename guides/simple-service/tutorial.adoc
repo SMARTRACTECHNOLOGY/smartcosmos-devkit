@@ -1,0 +1,215 @@
+:title: Guide to Creating a SMART COSMOS Service
+:Author: SMART COSMOS Development Team
+:email: api@smartrac-group.com
+:imagesdir: https://devkit.smartcosmos.net/images/tutorials/create-service
+:linkattrs:
+:numbered:
+
+= {title}
+
+[.lead]
+This guide helps you get started creating your own microservice to use with
+SMART COSMOS.  We'll be using the SMART COSMOS DevKit as our
+environment and show you how to create a simple microservice using ths archetype and configure it
+to work in the SMART COSMOS DevKit.  This simple service provides a REST endpoint that returns a random number.
+
+== Create a New Project From the Archetype
+
+=== Create the New Project Using Prompts
+
+1. Change to the directory where you wish to create your new simple service.
+
+ $ cd ~
+ $ mkdir tmp
+ $ cd tmp
+
+2. Generate a new project from your newly installed archetype.
+
+ $ mvn archetype:generate -DarchetypeCatalog=local
+
+If you have more than one Maven archetype installed locally you'll be asked to choose
+which one. Choose `net.smartcosmos.example:devkit-simple-service-example-archetype`
+(by number) from the list.  If you do not see the archetype see link:archetype-getting-started.adoc[Getting Started].
+
+In our case below we will choose archetype `2`.
+----
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Stub Project (No POM) 1
+[INFO] ------------------------------------------------------------------------
+[INFO]
+[INFO] >>> maven-archetype-plugin:2.4:generate (default-cli) > generate-sources @ standalone-pom >>>
+[INFO]
+[INFO] <<< maven-archetype-plugin:2.4:generate (default-cli) < generate-sources @ standalone-pom <<<
+[INFO]
+[INFO] --- maven-archetype-plugin:2.4:generate (default-cli) @ standalone-pom ---
+[INFO] Generating project in Interactive mode
+[INFO] No archetype defined. Using maven-archetype-quickstart (org.apache.maven.archetypes:maven-archetype-quickstart:1.0)
+Choose archetype:
+1: remote -> net.smartcosmos.extension:smartcosmos-extension-archetype (SMART COSMOS Extension Archetype)
+2: local -> net.smartcosmos.example:devkit-simple-service-example-archetype (An example of a simple service for the SMART COSMOS Devkit.
+Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): : 2
+----
+
+Use the following settings when prompted.
+
+----
+groupId : com.example.simpleservice
+artifactId : my-simple-service
+version : 1.0.0-SNAPSHOT
+package : com.example.simpleservice
+----
+
+The next set of output looks like the following:
+
+----
+Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): : 2
+Define value for property 'groupId': : com.example.simpleservice
+Define value for property 'artifactId': : my-simple-service
+Define value for property 'version':  1.0-SNAPSHOT: : 1.0.0-SNAPSHOT
+Define value for property 'package':  com.example.simpleservice: :
+Confirm properties configuration:
+groupId: com.example.simpleservice
+artifactId: my-simple-service
+version: 1.0.0-SNAPSHOT
+package: com.example.simpleservice
+ Y: :
+----
+
+Verify your input and type `Y` or press `Enter` to accept and the project will be generated.  You will
+see the following output in terminal:
+
+----
+[INFO] ----------------------------------------------------------------------------
+[INFO] Using following parameters for creating project from Archetype: devkit-simple-service-example-archetype:0.0.2-SNAPSHOT
+[INFO] ----------------------------------------------------------------------------
+[INFO] Parameter: groupId, Value: com.example.simpleservice
+[INFO] Parameter: artifactId, Value: my-simple-service
+[INFO] Parameter: version, Value: 1.0.0-SNAPSHOT
+[INFO] Parameter: package, Value: com.example.simpleservice
+[INFO] Parameter: packageInPathFormat, Value: com/example/simpleservice
+[INFO] Parameter: package, Value: com.example.simpleservice
+[INFO] Parameter: version, Value: 1.0.0-SNAPSHOT
+[INFO] Parameter: groupId, Value: com.example.simpleservice
+[INFO] Parameter: artifactId, Value: my-simple-service
+[INFO] project created from Archetype in dir: /Users/wfschneider/git/my-simple-service
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 17:03 min
+[INFO] Finished at: 2017-01-24T13:30:46-05:00
+[INFO] Final Memory: 14M/309M
+[INFO] ------------------------------------------------------------------------
+----
+
+=== Create a New Project in One Command
+
+It is possible to use a single command to create your example from the archetype.  For more detailed information on
+the parameters that can be used with the `mvn archetype` command please refer to
+https://maven.apache.org/archetype/maven-archetype-plugin/generate-mojo.html[the Maven Archetype] documentation.
+
+1. Change to the directory where you wish you wish to create your new simple service.
+
+ $ cd ~
+ $ mkdir tmp
+ $ cd tmp
+
+2. Run the `mvn archethype:generate` command.
+
+ $  mvn archetype:generate -DarchetypeCatalog=local  \
+        -DarchetypeArtifactId=devkit-simple-service-example-archetype \
+        -DartifactId=example-service \
+        -DarchetypeGroupId=net.smartcosmos.example \
+        -DgroupId=com.example.myservice \
+        -DarchetypeVersion=0.0.2-SNAPSHOT \
+        -Dversion=1.0.0-SNAPSHOT \
+        -DgroupId=com.example.simpleservice \
+        -DartifactID=my-simple-service
+
+The output will look like the following;
+
+----
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Maven Stub Project (No POM) 1
+[INFO] ------------------------------------------------------------------------
+[INFO]
+[INFO] >>> maven-archetype-plugin:2.4:generate (default-cli) > generate-sources @ standalone-pom >>>
+[INFO]
+[INFO] <<< maven-archetype-plugin:2.4:generate (default-cli) < generate-sources @ standalone-pom <<<
+[INFO]
+[INFO] --- maven-archetype-plugin:2.4:generate (default-cli) @ standalone-pom ---
+[INFO] Generating project in Interactive mode
+[INFO] Archetype repository not defined. Using the one from [net.smartcosmos.example:devkit-simple-service-example-archetype:0.0.2-SNAPSHOT] found in catalog local
+[INFO] Using property: groupId = com.example.simpleservice
+[INFO] Using property: artifactId = example-service
+[INFO] Using property: version = 1.0.0-SNAPSHOT
+[INFO] Using property: package = com.example.simpleservice
+Confirm properties configuration:
+groupId: com.example.simpleservice
+artifactId: example-service
+version: 1.0.0-SNAPSHOT
+package: com.example.simpleservice
+ Y: :
+----
+
+Type `Y` or press `Enter` to accept and the project will be generated.  You will see the following output in terminal:
+
+----
+[INFO] ----------------------------------------------------------------------------
+[INFO] Using following parameters for creating project from Archetype: devkit-simple-service-example-archetype:0.0.2-SNAPSHOT
+[INFO] ----------------------------------------------------------------------------
+[INFO] Parameter: groupId, Value: com.example.simpleservice
+[INFO] Parameter: artifactId, Value: example-service
+[INFO] Parameter: version, Value: 1.0.0-SNAPSHOT
+[INFO] Parameter: package, Value: com.example.simpleservice
+[INFO] Parameter: packageInPathFormat, Value: com/example/simpleservice
+[INFO] Parameter: package, Value: com.example.simpleservice
+[INFO] Parameter: version, Value: 1.0.0-SNAPSHOT
+[INFO] Parameter: groupId, Value: com.example.simpleservice
+[INFO] Parameter: artifactId, Value: example-service
+[INFO] project created from Archetype in dir: /Users/wfschneider/git/example-service
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 04:09 min
+[INFO] Finished at: 2017-01-24T13:07:00-05:00
+[INFO] Final Memory: 14M/309M
+[INFO] ------------------------------------------------------------------------
+----
+
+== Build Your New Project
+
+=== Use Git To Save Your Work
+
+To save your work in a **Git** repository init the git repository, and commit
+the initial version:
+
+ $ cd example-service
+
+=== Save Project Files to Git
+
+ $ git init .
+ $ git add .
+ $ git commit -m 'initial commit'
+
+=== Build the project:
+
+  $ mvn clean package -U
+
+=== Build the Docker Image
+
+ To install in your local docker and verify that it's there:
+
+  $ docker build -t myservice/simple-service .
+  $ docker images | grep simple-service
+
+That's it. Now follow the instructions in the new repository for integrating the service
+into a running DevKit instance.  These instructions can be found in the
+`README.adoc` file in the new create project directory.
+
+== Help
+
+For answers to common problems please see the link:FAQ.adoc[Frequently Asked Questions].

@@ -46,6 +46,9 @@ link:ec2instance/README.adoc[AWS EC2 Instance Setup]::
 This guide leads you through the process of getting the SMART COSMOS DevKit
 running on an AWS EC2 Instance.
 
+link:simple-service/README.adoc[]::
+This guide leads you through creating your own microservice to use in SMART COSMOS using our archetype as a starting point.
+
 
 == Next Steps
 Now that you have an understanding on how to operate and use

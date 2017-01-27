@@ -1,0 +1,46 @@
+:title: Getting Started with the SMART COSMOS Simple Service Archetype
+:Author: SMART COSMOS Development Team
+:email: api@smartrac-group.com
+:linkattrs:
+:numbered:
+
+= {title}
+SMARTRAC Technology Fletcher Inc <{email}>
+
+[.lead]
+This archetype helps you get started creating your own microservice to use with
+SMART COSMOS.  We'll be using the SMART COSMOS DevKit as our
+environment and show you how to create a simple microservice and configure it
+to work in the SMART COSMOS DevKit.
+
+== Get the Archetype
+
+The archetype should be available from Maven Central. You can verfy this with the following command:
+
+ $ mvn archetype:generate -Dfilter=net.smartcosmos:
+
+The archetype `devkit-simple-service-example-archetype` should appear in the list.  If it is not shown you'll
+have to check out this project and install the archetype locally.
+
+1. Go to the https://github.com/SMARTRACTECHNOLOGY/devkit-simple-service-example[repository] and clone it.
+
+1. Create the archetype.
+
+ $  mvn clean archetype:create-from-project
++
+This will create the archetype in `target/generated-sources/archetype`.
+
+1. Install the archetype locally.
+
+  $ cd target/generated-sources/archetype
+  $ mvn install
++
+The archetype will now be installed and you can begin using it.
+
+== Create a new Project from the Archetype
+
+For a directions on how to use this archetype please read our link:tutorial.adoc[tutorial].
+
+== Help
+
+For answers to common problems please see the link:faq.adoc[Frequently Asked Questions].
