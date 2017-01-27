@@ -119,6 +119,14 @@ can act as starting points or examples:
  provider such as https://stormpath.com/[Stormpath], Active Directory,
  https://developers.google.com/identity/[Google], http://openid.net/[OpenID], etc.
 
+ https://github.com/SMARTRACTECHNOLOGY/devkit-simple-service-example[Create Your Own Microservice]::
+ The real power in SMART COSMOS is creating custom services that quickly integrate into the existing infrastructure.
+ Custom services can be created for any number of reasons; accessing a custom back-end service, accessing data
+ in a legacy system or creating custom aggregate objects. For a quick tutorial on bootstrapping development
+ of custom services in SMART COSMOS check out the
+ https://github.com/SMARTRACTECHNOLOGY/devkit-simple-service-example[SMART COSMOS Simple Service Example]
+ and how to use it or the associated archetype to get started on your own services.
+
 == License
 The DevKit is licensed under the SMART COSMOS Objects EULA. You must review and accept the
 https://licensing.smartcosmos.net/objects/[SMART COSMOS Objects EULA] before
