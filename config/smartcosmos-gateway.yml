@@ -22,6 +22,9 @@ zuul:
     ext-relationships:
       path: /relationships/**
       url: ${smartcosmos.service.ext-relationships.address}
+    ext-interactions:
+      path: /interactions/**
+      url: ${smartcosmos.service.ext-interactions.address}
     users:
       path: /users/**
       stripPrefix: false

@@ -1,0 +1,18 @@
+server:
+  port: 45556
+
+kafka:
+  broker:
+    host: http://kafka
+    port: 9092
+    address: ${kafka.broker.host}:${kafka.broker.port}
+
+smartcosmos:
+  security:
+    enabled: true
+  endpoints:
+    interactions:
+      enabled: true
+      create.enabled: true
+
+
