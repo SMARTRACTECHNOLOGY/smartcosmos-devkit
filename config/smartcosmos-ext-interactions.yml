@@ -1,5 +1,5 @@
 server:
-  port: 45556
+  port: ${smartcosmos.service.ext-interactions.port}
 
 smartcosmos:
   security:
