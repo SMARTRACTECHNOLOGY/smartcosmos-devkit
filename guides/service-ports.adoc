@@ -20,6 +20,7 @@ all the services ports are getting forwarded to `0.0.0.0`.
 | ext-things | 8080 | 45336
 | ext-metadata | 8080 | 45037
 | ext-relationships | 8080 | 45369
+| ext-interactions | 8080 | 45556
 
 | zookeeper | 2181 | 2181
 | kafka | 9092 | 9092
