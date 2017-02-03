@@ -152,6 +152,18 @@ services:
     networks:
       - platform-services
 
+  ext-interactions:
+    image: smartcosmos/ext-interactions
+    environment:
+      SERVER_PORT: 45556
+    ports:
+      - "45556:45556"
+    depends_on:
+      - config-server
+      - kafka
+    networks:
+      - platform-services
+
   mysql:
     image: mariadb:10.1.17
     ports:

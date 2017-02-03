@@ -1,0 +1,14 @@
+server:
+  port: ${smartcosmos.service.ext-interactions.port}
+
+smartcosmos:
+  security:
+    enabled: true
+  endpoints:
+    interactions:
+      enabled: true
+      create.enabled: true
+  interactions:
+    kafka:
+      address: ${smartcosmos.service.kafka.address}
+

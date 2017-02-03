@@ -75,6 +75,11 @@ smartcosmos:
       host: ${smartcosmos.host.address:${smartcosmos.service.ext-relationships.default}}
       port: 45369
       address: ${smartcosmos.service.ext-relationships.host}:${smartcosmos.service.ext-relationships.port}
+    ext-interactions:
+      default: http://ext-interactions
+      host: ${smartcosmos.host.address:${smartcosmos.service.ext-interactions.default}}
+      port: 45556
+      address: ${smartcosmos.service.ext-interactions.host}:${smartcosmos.service.ext-interactions.port}
     user-details:
       default: http://user-details-devkit
       host: ${smartcosmos.host.address:${smartcosmos.service.user-details.default}}
