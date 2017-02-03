@@ -1,5 +1,5 @@
 ---
-version: '2'
+version: '3'
 
 services:
   config-server:
@@ -149,6 +149,18 @@ services:
     depends_on:
       - config-server
       - mysql
+    networks:
+      - platform-services
+
+  ext-interactions:
+    image: smartcosmos/ext-interactions
+    environment:
+      SERVER_PORT: 45556
+    ports:
+      - "45556:45556"
+    depends_on:
+      - config-server
+      - kafka
     networks:
       - platform-services
 
