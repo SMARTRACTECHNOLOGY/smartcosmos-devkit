@@ -8,5 +8,10 @@ smartcosmos:
     interactions:
       enabled: true
       create.enabled: true
+  interactions:
+    kafka:
+      host: http://localhost
+      port: 9092
+      address: ${smartcosmos.service.kafka.host}:${smartcosmos.service.kafka.port}
 
 
